@@ -272,6 +272,11 @@ touch /var/run/v2ray.pid
 systemctl status v2ray
 </code></pre>
 <p>将其设置为系统自动启动<code>systemctl enable v2ray</code></p>
+<h2 id="appimage报错"><a name="appimage报错" href="#appimage报错"></a>Appimage报错</h2>
+<h3 id="cannot-run-due-to-existing-symlinks-in-/tmp-(fixme)"><a name="cannot-run-due-to-existing-symlinks-in-/tmp-(fixme)" href="#cannot-run-due-to-existing-symlinks-in-/tmp-(fixme)"></a>Cannot run due to existing symlinks in /tmp (FIXME)</h3>
+<p>用QQ的appimage时多次打开关闭出现该报错</p>
+<p>Needs to be fixed in the AppImage AppRun script.<br>Need to <code>rm /tmp/ld-linux.so.2</code></p>
+
 
 	</div>
   </article>
