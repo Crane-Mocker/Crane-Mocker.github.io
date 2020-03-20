@@ -1,0 +1,445 @@
+# Ubuntu 琐事
+
+[TOC]
+
+## Ubuntu系统盘瘦身
+
+### 对于想要为系统盘瘦身的你的忠告
+**千万不要`apt autoremove`!!!!!**
+**千万不要`apt autoremove`!!!!!**
+**千万不要`apt autoremove`!!!!!**
+只是一条堪称灾难的指令。如果不幸，它会把你的各种依赖删得七零八落，让你的系统变成灾难现场。--by 花了3h修复gcc的C_M.
+
+### 清除apt缓存
+对于不了解apt（repo）, ppa, dpkg的崽崽，请自己查看, 本部分不做详细说明.
+
+查看apt的cache `sudo du -sh /var/cache/apt `
+清除不必要的cache `sudo apt-get autoclean`
+清除整个cache `sudo apt-get clean`
+
+###  删除旧内核
+`sudo dpkg --get-selections  | grep linux-image` 查看已安装内核映像
+`uname -r`  查看当前内核版本
+`sudo apt-get purge linux-image-2.6.32-26-generic` 删除旧的内核映像，只保留当前版本
+结束，（根据提示）执行 `sudo apt autoremove`
+
+`sudo dpkg --get-selections  | grep linux-headers`  查看已有的头文件库
+`sudo apt-get purge linux-headers-2.6.28-19` 删除旧的头文件库
+`sudo apt autoremove`
+
+以上两步，对于权限不够的目录，在结束cd到上级目录，`sudo rm -rf XXX`
+
+`dpkg --get-selections  | grep linux` 查看内核映像和组件
+对于状态是`deinstall`的
+`sudo dpkg -P linux-image-3.5.0-4[2-9]-generic `
+完成 
+
+### 删除孤立的库
+`sudo deborphan | xargs sudo apt-get -y remove --purge`
+
+### 比较大的不常用Installed package
+自己找找，删了就vans了。主要是安利下debian-goodies中的`dpigs`,方便啊:3
+
+### 管理包
+`sudo gtkorphan`
+
+### 清除旧版本的snap applications
+snap applications 一般比较大，可以清除其旧版本释放空间。
+
+> Snappy is a software deployment and package management system developed by Canonical for the Linux operating system. The packages, called snaps, and the tool for using them, snapd, work across a range of Linux distributions allowing distribution-agnostic upstream software packaging. Snappy was originally designed for Ubuntu Touch. The system is designed to work for internet of things, cloud and desktop computing. --Wiki
+
+查看占盘情况 `du -h /var/lib/snapd/snaps`
+
+这里是Alan Pope (part of Snapcraft team at Canonical) 给出的shell脚本，清除旧版本
+
+```bash
+#!/bin/bash
+# Removes old revisions of snaps
+# CLOSE ALL SNAPS BEFORE RUNNING THIS
+set -eu
+snap list --all | awk '/disabled/{print $1, $3}' |
+    while read snapname revision; do
+        snap remove "$snapname" --revision="$revision"
+    done
+```
+代码分析
+
+ - set用来定制环境。-u,如果遇到不存在的变量，Bash 默认忽略它。-e脚本发生错误则终止执行。
+ - awk在文件或者字符串中基于指定规则浏览和抽取信息. awk对输入的每一行，也就是`snap list --all`得到的之中/disabled/下的**每一行**（即旧版本的snap apps）. 输出第1个和第3个参数至stdout(**注意区分awk中$0是指整行,shell中的$0传的参是文件名**)。
+ - $1这里是snapname, $3是revision. while循环,删除即可。
+
+
+### 清除缩略图
+查看缩略图缓存`du -sh ~/.cache/thumbnails`
+清除`rm -rf ~/.cache/thumbnails/*`
+
+> **关于du的说明** 
+> du用来查看文件大小
+>  -h, --human-readable  以可读性较好的方式显示尺寸(例如：1K 234M 2G)
+>  -s, --summarize       只分别计算命令列中每个参数所占的总用量
+>  --max-depth=N     *显示目录总计(与--all 一起使用计算文件)*
+>   *当N 为指定数值时计算深度为N；*
+>   *--max-depth=0 等于--summarize*
+
+### 清除残余配置文件
+查看残余配置文件`dpkg --list | grep "^rc"` 
+rc表示软件包已经删除，配置文件还在.
+
+提取这些软件包的名称`dpkg --list | grep "^rc" | cut -d " " -f 3`
+
+删除这些软件包`dpkg --list | grep "^rc" | cut -d " " -f 3 | xargs sudo dpkg --purge`
+
+### 按需清理日志
+查看日志大小`du -h --max-depth=1 /var/log/*`
+>***对一些log的说明***
+> *******
+>  /var/log/alternatives.log-更新替代信息都记录在这个文件中
+> /var/log/apport.log -应用程序崩溃记录
+> /var/log/apt/   -用apt-get安装卸载软件的信息
+> /var/log/auth.log  -登录认证log
+> /var/log/boot.log  -包含系统启动时的日志。 /var/log/btmp    -记录所有失败启动信息
+> /var/log/Consolekit  - 记录控制台信息
+> /var/log/cpus     - 涉及所有打印信息的日志
+> /var/log/dist-upgrade  - dist-upgrade这种更新方式的信息
+> /var/log/dmesg    -包含内核缓冲信息（kernel ringbuffer）。在系统启动时，显示屏幕上的与硬件有关的信息
+> /var/log/dpkg.log   - 包括安装或dpkg命令清除软件包的日志。
+> /var/log/faillog    - 包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。
+> /var/log/fontconfig.log -与字体配置有关的log。
+> /var/log/fsck     - 文件系统日志
+> /var/log/faillog   -包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。
+> /var/log/hp/
+> /var/log/install/
+> /var/log/jokey.log
+> /var/log/kern.log –包含内核产生的日志，有助于在定制内核时解决问题。
+> /var/log/lastlog —记录所有用户的最近信息。这不是一个ASCII文件，因此需要用lastlog命令查看内容。
+> /var/log/faillog –包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。
+> /var/log/lightdm/
+> /var/log/mail/ – 这个子目录包含邮件服务器的额外日志。
+> /var/log/mail.err    -类似于上面的
+> /var/log/news/
+> /var/log/pm-powersave.log
+> /var/log/samba/ –包含由samba存储的信息。
+> /var/log/syss.log
+> /var/log/speech-dispacher/
+> /var/log/udev
+> /var/log/ufw.log
+> /var/log/upstart/
+> /var/log/uattended-upgrades/
+> /var/log/wtmp —包含登录信息。使用wtmp可以找出谁正在登陆进入系统，谁使用命令显示这个文件或信息等。
+> /var/log/xorg.*.log— 来自X的日志信息。
+
+一般来说，公司的服务器之类的,syslog和kern.log比较大，可以这样清理
+```
+sudo -i
+echo  > /var/log/syslog
+echo  > /var/log/kern.log
+```
+
+对于PC，journalctl会比较大
+
+> journalctl为什么这么大？因为全面～
+> 在Systemd出现之前，Linux系统及各应用的日志都是分别管理的，Systemd开始统一管理了所有Unit的启动日志，这样带来的好处就是可以只用一个 journalctl命令，查看所有内核和应用的日志
+
+这样来整理journal~
+```
+journalctl --disk-usage  //查看journal占用磁盘空间
+journalctl --vacuum-size=500M //设置日志占用的空间
+journalctl --vacuum-time=1month //设置日至保存时间，2d(就是2 days，按需设置参数即可)
+```
+
+### 更改apt-get下载地址
+Ubuntu中使用apt-get install默认会把deb包下载到/var/cache/apt/archives/下，可以通过man apt-get来看到相应的设置
+如何更改呢？
+1 .在你想存放的位置建立一个文件夹
+`mkdir -p /path/apt-archives`
+2 .在/path/apt-archives/下建立一个partial文件夹
+`mkdir partial`
+3. 编辑/etc/apt/apt.conf，这个文件可能并不存在，直接vim就好，添加如下内容（记得用sudo）：
+`dir::cache::archives /path/apt-archives;`
+
+### 更改docker image存储路径
+vbox太慢太卡，终于打算用docker了，但是有一点点问题，就是image太大了，如果全部存在`/var/lib/docker`下，系统盘很受伤。所以要更改存储路径
+1.更改配置
+```
+mkdir /etc/systemd/system/docker.service.d
+touch /etc/systemd/system/docker.service.d/docker-overlay.conf 
+vim /etc/systemd/system/docker.service.d/docker-overlay.conf
+```
+配置文件如下：
+其中`/home/docker`是你将要存储的路径（建议在你挂载的非系统盘的硬盘下建一个）
+```
+[Service]
+ExecStart=
+ExecStart=/usr/bin/dockerd --graph="/home/docker" --storage-driver=overlay
+```
+2.重启
+```
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+3.查看是否更改成功
+`sudo docker info`
+注意看`Docker Root Dir:`这一项，这里就是你指定的位置
+## perf安装的姿势
+（这个是真的坑，按照那种东缺点、西缺点的搞法，还定位不到缺的东西，难道要在网上下，然后一个个装吗？好像也未尝不是个办法呢~）
+perf安装按网上的随便来会出向各种依赖问题，究其原因，是版本不对。解决方案也很简单，就是指定版本。   
+首先`uname -r`查看
+然后apt安装linux-tools时指定版本，也就是linux-tools-"你查到的版本"
+
+## dpkg处理软件包报错
+在<a>https://blog.csdn.net/u012483097/article/details/78994571</a>这里看到的解决方案
+```
+ sudo mv /var/lib/dpkg/info /var/lib/dpkg/info_old //现将info文件夹更名
+sudo mkdir /var/lib/dpkg/info //再新建一个新的info文件夹
+ sudo apt-get update && apt-get -f install //不用解释了吧
+ sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info_old //新的info文件夹下生成的文件全部移到info_old文件夹下
+ sudo rm -rf /var/lib/dpkg/info //把自己新建的info文件夹删掉
+ sudo mv /var/lib/dpkg/info_old /var/lib/dpkg/info //把以前的info文件夹重新改
+```
+
+其实可以化简一下，先rm info,再创建，然后执行`sudo apt-get update && apt-get -f install`
+这里-f是--fix-broken,是用来修复依赖关系的
+
+## Ubuntu源
+### 改国内源
+`sudo vim /etc/apt/sources.list`
+
+亦可用于多次配置报错问题的解决
+
+### Hash Sum mismatch
+用apt-get update更新源时，出现“Hash Sum mismatch”的报错
+原因：透明缓存可以增加网络内部速度，减少出口的流量，但所获取的某些文件不是源服务器上的真正文件，是从缓存中获取的，当缓存中获取的一些校验信息跟源中不一致的时候，自然提示校验失败，无法继续更新。
+
+清缓存法：
+```
+$ sudo apt-get clean  
+$ sudo apt-get update --fix-missing 
+```
+## Ubuntu亮度问题（16.04）
+之前的brightness-controller在把py
+1.`sudo apt-get install laptop-mode-tools`  
+2.更改/etc/laptop-mode/laptop-mode.conf 文件：
+`sudo gedit /etc/laptop-mode/laptop-mode.conf` 
+ 令`ENABLE_LAPTOP_MODE_ON_AC=1` 
+3.更改/etc/laptop-mode/conf.d/lcd-brightness.conf 文件：
+`sudo gedit /etc/laptop-mode/conf.d/lcd-brightness.conf` 
+修改以下内容：`CONTROL_BRIGHTNESS=1`
+`BATT_BRIGHTNESS_COMMAND="echo 3"` 
+`LM_AC_BRIGHTNESS_COMMAND="echo 3"`
+`NOLM_AC_BRIGHTNESS_COMMAND="echo 3"`
+`#BRIGHTNESS_OUTPUT="/proc/acpi/video/VID/LCD/brightness"` 
+ 最后一行添加：
+ `BRIGHTNESS_OUTPUT="/sys/class/backlight/acpi_video0/brightness"`
+（记得要保存文件）
+4.最后，执行命令：
+`sudo update-grub`
+
+然后，如果上述方法问题无法解决，建议直接下一个ubuntu原生的Brightness
+然后色温用gnome的redshift解决
+
+## .crx插件的安装
+对于大多数的离线插件，下载完成后打开更多工具>>拓展程序，开启开发者模式，直接拖动即可安装。
+少部分是会出现解析错误，把.crx改成.rar或.zip，然后用unzip命令解压后再安装（注意，一定要用终端，否则会有文件缺失）
+
+## 挂载硬盘的暗坑踩坑记录及正确姿势
+![一个表情包而以](https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cucnVub29iLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAxOS8wMS8yMDE5MDExNS0zLmpwZw?x-oss-process=image/format,png)
+### 挂载硬盘的正确姿势
+查看硬盘分区及大小，确定需要挂的盘：`sudo fdisk -l`
+
+方法1（**mount大法** *适合传文件，用一下就好。或者不限麻烦愿意每次打开文件管理器手动挂载*）：
+ 1. 暂时挂载可以用mount `sudo mount /dev/sda1 /media`(前一个是要挂的，后一个是挂载位置)
+ 2. 修改owner `sudo chown -R username:username /media` -R是递归
+ 
+方法2（**fstab大法** *每次开机自动挂载*）
+ 1. 获取分区uuid: `sudo blkid`
+
+> 注意：可能会出现
+> ```
+> /dev/sda1: UUID="DA70A0E270ACFGDR" TYPE="ntfs" PARTUUID="06cdfc10-01"
+>/dev/sda5: UUID="C63C5C1B4C543565" TYPE="ntfs" PARTUUID="06cdfc10-05"
+> ```
+> 你要记住UUID和type**而不仅仅是UUID**！！！！
+> 随便在fstab中填type为ext4会导致无法进系统（reboot后会导致ext4 file system崩掉）（别问我怎么知道的）
+
+****
+##### What's the difference between UUID and PARTUUID
+A UUID is guaranteed to be unique. As far as I know, collisions will not happen within the lifetime of the universe. However, you'll note that the PARTUUID is much shorter. These are meant to be "locally" unique, and collisions most likely occur between all known PARTUUIDs.
+
+>上述是 https://raspberrypi.stackexchange.com/questions/75027/whats-the-difference-between-uuid-and-partuuid/75030 上一个老哥的回答
+
+****
+2. `sudo vim /etc/fstab` 按照这个文件原有的格式，填写UUID, TYPE等保存推出，愉快reboot
+
+***
+我是怎么踩坑以及解决的？（按照上述提示的崽崽不会踩这个坑，但如果不幸，你已经像我一样，踩入了这个坑，该怎么做呢？）
+**踩坑表现**
+
+ - reboot之后进入不了系统
+ - 正常启动ubuntu时持续报错**unsupported event** 
+ - 正常启动ubuntu时持续报错**can't find ext4 file system**(因为我填错了type)
+ - 无法ctrl+D打开shell,  ctrl+alt+2(等等tty终端)打开后依旧**unsupported event** 刷屏
+ - recovery mode进入后进入emergency mode,要你键入密码查log，然而，查完了，修复个锤锤哟，还是进不了系统
+ 
+ 如何解决呢？问题很明显是填错了fstab,导致系统出错，所以，**解决方法是把fstab改正确。**
+ fstab存在于你的系统盘中，而你自己的系统现在崩了，所以用自己的系统改不太可能。这里如果你有**live usb或者你的ubuntu引导盘**（对，就是你装系统时烧的那个）。
+ 1. 修改bios，从usb启动。
+ 2. 不用重装系统，try ubuntu的选项已经提供了供我们使用的OS，点它，进入这个临时的ubuntu系统。
+ 3. 打开文档管理器，找到你本机的系统盘，记住它的/dev/XXXX位置（用`sudo fdisk -l`命令亦可）(用`ls /dev | grep nvme`亦可)
+ 4. 如果能用文档管理器打开，就打开吧。打不开的话开sudo，`sudo mount /dev/XXXX /mnt` 暴力挂载（这个姿势的原理：对于你原来的本机系统，这个盘是所需权限高的系统盘，可是对用usb启动的临时系统来说，它只是一个硬盘而已）
+ 5. `cd /mnt`, `ls`(如果正常，会在/etc下)，`cd /etc`然后`sudo vi fstab`。然后删掉或者修改你写的有问题的部分（UUID没写对的改UUID, TYPE没写对的改TYPE。不知道怎么改的崽，把你添加的删掉或者注释了。`:wq`）
+ 6. reboot即可（这回就可以进本机系统了QAQ）
+
+***
+## 代理姿势
+### tty代理(环境变量)
+
+出现了 Failed to connect to 127.0.0.1 port 37389: 拒绝连接的错误？
+首先，这个错误是因为走了代理导致的，通过报错可知，是 ：“127.0.0.1 port 37389”。
+验证这个想法`env|grep -i proxy`
+会出现：
+```
+HTTPS_PROXY=http://127.0.0.1:37389/
+no_proxy=localhost,192.168.20.48
+HTTP_PROXY=http://127.0.0.1:37389/
+NO_PROXY=localhost,192.168.20.48
+```
+然后执行
+```
+unset HTTP_PROXY
+unset HTTPS_PROXY
+```
+即可
+在执行完`env|grep -i proxy`后，出现的http_proxy是大小写都有的，在用unset禁止proxy时，大小的也都要有。
+
+`export http_proxy=http://127.0.0.1:8000`
+类似这样即可设置环境变量
+
+### apt-get代理
+
+修改apt配置“/etc/apt/apt.conf”
+
+例如
+```bash
+Acquire::http::proxy "http://127.0.0.1:8000/";
+Acquire::ftp::proxy "ftp://127.0.0.1:8000/";
+Acquire::https::proxy "https://127.0.0.1:8000/";
+```
+
+也可以不使用apt.conf,而指定配置文件
+`sudo apt-get -c ~/apt_proxy.conf update`
+
+或者直接设置：
+`sudo apt-get -o Acquire::http::proxy="http://127.0.0.1:8000/" update`
+
+### Git代理
+
+```bash
+git config --global http.proxy 'socks5://127.0.0.1:1080'
+git config --global https.proxy 'socks5://127.0.0.1:1080'
+```
+
+只对github
+```bash
+#只对github.com
+git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
+
+#取消代理
+git config --global --unset http.https://github.com.proxy
+```
+
+## N卡独显大坑
+写给对Nvidia又爱又恨的你。
+### 显卡驱动自动安装/图形化界面更改显驱
+*有的朋友更新了内核到18.04，更改了各种conf还无法进入休眠模式可以更新显卡驱动试试
+至于16.04，这个内核本身就没有休眠模式，要想避免挂起后无法唤醒的问题，最好的方法就是--禁止挂起！（有个gnome的拓展，叫caffeine，禁止挂起，操作方便又轻量～）*
+不要用开源的了，N卡非常傲娇，会有各种分辨率问题，搞不好轻则键盘鼠标延时，重则进入不了desktop(~~用tty好像也不错呢~~ )
+老老实实用N家的显卡驱动吧。不过网上装显卡驱动文章的很多坑，如果盲目尝试可能又要踩坑了呢~
+1. 建议，如果可以，请用**软件与更新**图形界面更改显卡驱动，这个最稳妥。
+2. 命令的话，这个比较稳妥: 查看显卡型号和推荐显卡驱动 `ubuntu-drivers devices`；自动安显驱`sudo ubuntu-drivers autoinstall`
+
+### 更新bios后的显示不正常
+2019.12.27更新了hp的bios，进入系统后分辨率不正常。查看*软件与更新*，驱动仍然使用nvidia-driver 435, 终端查看nvidia-smi, 显驱联系不上显卡。
+
+这是因为：更新bios后，**secure boot**默认开启，导致第三方源驱动安装被禁止，第三方源驱动使用出现问题。 进入bios, 禁止secure boot(安全启动)，并且清空安全密钥。重启即可。
+
+### 键盘延时？！
+有没有这样的体验，显驱很匹配的情况下，偶尔一次两次，你的键盘输入延时了一小会。
+这可能是因为nvidia-setting启用了Sync To VBlank（垂直同步）。
+
+>Sync To VBlank 垂直同步：把帧数限制在60帧不超过显示屏刷新频率
+>优点：减少无意义浪费。解决屏幕撕裂（如果你有这个问题的话）。
+>缺点：可能导致输入延时。（当你着急开发的时候，这个问题尤为要命）
+
+当然你可以自己更改Nvidia setting(谨慎！)，也可以用ccsm来更改
+下载`sudo apt-get install compizconfig-settings-manager`
+tty键入ccsm打开gui界面，打开General，再打开OpenGL， 取消Sync To VBlank前面的勾勾。
+
+### xrandr报错 和 display resolution
+2020.1.23晚上开着win系统就睡觉了，系统自动更新了然后重启，双系统默认启动ubuntu。早上起来发现显示不正常了。
+
+排查问题及修复：
+- 首先，看到显示不正常，分辨率有问题，马上看了设置，发现只有默认的一个分辨率的选项无法更改。估计是显卡驱动出了问题。
+- 但是查看nvidia-smi一切正常，查看/etc/default/grub文件，`#GRUB_GFXMODE=640x480` 注释很正常，并且查看*软件与更新*，使用的仍然是n家驱动435没有自动更新，没有不匹配。
+- 执行`xrandr`, 报错`xrandr: failed to get size of gamma for output default`. 尝试 `killall Xorg`, 发现没有在跑的。
+- 并且此时发现系统上没有 */var/log/Xorg.0.log* 和  *.xprofile* 这两个文件，此时推断xorg可能有点问题
+重装之 ` sudo apt-get install pkg-config make xutils-dev libtool xserver-xorg-dev libx11-dev libxi-dev libxrandr-dev libxinerama-dev libudev-dev`
+- 在askubuntu上，看到一个用*A卡*的人遇到了相似的问题，回答的人说, 是因为他在**messed up专有显卡驱动**的情况下尝试恢复使用该显驱， 所以使用了开源的默认显驱。建议是重装显驱。
+我呢，是个之前重装显驱把图形化界面搞崩了的倒霉崽崽，俗话说，一朝被蛇咬，处处闻啼鸟。加之新的440版本是开源的，我用的435是闭源的，干脆一并升级了OS内核和显驱。重启后解决。
+
+反思与总结：
+
+ **xrandr 命令**
+xrandr 是一款官方的 RandR (Resize and Rotate)Wikipedia:X Window System 扩展配置工具。它可以设置屏幕显示的大小、方向、镜像、分辨率等。
+
+当没有添加任何选项直接运行时，xrandr 列出该系统可用的显示输出设备 (VGA-1, HDMI-1 等等) 和每一台设备可设置的分辨率，当前分辨率后面带有一个*号和一个+号。
+
+你可以使用 xrandr 设置不同的分辨率（必须是出现在执行 `xrandr` 输出列表中的分辨率）：
+xrandr --output HDMI-1 --mode 1920x1080
+
+**xorg 和 x-server**
+给个很不错的link自己看吧[这里
+](https://blog.csdn.net/seaship/article/details/86233325)
+
+## v2ray配置
+
+网上有很多一键配置的jio本，如果想一键配置在此就不多赘述了，自己搜吧。这里记录下手动安装的过程及遇见的问题
+
+1. 下载`wget https://github.com/v2ray/v2ray-core/releases/download/v3.24/v2ray-linux-64.zip`
+2. 下一步是解压缩后进入目录，移动文件位置
+创建目录`mkdir /usr/bin/v2ray  /etc/v2ray/`
+移动文件位置
+```bash
+cp v2ray /usr/bin/v2ray/v2ray
+cp v2ctl /usr/bin/v2ray/v2ctl
+cp geoip.dat /usr/bin/v2ray/geoip.dat
+cp geosite.dat /usr/bin/v2ray/geosite.dat
+cp vpoint_vmess_freedom.json /etc/v2ray/config.json
+```
+3.生成service
+这一步是生成systemctl service的关键
+找到v2ray下`systemd/v2ray.service`，cp到`/lib/systemd/system` 或者 `/etc/systemd/system`下。这一步和你自己之前的配置有关,看看你自己的.service文件都放在哪个路径下了。
+
+4.手动添加log
+```bash
+mkdir /var/log/v2ray/
+touch /var/log/v2ray/access.log
+touch /var/log/v2ray/error.log
+touch /var/run/v2ray.pid
+```
+至此，v2ray安装完毕
+检验：
+```bash
+systemctl start v2ray
+systemctl status v2ray
+```
+
+将其设置为系统自动启动` systemctl enable v2ray`
+
+## Appimage报错
+
+### Cannot run due to existing symlinks in /tmp (FIXME)
+
+用QQ的appimage时多次打开关闭出现该报错
+
+Needs to be fixed in the AppImage AppRun script.
+Need to `rm /tmp/ld-linux.so.2`
