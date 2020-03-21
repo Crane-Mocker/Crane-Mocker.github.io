@@ -16,8 +16,12 @@ Thanks to the all the developpers in this community, I have access to learn more
 
 *Understanding the Linux Kernel, 3rd Edition* by <font color="red">Daniel P. Bovet, Marco Cesati</font>
 
+*Operating System Concepts, 9th Edition* by <font color="red">ABRAHAM SILBERSCHATZ, PETER BAER GALVIN, GREG GAGNE</font>
+
 ### Acknowledgements
 Prof.Yan Fei, Bzq who helped me with understanding the technology and even the history of Linux better. 
+
+Tom Kurcz, my boyfriend who always supports me and encouraged me to write it in English instead of my mother language.
 
 ## Linux versions and the changes
 
