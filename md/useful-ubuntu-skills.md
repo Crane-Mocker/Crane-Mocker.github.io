@@ -443,3 +443,22 @@ systemctl status v2ray
 
 Needs to be fixed in the AppImage AppRun script.
 Need to `rm /tmp/ld-linux.so.2`
+
+## Lua包管理，luarocks
+
+在使用Lua的过程中遇到了少module的报错，本着以后方便的想法打算直接装包管理luarocks
+
+```bash
+wget https://luarocks.org/releases/luarocks-3.3.0.tar.gz
+tar zxpf luarocks-3.3.0.tar.gz
+cd luarocks-3.3.0
+./configure && make && sudo make install
+sudo luarocks install luasocket
+lua
+Lua 5.3.5 Copyright (C) 1994-2018 Lua.org, PUC-Rio
+> require "socket"
+```
+
+安装的时候有一个小坑，报错缺少`lua.h`
+由于我之前使用`z.lua`,安装了lua5.2,这里还要安装一下`lua5.3`（直接`apt install`即可）
+然后`sudo apt install liblua5.3-dev`,这个包里面有`lua.h`
