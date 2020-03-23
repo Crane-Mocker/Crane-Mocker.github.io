@@ -74,7 +74,139 @@
   <article>
     <div class="container"> 
     
-<!-- Post content here -->
+
+
+<div style="font-family: 'Lucida Grande', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Lucida Sans Unicode', Helvetica, Arial, sans-serif; font-size: 0.9em; overflow-x: hidden; overflow-y: auto; margin: 0px !important; padding: 5px 20px 26px !important; background-color: rgb(255, 255, 255);font-family: 'Hiragino Sans GB', 'Microsoft YaHei', STHeiti, SimSun, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'Segoe UI', AppleSDGothicNeo-Medium, 'Malgun Gothic', Verdana, Tahoma, sans-serif; padding: 20px;padding: 20px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', STHeiti, SimSun, 'Segoe UI', AppleSDGothicNeo-Medium, 'Malgun Gothic', Arial, freesans, sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; background: rgb(255, 255, 255);"><h1 id="linux-kernel" style="clear: both;font-size: 2.2em; font-weight: bold; margin: 1.5em 0px 1em;margin-top: 0px;"><a name="linux-kernel" href="#linux-kernel" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Linux Kernel</h1><p style="undefined; margin: 0px !important;margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"></p><ul>
+<li style="display: list-item; line-height: 1.4em;"><ul>
+<li style="display: list-item; line-height: 1.4em;"><span class="title">
+<a href="#abstract" title="Abstract" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Abstract</a>
+</span>
+<!--span class="number">
+0
+</span-->
+<ul>
+<li style="display: list-item; line-height: 1.4em;"><span class="title">
+<a href="#why-i-want-to-write-this-blog" title="Why I want to write this blog" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Why I want to write this blog</a>
+</span>
+<!--span class="number">
+1
+</span-->
+</li>
+<li style="display: list-item; line-height: 1.4em;"><span class="title">
+<a href="#reference" title="Reference" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Reference</a>
+</span>
+<!--span class="number">
+2
+</span-->
+</li>
+<li style="display: list-item; line-height: 1.4em;"><span class="title">
+<a href="#acknowledgements" title="Acknowledgements" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Acknowledgements</a>
+</span>
+<!--span class="number">
+3
+</span-->
+</li>
+</ul>
+</li>
+<li style="display: list-item; line-height: 1.4em;"><span class="title">
+<a href="#linux-versions-and-the-changes" title="Linux versions and the changes" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Linux versions and the changes</a>
+</span>
+<!--span class="number">
+4
+</span-->
+</li>
+<li style="display: list-item; line-height: 1.4em;"><span class="title">
+<a href="#basic-operating-system-concepts" title="Basic operating system concepts" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Basic operating system concepts</a>
+</span>
+<!--span class="number">
+5
+</span-->
+<ul>
+<li style="display: list-item; line-height: 1.4em;"><span class="title">
+<a href="#kernel-and-the-other-programs" title="Kernel and the other programs" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Kernel and the other programs</a>
+</span>
+<!--span class="number">
+6
+</span-->
+</li>
+<li style="display: list-item; line-height: 1.4em;"><span class="title">
+<a href="#2-needs-for-os" title="2 needs for OS" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">2 needs for OS</a>
+</span>
+<!--span class="number">
+7
+</span-->
+</li>
+<li style="display: list-item; line-height: 1.4em;"><span class="title">
+<a href="#multiuser-systems" title="Multiuser Systems" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Multiuser Systems</a>
+</span>
+<!--span class="number">
+8
+</span-->
+</li>
+<li style="display: list-item; line-height: 1.4em;"><span class="title">
+<a href="#kernel" title="Kernel" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Kernel</a>
+</span>
+<!--span class="number">
+9
+</span-->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+
+</ul>
+<p style="margin: 1em 0px; word-wrap: break-word;"></p><h2 id="abstract" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="abstract" href="#abstract" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Abstract</h2><h3 id="why-i-want-to-write-this-blog" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="why-i-want-to-write-this-blog" href="#why-i-want-to-write-this-blog" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Why I want to write this blog</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">As a fun of Linux operating systems and a fun of Linus himself, I always want to discover more about Linux kernel.<br style="clear: both;">Thanks to the all the developpers in this community, I have access to learn more. I want to write down something I got from the journey of discovering Linux kernel and I hope it will be useful for the other techs.</p><h3 id="reference" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="reference" href="#reference" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Reference</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"><em>Linux, a free unix-386 kernel</em> by <font color="red"> Linus Torvalds </font></p><p style="margin: 1em 0px; word-wrap: break-word;"><em>A Heavily Commented Linux Kernel Source Code Kernel Version 0.12 (Chinese Revision 5)</em> by <font color="red">Zhao Jiong</font> </p><p style="margin: 1em 0px; word-wrap: break-word;"><em>Understanding the Linux Kernel, 3rd Edition</em> by <font color="red">Daniel P. Bovet, Marco Cesati</font></p><p style="margin: 1em 0px; word-wrap: break-word;"><em>Operating System Concepts, 9th Edition</em> by <font color="red">ABRAHAM SILBERSCHATZ, PETER BAER GALVIN, GREG GAGNE</font></p><h3 id="acknowledgements" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="acknowledgements" href="#acknowledgements" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Acknowledgements</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">Prof.Yan Fei, Bzq who helped me with understanding the technology and even the history of Linux better. </p><p style="margin: 1em 0px; word-wrap: break-word;">Tom Kurcz, my boyfriend who always supports me and encouraged me to write it in English instead of my mother language.</p><h2 id="linux-versions-and-the-changes" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="linux-versions-and-the-changes" href="#linux-versions-and-the-changes" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Linux versions and the changes</h2><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"><a href="https://en.wikipedia.org/wiki/Linux_kernel_version_history" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Here</a> is the detailed Linux kernel version history.</p><p style="margin: 1em 0px; word-wrap: break-word;">The table below doesn’t contain all the versions, just some ones with new features or the ones really important.</p><p style="margin: 1em 0px; word-wrap: break-word;">After version 2.5, Linux kernel visions use three numbers, separated by <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">.</code><br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">The.Version.the-release</code><br style="clear: both;">The first two numbers were used to identify the version, the third number identified the release. </p><p style="margin: 1em 0px; word-wrap: break-word;">From 0.01 to 1.0</p><table style="padding: 0px; border-collapse: collapse; border-spacing: 0px; margin-bottom: 16px;background-color: rgb(250, 250, 250);">
+<thead>
+<tr>
+<th style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;font-weight: bold;border: 1px solid rgb(230, 230, 230);">Version No.</th>
+<th style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;font-weight: bold;border: 1px solid rgb(230, 230, 230);">Discription</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">0.01</td>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">Multi-threaded file system,segmentation(分段), and paging memory management(分页内存管理).<br style="clear: both;margin-top: 0px;margin-bottom: 0px;"> No floppy disk drivers(软盘驱动) yet.</td>
+</tr>
+<tr style="background-color: rgb(242, 242, 242);">
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">0.10</td>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">Memory allocation library functions.<br style="clear: both;margin-top: 0px;margin-bottom: 0px;">Boot dir contains script converting as86 assembler syntax to gas.(Because gas is GNU Assembly)</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">0.11</td>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">Supports hard disk, floppy drive devices, serial communications</td>
+</tr>
+<tr style="background-color: rgb(242, 242, 242);">
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">0.12</td>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">Increased the software simulation program of math coprocessor<font color="grey" style="margin-top: 0px;">(Alternatively referred to as a numeric coprocessor or a floating-point coprocessor. The math coprocessor was an optional add-on for the Intel 8086, 80386 and 80486 processors that allowed computers to perform faster mathematical calculations, increasing its overall performance.)</font><br style="clear: both;margin-bottom: 0px;">Added job control, file symbolic links, virtual memory swapping capability.</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">0.95.x</td>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">Added virtual file system support.<br style="clear: both;margin-top: 0px;">Added login functionality. Changed hard disk naming and numbering from what of the MINIX to current Linux.<br style="clear: both;margin-bottom: 0px;">Supported CDROM</td>
+</tr>
+<tr style="background-color: rgb(242, 242, 242);">
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">0.96.x</td>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">UNIX socket support, ext file system alpha tester, SCSI drivers.<br style="clear: both;margin-top: 0px;margin-bottom: 0px;">Floppy disk type is automatically recognized.The keyboard driver has been rewritten with C.</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">0.97.x</td>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">Dynamic caching, msdos and ext file system support, bus mouse drivers.</td>
+</tr>
+<tr style="background-color: rgb(242, 242, 242);">
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">0.98.x</td>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">Improve support for TCP/IP (0.8.1) networks, correct extfs errors. <br style="clear: both;margin-top: 0px;margin-bottom: 0px;"> Rewritten memory managementbr section.</td>
+</tr>
+<tr>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">0.99.x</td>
+<td style="border: 1px solid rgb(204, 204, 204); margin: 0px; padding: 6px 13px;border: 1px solid rgb(230, 230, 230);">Re-design the process of the use of memory allocation, each process has 4G linear</td>
+</tr>
+</tbody>
+</table><p style="margin: 1em 0px; word-wrap: break-word;">space. Constantly improving the network code. NFS support.<br style="clear: both;">1.0 | The first official version.</p><p style="margin: 1em 0px; word-wrap: break-word;"><a href="https://www.thomas-krenn.com/en/wiki/Linux_Kernel_Versions" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Here</a> is the new features of Linux kernels after 2.6.18</p><h2 id="basic-operating-system-concepts" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="basic-operating-system-concepts" href="#basic-operating-system-concepts" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Basic operating system concepts</h2><h3 id="kernel-and-the-other-programs" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="kernel-and-the-other-programs" href="#kernel-and-the-other-programs" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Kernel and the other programs</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">Kernel is the most important part of OS. It is loaded into RAM when the system boots and contains critical procedures needed for the OS to operate.</p><p style="margin: 1em 0px; word-wrap: break-word;">The other programs provide a variety of interactive experiences for user and do the jobs user bought for the computer.</p><h3 id="2-needs-for-os" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="2-needs-for-os" href="#2-needs-for-os" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>2 needs for OS</h3><ol style="list-style-type: decimal;">
+<li style="display: list-item; line-height: 1.4em;">Interact with the hardware components, servicing all low-level programmable elements included in he hardware platform.</li><li style="display: list-item; line-height: 1.4em;">Provide an execution environment to the applications that run on the computer system (the so-called ser programs)</li></ol><p style="margin: 1em 0px; word-wrap: break-word;">MS-DOS allows user programs play with hardware components directly.<br style="clear: both;">Unix-like OSs hide all low-level details concerning the physical organization of a computer from user programs.</p><p style="margin: 1em 0px; word-wrap: break-word;">Modern operating systems rely on the availability of specific hardware features, which forbid user programs to directly interact with low-level hardware components or to access arbitrary memory locations.</p><p style="margin: 1em 0px; word-wrap: break-word;">In particular, the hardware introduces at least two different execution modes for the CPU:</p><ol style="list-style-type: decimal;">
+<li style="display: list-item; line-height: 1.4em;">nonprivileged mode for user programs (Unix: User Mode)</li><li style="display: list-item; line-height: 1.4em;">privileged mode for the kernel. (Kernel Mode)</li></ol><h3 id="multiuser-systems" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="multiuser-systems" href="#multiuser-systems" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Multiuser Systems</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">A multiuser system is a computer that is able to concurrently and independently execute several applications<br style="clear: both;">belonging to two or more users.</p><p style="margin: 1em 0px; word-wrap: break-word;">It needs 4 features:</p><ol style="list-style-type: decimal;">
+<li style="display: list-item; line-height: 1.4em;">An authentication mechanism for <strong>verifying the user’s identity</strong></li><li style="display: list-item; line-height: 1.4em;">A protection mechanism against buggy user programs that could block other applications running in the system</li><li style="display: list-item; line-height: 1.4em;">A protection mechanism against malicious user programs that could interfere with or spy on the activity of other users</li><li style="display: list-item; line-height: 1.4em;">An accounting mechanism that limits the amount of resource units assigned to each user</li></ol><p style="margin: 1em 0px; word-wrap: break-word;">These 4 features are for cocurrency and independence.</p><h3 id="kernel" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="kernel" href="#kernel" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Kernel</h3></div>
+
+
 
 	</div>
   </article>
