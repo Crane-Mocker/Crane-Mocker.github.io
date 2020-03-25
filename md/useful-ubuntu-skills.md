@@ -462,3 +462,14 @@ Lua 5.3.5 Copyright (C) 1994-2018 Lua.org, PUC-Rio
 安装的时候有一个小坑，报错缺少`lua.h`
 由于我之前使用`z.lua`,安装了lua5.2,这里还要安装一下`lua5.3`（直接`apt install`即可）
 然后`sudo apt install liblua5.3-dev`,这个包里面有`lua.h`
+
+## burpsuite抓https包
+
+其实是个很简单的事情，bp下载CA证书(无论是在`http://burp`还是在` Proxy > Options > Proxy Listeners > Import / export CA certificate`都可)， 然后导入浏览器即可。
+但是偏偏我遇到了一个问题，就是无论怎样，下载的CA 证书都是0 byte, 这解析个锤锤哟。
+[这里](https://forum.portswigger.net/thread/ssl-certificate-2d285027ba60d5457e3e)是在官网上看到的和我遇到的一模一样的问题。
+
+> Okey i discovered the problem.
+Im was using a beta version pro 1.6, i installed the 1.7 free version and now i can download my cert.
+
+好巧不巧，我用的也是bp pro 1.6,所以这是个版本问题么...总之有点意思，下了新的版本就解决了。
