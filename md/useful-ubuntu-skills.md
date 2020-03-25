@@ -346,6 +346,20 @@ git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
 #取消代理
 git config --global --unset http.https://github.com.proxy
 ```
+### bp代理
+
+首先，把不管是ss,ssr还是v2ray开全局
+
+找到bp的Upstream Proxy Severs(2.0版本：`User options> connections> Upstream Proxt Servers`. 1.6版本：`options> connections> Upstream Proxt Servers`),点击add
+
+然后设置规则
+
+> Destination host: * 
+> <font color="green">*代表任意个字符或0个字符，?代表除.外的任意一个字符</font>
+> Proxy host: 127.0.0.1 <font color="green">代理服务器IP地址，空表示直连</font>
+> Proxy port: xxx
+
+
 
 ## N卡独显大坑
 写给对Nvidia又爱又恨的你。
