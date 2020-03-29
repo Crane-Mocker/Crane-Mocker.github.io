@@ -487,3 +487,14 @@ Lua 5.3.5 Copyright (C) 1994-2018 Lua.org, PUC-Rio
 Im was using a beta version pro 1.6, i installed the 1.7 free version and now i can download my cert.
 
 好巧不巧，我用的也是bp pro 1.6,所以这是个版本问题么...总之有点意思，下了新的版本就解决了。
+
+## ubuntu播放mp4
+
+The reason you get the error is because your Ubuntu desktop is missing the required codecs or decoders. The video you’re trying to watch is using a copy-right protected technology and Ubuntu is not designed to play them.
+
+You must install these packages below in order to play those videos. Run the commands below to install the missing codecs and decoders from Ubuntu Desktops.
+
+```bash
+sudo apt install libdvdnav4 libdvdread4 gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly libdvd-pkg
+sudo apt install ubuntu-restricted-extras
+```
