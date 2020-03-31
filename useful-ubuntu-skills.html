@@ -74,477 +74,532 @@
   <article>
     <div class="container"> 
 
-<div style="font-family: 'Lucida Grande', 'Segoe UI', 'Apple SD Gothic Neo', 'Malgun Gothic', 'Lucida Sans Unicode', Helvetica, Arial, sans-serif; font-size: 0.9em; overflow-x: hidden; overflow-y: auto; margin: 0px !important; padding: 5px 20px 26px !important; background-color: rgb(255, 255, 255);font-family: 'Hiragino Sans GB', 'Microsoft YaHei', STHeiti, SimSun, 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', 'Segoe UI', AppleSDGothicNeo-Medium, 'Malgun Gothic', Verdana, Tahoma, sans-serif; padding: 20px;padding: 20px; font-family: 'Helvetica Neue', Helvetica, 'Hiragino Sans GB', 'Microsoft YaHei', STHeiti, SimSun, 'Segoe UI', AppleSDGothicNeo-Medium, 'Malgun Gothic', Arial, freesans, sans-serif; font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; background: rgb(255, 255, 255);"><h1 id="ubuntu-琐事" style="clear: both;font-size: 2.2em; font-weight: bold; margin: 1.5em 0px 1em;margin-top: 0px;"><a name="ubuntu-琐事" href="#ubuntu-琐事" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Ubuntu 琐事</h1><p style="undefined; margin: 0px !important;margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"></p><ul>
-<li style="display: list-item; line-height: 1.4em;"><ul>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#ubuntu系统盘瘦身" title="Ubuntu系统盘瘦身" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Ubuntu系统盘瘦身</a>
-</span>
-<!--span class="number">
-0
-</span-->
-<ul>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#对于想要为系统盘瘦身的你的忠告" title="对于想要为系统盘瘦身的你的忠告" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">对于想要为系统盘瘦身的你的忠告</a>
-</span>
-<!--span class="number">
-1
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#清除apt缓存" title="清除apt缓存" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">清除apt缓存</a>
-</span>
-<!--span class="number">
-2
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#删除旧内核" title="删除旧内核" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">删除旧内核</a>
-</span>
-<!--span class="number">
-3
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#删除孤立的库" title="删除孤立的库" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">删除孤立的库</a>
-</span>
-<!--span class="number">
-4
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#比较大的不常用installed-package" title="比较大的不常用Installed package" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">比较大的不常用Installed package</a>
-</span>
-<!--span class="number">
-5
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#管理包" title="管理包" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">管理包</a>
-</span>
-<!--span class="number">
-6
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#清除旧版本的snap-applications" title="清除旧版本的snap applications" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">清除旧版本的snap applications</a>
-</span>
-<!--span class="number">
-7
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#清除缩略图" title="清除缩略图" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">清除缩略图</a>
-</span>
-<!--span class="number">
-8
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#清除残余配置文件" title="清除残余配置文件" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">清除残余配置文件</a>
-</span>
-<!--span class="number">
-9
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#按需清理日志" title="按需清理日志" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">按需清理日志</a>
-</span>
-<!--span class="number">
-10
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#更改apt-get下载地址" title="更改apt-get下载地址" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">更改apt-get下载地址</a>
-</span>
-<!--span class="number">
-11
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#更改docker-image存储路径" title="更改docker image存储路径" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">更改docker image存储路径</a>
-</span>
-<!--span class="number">
-12
-</span-->
-</li>
-</ul>
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#perf安装的姿势" title="perf安装的姿势" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">perf安装的姿势</a>
-</span>
-<!--span class="number">
-13
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#dpkg处理软件包报错" title="dpkg处理软件包报错" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">dpkg处理软件包报错</a>
-</span>
-<!--span class="number">
-14
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#ubuntu源" title="Ubuntu源" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Ubuntu源</a>
-</span>
-<!--span class="number">
-15
-</span-->
-<ul>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#改国内源" title="改国内源" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">改国内源</a>
-</span>
-<!--span class="number">
-16
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#hash-sum-mismatch" title="Hash Sum mismatch" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Hash Sum mismatch</a>
-</span>
-<!--span class="number">
-17
-</span-->
-</li>
-</ul>
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#ubuntu亮度问题（16.04）" title="Ubuntu亮度问题（16.04）" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Ubuntu亮度问题（16.04）</a>
-</span>
-<!--span class="number">
-18
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#.crx插件的安装" title=".crx插件的安装" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">.crx插件的安装</a>
-</span>
-<!--span class="number">
-19
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#挂载硬盘的暗坑踩坑记录及正确姿势" title="挂载硬盘的暗坑踩坑记录及正确姿势" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">挂载硬盘的暗坑踩坑记录及正确姿势</a>
-</span>
-<!--span class="number">
-20
-</span-->
-<ul>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#挂载硬盘的正确姿势" title="挂载硬盘的正确姿势" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">挂载硬盘的正确姿势</a>
-</span>
-<!--span class="number">
-21
-</span-->
-<ul>
-<li style="display: list-item; line-height: 1.4em;"><ul>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#what's-the-difference-between-uuid-and-partuuid" title="What’s the difference between UUID and PARTUUID" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">What’s the difference between UUID and PARTUUID</a>
-</span>
-<!--span class="number">
-22
-</span-->
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#代理姿势" title="代理姿势" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">代理姿势</a>
-</span>
-<!--span class="number">
-23
-</span-->
-<ul>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#tty代理(环境变量)" title="tty代理(环境变量)" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">tty代理(环境变量)</a>
-</span>
-<!--span class="number">
-24
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#apt-get代理" title="apt-get代理" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">apt-get代理</a>
-</span>
-<!--span class="number">
-25
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#git代理" title="Git代理" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Git代理</a>
-</span>
-<!--span class="number">
-26
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#bp代理" title="bp代理" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">bp代理</a>
-</span>
-<!--span class="number">
-27
-</span-->
-</li>
-</ul>
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#n卡独显大坑" title="N卡独显大坑" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">N卡独显大坑</a>
-</span>
-<!--span class="number">
-28
-</span-->
-<ul>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#显卡驱动自动安装/图形化界面更改显驱" title="显卡驱动自动安装/图形化界面更改显驱" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">显卡驱动自动安装/图形化界面更改显驱</a>
-</span>
-<!--span class="number">
-29
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#更新bios后的显示不正常" title="更新bios后的显示不正常" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">更新bios后的显示不正常</a>
-</span>
-<!--span class="number">
-30
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#键盘延时？！" title="键盘延时？！" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">键盘延时？！</a>
-</span>
-<!--span class="number">
-31
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#xrandr报错-和-display-resolution" title="xrandr报错 和 display resolution" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">xrandr报错 和 display resolution</a>
-</span>
-<!--span class="number">
-32
-</span-->
-</li>
-</ul>
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#v2ray配置" title="v2ray配置" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">v2ray配置</a>
-</span>
-<!--span class="number">
-33
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#appimage报错" title="Appimage报错" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Appimage报错</a>
-</span>
-<!--span class="number">
-34
-</span-->
-<ul>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#cannot-run-due-to-existing-symlinks-in-/tmp-(fixme)" title="Cannot run due to existing symlinks in /tmp (FIXME)" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Cannot run due to existing symlinks in /tmp (FIXME)</a>
-</span>
-<!--span class="number">
-35
-</span-->
-</li>
-</ul>
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#lua包管理，luarocks" title="Lua包管理，luarocks" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">Lua包管理，luarocks</a>
-</span>
-<!--span class="number">
-36
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#burpsuite抓https包" title="burpsuite抓https包" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">burpsuite抓https包</a>
-</span>
-<!--span class="number">
-37
-</span-->
-</li>
-<li style="display: list-item; line-height: 1.4em;"><span class="title">
-<a href="#ubuntu播放mp4" title="ubuntu播放mp4" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">ubuntu播放mp4</a>
-</span>
-<!--span class="number">
-38
-</span-->
-</li>
-</ul>
-</li>
+<!DOCTYPE html>
+<html>
 
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="ubuntu-琐事">Ubuntu 琐事</h1>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#ubuntu%E7%B3%BB%E7%BB%9F%E7%9B%98%E7%98%A6%E8%BA%AB">Ubuntu系统盘瘦身</a>
+<ul>
+<li><a href="#%E5%AF%B9%E4%BA%8E%E6%83%B3%E8%A6%81%E4%B8%BA%E7%B3%BB%E7%BB%9F%E7%9B%98%E7%98%A6%E8%BA%AB%E7%9A%84%E4%BD%A0%E7%9A%84%E5%BF%A0%E5%91%8A">对于想要为系统盘瘦身的你的忠告</a></li>
+<li><a href="#%E6%B8%85%E9%99%A4apt%E7%BC%93%E5%AD%98">清除apt缓存</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E6%97%A7%E5%86%85%E6%A0%B8">删除旧内核</a></li>
+<li><a href="#%E5%88%A0%E9%99%A4%E5%AD%A4%E7%AB%8B%E7%9A%84%E5%BA%93">删除孤立的库</a></li>
+<li><a href="#%E6%AF%94%E8%BE%83%E5%A4%A7%E7%9A%84%E4%B8%8D%E5%B8%B8%E7%94%A8installed-package">比较大的不常用Installed package</a></li>
+<li><a href="#%E7%AE%A1%E7%90%86%E5%8C%85">管理包</a></li>
+<li><a href="#%E6%B8%85%E9%99%A4%E6%97%A7%E7%89%88%E6%9C%AC%E7%9A%84snap-applications">清除旧版本的snap applications</a></li>
+<li><a href="#%E6%B8%85%E9%99%A4%E7%BC%A9%E7%95%A5%E5%9B%BE">清除缩略图</a></li>
+<li><a href="#%E6%B8%85%E9%99%A4%E6%AE%8B%E4%BD%99%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">清除残余配置文件</a></li>
+<li><a href="#%E6%8C%89%E9%9C%80%E6%B8%85%E7%90%86%E6%97%A5%E5%BF%97">按需清理日志</a></li>
+<li><a href="#%E6%9B%B4%E6%94%B9apt-get%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80">更改apt-get下载地址</a></li>
+<li><a href="#%E6%9B%B4%E6%94%B9docker-image%E5%AD%98%E5%82%A8%E8%B7%AF%E5%BE%84">更改docker image存储路径</a></li>
 </ul>
-<p style="margin: 1em 0px; word-wrap: break-word;"></p><h2 id="ubuntu系统盘瘦身" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="ubuntu系统盘瘦身" href="#ubuntu系统盘瘦身" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Ubuntu系统盘瘦身</h2><h3 id="对于想要为系统盘瘦身的你的忠告" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="对于想要为系统盘瘦身的你的忠告" href="#对于想要为系统盘瘦身的你的忠告" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>对于想要为系统盘瘦身的你的忠告</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"><strong>千万不要<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;">apt autoremove</code>!!!!!</strong><br style="clear: both;"><strong>千万不要<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;">apt autoremove</code>!!!!!</strong><br style="clear: both;"><strong>千万不要<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;">apt autoremove</code>!!!!!</strong><br style="clear: both;">只是一条堪称灾难的指令。如果不幸，它会把你的各种依赖删得七零八落，让你的系统变成灾难现场。—by 花了3h修复gcc的C_M.</p><h3 id="清除apt缓存" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="清除apt缓存" href="#清除apt缓存" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>清除apt缓存</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">对于不了解apt（repo）, ppa, dpkg的崽崽，请自己查看, 本部分不做详细说明.</p><p style="margin: 1em 0px; word-wrap: break-word;">查看apt的cache <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo du -sh /var/cache/apt</code><br style="clear: both;">清除不必要的cache <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt-get autoclean</code><br style="clear: both;">清除整个cache <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt-get clean</code></p><h3 id="删除旧内核" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="删除旧内核" href="#删除旧内核" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>删除旧内核</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo dpkg --get-selections  | grep linux-image</code> 查看已安装内核映像<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">uname -r</code>  查看当前内核版本<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt-get purge linux-image-2.6.32-26-generic</code> 删除旧的内核映像，只保留当前版本<br style="clear: both;">结束，（根据提示）执行 <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt autoremove</code></p><p style="margin: 1em 0px; word-wrap: break-word;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo dpkg --get-selections  | grep linux-headers</code>  查看已有的头文件库<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt-get purge linux-headers-2.6.28-19</code> 删除旧的头文件库<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt autoremove</code></p><p style="margin: 1em 0px; word-wrap: break-word;">以上两步，对于权限不够的目录，在结束cd到上级目录，<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo rm -rf XXX</code></p><p style="margin: 1em 0px; word-wrap: break-word;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">dpkg --get-selections  | grep linux</code> 查看内核映像和组件<br style="clear: both;">对于状态是<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">deinstall</code>的<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo dpkg -P linux-image-3.5.0-4[2-9]-generic</code><br style="clear: both;">完成 </p><h3 id="删除孤立的库" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="删除孤立的库" href="#删除孤立的库" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>删除孤立的库</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo deborphan | xargs sudo apt-get -y remove --purge</code></p><h3 id="比较大的不常用installed-package" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="比较大的不常用installed-package" href="#比较大的不常用installed-package" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>比较大的不常用Installed package</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">自己找找，删了就vans了。主要是安利下debian-goodies中的<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">dpigs</code>,方便啊:3</p><h3 id="管理包" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="管理包" href="#管理包" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>管理包</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo gtkorphan</code></p><h3 id="清除旧版本的snap-applications" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="清除旧版本的snap-applications" href="#清除旧版本的snap-applications" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>清除旧版本的snap applications</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">snap applications 一般比较大，可以清除其旧版本释放空间。</p><blockquote style="margin: 1em 20px;border-left-width: 4px; border-left-style: solid; border-left-color: rgb(230, 230, 230); padding: 0px 15px; font-style: italic;">
-<p style="margin: 1em 0px; word-wrap: break-word;margin-top: 0px;margin-bottom: 0px;">Snappy is a software deployment and package management system developed by Canonical for the Linux operating system. The packages, called snaps, and the tool for using them, snapd, work across a range of Linux distributions allowing distribution-agnostic upstream software packaging. Snappy was originally designed for Ubuntu Touch. The system is designed to work for internet of things, cloud and desktop computing. —Wiki</p>
-</blockquote><p style="margin: 1em 0px; word-wrap: break-word;">查看占盘情况 <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">du -h /var/lib/snapd/snaps</code></p><p style="margin: 1em 0px; word-wrap: break-word;">这里是Alan Pope (part of Snapcraft team at Canonical) 给出的shell脚本，清除旧版本</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;display: block; overflow-x: auto; padding: 0.5em; color: rgb(220, 220, 220); background: rgb(63, 63, 63);"><code class="bash" data-origin="<pre><code class=&quot;bash&quot;>#!/bin/bash
-# Removes old revisions of snaps
-# CLOSE ALL SNAPS BEFORE RUNNING THIS
-set -eu
-snap list --all | awk '/disabled/{print $1, $3}' |
-    while read snapname revision; do
-        snap remove &quot;$snapname&quot; --revision=&quot;$revision&quot;
-    done
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;"><span class="hljs-shebang" style="color: rgb(127, 159, 127);">#!/bin/bash</span>
-<span class="hljs-comment" style="color: rgb(127, 159, 127);"># Removes old revisions of snaps</span>
-<span class="hljs-comment" style="color: rgb(127, 159, 127);"># CLOSE ALL SNAPS BEFORE RUNNING THIS</span>
-<span class="hljs-built_in" style="color: rgb(204, 147, 147);">set</span> -eu
-snap list --all | awk <span class="hljs-string" style="color: rgb(204, 147, 147);">'/disabled/{print $1, $3}'</span> |
-    <span class="hljs-keyword" style="color: rgb(227, 206, 171);">while</span> <span class="hljs-built_in" style="color: rgb(204, 147, 147);">read</span> snapname revision; <span class="hljs-keyword" style="color: rgb(227, 206, 171);">do</span>
-        snap remove <span class="hljs-string" style="color: rgb(204, 147, 147);">"<span class="hljs-variable" style="color: rgb(239, 220, 188);">$snapname</span>"</span> --revision=<span class="hljs-string" style="color: rgb(204, 147, 147);">"<span class="hljs-variable" style="color: rgb(239, 220, 188);">$revision</span>"</span>
-    <span class="hljs-keyword" style="color: rgb(227, 206, 171);">done</span>
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">代码分析</p><ul>
-<li style="display: list-item; line-height: 1.4em;">set用来定制环境。-u,如果遇到不存在的变量，Bash 默认忽略它。-e脚本发生错误则终止执行。</li><li style="display: list-item; line-height: 1.4em;">awk在文件或者字符串中基于指定规则浏览和抽取信息. awk对输入的每一行，也就是<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">snap list --all</code>得到的之中/disabled/下的<strong>每一行</strong>（即旧版本的snap apps）. 输出第1个和第3个参数至stdout(<strong>注意区分awk中$0是指整行,shell中的$0传的参是文件名</strong>)。</li><li style="display: list-item; line-height: 1.4em;">$1这里是snapname, $3是revision. while循环,删除即可。</li></ul><h3 id="清除缩略图" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="清除缩略图" href="#清除缩略图" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>清除缩略图</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">查看缩略图缓存<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">du -sh ~/.cache/thumbnails</code><br style="clear: both;">清除<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">rm -rf ~/.cache/thumbnails/*</code></p><blockquote style="margin: 1em 20px;border-left-width: 4px; border-left-style: solid; border-left-color: rgb(230, 230, 230); padding: 0px 15px; font-style: italic;">
-<p style="margin: 1em 0px; word-wrap: break-word;margin-top: 0px;margin-bottom: 0px;"><strong>关于du的说明</strong><br style="clear: both;">du用来查看文件大小<br style="clear: both;"> -h, —human-readable  以可读性较好的方式显示尺寸(例如：1K 234M 2G)<br style="clear: both;"> -s, —summarize       只分别计算命令列中每个参数所占的总用量<br style="clear: both;"> —max-depth=N     <em>显示目录总计(与—all 一起使用计算文件)</em><br style="clear: both;">  <em>当N 为指定数值时计算深度为N；</em><br style="clear: both;">  <em>—max-depth=0 等于—summarize</em></p>
-</blockquote><h3 id="清除残余配置文件" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="清除残余配置文件" href="#清除残余配置文件" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>清除残余配置文件</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">查看残余配置文件<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">dpkg --list | grep "^rc"</code><br style="clear: both;">rc表示软件包已经删除，配置文件还在.</p><p style="margin: 1em 0px; word-wrap: break-word;">提取这些软件包的名称<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">dpkg --list | grep "^rc" | cut -d " " -f 3</code></p><p style="margin: 1em 0px; word-wrap: break-word;">删除这些软件包<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">dpkg --list | grep "^rc" | cut -d " " -f 3 | xargs sudo dpkg --purge</code></p><h3 id="按需清理日志" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="按需清理日志" href="#按需清理日志" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>按需清理日志</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">查看日志大小<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">du -h --max-depth=1 /var/log/*</code></p><blockquote style="margin: 1em 20px;border-left-width: 4px; border-left-style: solid; border-left-color: rgb(230, 230, 230); padding: 0px 15px; font-style: italic;">
-<p style="margin: 1em 0px; word-wrap: break-word;margin-top: 0px;"><strong><em>对一些log的说明</em></strong></p>
-<hr class="page" style="border: 0px none; height: 3px; padding: 0px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) 0px 0px repeat-x transparent;border: 1px solid rgb(204, 204, 204);border: 1px solid rgb(230, 230, 230);">
-<p style="margin: 1em 0px; word-wrap: break-word;margin-bottom: 0px;"> /var/log/alternatives.log-更新替代信息都记录在这个文件中<br style="clear: both;">/var/log/apport.log -应用程序崩溃记录<br style="clear: both;">/var/log/apt/   -用apt-get安装卸载软件的信息<br style="clear: both;">/var/log/auth.log  -登录认证log<br style="clear: both;">/var/log/boot.log  -包含系统启动时的日志。 /var/log/btmp    -记录所有失败启动信息<br style="clear: both;">/var/log/Consolekit  - 记录控制台信息<br style="clear: both;">/var/log/cpus     - 涉及所有打印信息的日志<br style="clear: both;">/var/log/dist-upgrade  - dist-upgrade这种更新方式的信息<br style="clear: both;">/var/log/dmesg    -包含内核缓冲信息（kernel ringbuffer）。在系统启动时，显示屏幕上的与硬件有关的信息<br style="clear: both;">/var/log/dpkg.log   - 包括安装或dpkg命令清除软件包的日志。<br style="clear: both;">/var/log/faillog    - 包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。<br style="clear: both;">/var/log/fontconfig.log -与字体配置有关的log。<br style="clear: both;">/var/log/fsck     - 文件系统日志<br style="clear: both;">/var/log/faillog   -包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。<br style="clear: both;">/var/log/hp/<br style="clear: both;">/var/log/install/<br style="clear: both;">/var/log/jokey.log<br style="clear: both;">/var/log/kern.log –包含内核产生的日志，有助于在定制内核时解决问题。<br style="clear: both;">/var/log/lastlog —记录所有用户的最近信息。这不是一个ASCII文件，因此需要用lastlog命令查看内容。<br style="clear: both;">/var/log/faillog –包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。<br style="clear: both;">/var/log/lightdm/<br style="clear: both;">/var/log/mail/ – 这个子目录包含邮件服务器的额外日志。<br style="clear: both;">/var/log/mail.err    -类似于上面的<br style="clear: both;">/var/log/news/<br style="clear: both;">/var/log/pm-powersave.log<br style="clear: both;">/var/log/samba/ –包含由samba存储的信息。<br style="clear: both;">/var/log/syss.log<br style="clear: both;">/var/log/speech-dispacher/<br style="clear: both;">/var/log/udev<br style="clear: both;">/var/log/ufw.log<br style="clear: both;">/var/log/upstart/<br style="clear: both;">/var/log/uattended-upgrades/<br style="clear: both;">/var/log/wtmp —包含登录信息。使用wtmp可以找出谁正在登陆进入系统，谁使用命令显示这个文件或信息等。<br style="clear: both;">/var/log/xorg.*.log— 来自X的日志信息。</p>
-</blockquote><p style="margin: 1em 0px; word-wrap: break-word;">一般来说，公司的服务器之类的,syslog和kern.log比较大，可以这样清理</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code>sudo -i
-echo  &amp;gt; /var/log/syslog
-echo  &amp;gt; /var/log/kern.log
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">sudo -i
+</li>
+<li><a href="#perf%E5%AE%89%E8%A3%85%E7%9A%84%E5%A7%BF%E5%8A%BF">perf安装的姿势</a></li>
+<li><a href="#dpkg%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6%E5%8C%85%E6%8A%A5%E9%94%99">dpkg处理软件包报错</a></li>
+<li><a href="#ubuntu%E6%BA%90">Ubuntu源</a>
+<ul>
+<li><a href="#%E6%94%B9%E5%9B%BD%E5%86%85%E6%BA%90">改国内源</a></li>
+<li><a href="#hash-sum-mismatch">Hash Sum mismatch</a></li>
+</ul>
+</li>
+<li><a href="#ubuntu%E4%BA%AE%E5%BA%A6%E9%97%AE%E9%A2%981604">Ubuntu亮度问题（16.04）</a></li>
+<li><a href="#crx%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85">.crx插件的安装</a></li>
+<li><a href="#%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98%E7%9A%84%E6%9A%97%E5%9D%91%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E5%8F%8A%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF">挂载硬盘的暗坑踩坑记录及正确姿势</a>
+<ul>
+<li><a href="#%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98%E7%9A%84%E6%AD%A3%E7%A1%AE%E5%A7%BF%E5%8A%BF">挂载硬盘的正确姿势</a><br>
+* <a href="#whats-the-difference-between-uuid-and-partuuid">What’s the difference between UUID and PARTUUID</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BB%A3%E7%90%86%E5%A7%BF%E5%8A%BF">代理姿势</a>
+<ul>
+<li><a href="#tty%E4%BB%A3%E7%90%86%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">tty代理(环境变量)</a></li>
+<li><a href="#apt-get%E4%BB%A3%E7%90%86">apt-get代理</a></li>
+<li><a href="#git%E4%BB%A3%E7%90%86">Git代理</a></li>
+<li><a href="#bp%E4%BB%A3%E7%90%86">bp代理</a></li>
+</ul>
+</li>
+<li><a href="#n%E5%8D%A1%E7%8B%AC%E6%98%BE%E5%A4%A7%E5%9D%91">N卡独显大坑</a>
+<ul>
+<li><a href="#%E6%98%BE%E5%8D%A1%E9%A9%B1%E5%8A%A8%E8%87%AA%E5%8A%A8%E5%AE%89%E8%A3%85%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2%E6%9B%B4%E6%94%B9%E6%98%BE%E9%A9%B1">显卡驱动自动安装/图形化界面更改显驱</a></li>
+<li><a href="#%E6%9B%B4%E6%96%B0bios%E5%90%8E%E7%9A%84%E6%98%BE%E7%A4%BA%E4%B8%8D%E6%AD%A3%E5%B8%B8">更新bios后的显示不正常</a></li>
+<li><a href="#%E9%94%AE%E7%9B%98%E5%BB%B6%E6%97%B6">键盘延时？！</a></li>
+<li><a href="#xrandr%E6%8A%A5%E9%94%99-%E5%92%8C-display-resolution">xrandr报错 和 display resolution</a></li>
+</ul>
+</li>
+<li><a href="#v2ray%E9%85%8D%E7%BD%AE">v2ray配置</a></li>
+<li><a href="#appimage%E6%8A%A5%E9%94%99">Appimage报错</a>
+<ul>
+<li><a href="#cannot-run-due-to-existing-symlinks-in-tmp-fixme">Cannot run due to existing symlinks in /tmp (FIXME)</a></li>
+</ul>
+</li>
+<li><a href="#lua%E5%8C%85%E7%AE%A1%E7%90%86luarocks">Lua包管理，luarocks</a></li>
+<li><a href="#burpsuite%E6%8A%93https%E5%8C%85">burpsuite抓https包</a></li>
+<li><a href="#ubuntu%E6%92%AD%E6%94%BEmp4">ubuntu播放mp4</a></li>
+<li><a href="#ubuntu%E4%B8%8B%E7%9A%84markdown%E7%BC%96%E8%BE%91%E5%99%A8%E5%92%8Cmarkdown-toc">Ubuntu下的Markdown编辑器和markdown-toc</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<h2 id="ubuntu系统盘瘦身">Ubuntu系统盘瘦身</h2>
+<h3 id="对于想要为系统盘瘦身的你的忠告">对于想要为系统盘瘦身的你的忠告</h3>
+<p><strong>千万不要<code>apt autoremove</code>!!!</strong><br>
+<strong>千万不要<code>apt autoremove</code>!!!</strong><br>
+<strong>千万不要<code>apt autoremove</code>!!!</strong><br>
+只是一条堪称灾难的指令。如果不幸，它会把你的各种依赖删得七零八落，让你的系统变成灾难现场。–by 花了3h修复gcc的C_M.</p>
+<h3 id="清除apt缓存">清除apt缓存</h3>
+<p>对于不了解apt（repo）, ppa, dpkg的崽崽，请自己查看, 本部分不做详细说明.</p>
+<p>查看apt的cache <code>sudo du -sh /var/cache/apt</code><br>
+清除不必要的cache <code>sudo apt-get autoclean</code><br>
+清除整个cache <code>sudo apt-get clean</code></p>
+<h3 id="删除旧内核">删除旧内核</h3>
+<p><code>sudo dpkg --get-selections | grep linux-image</code> 查看已安装内核映像<br>
+<code>uname -r</code>  查看当前内核版本<br>
+<code>sudo apt-get purge linux-image-2.6.32-26-generic</code> 删除旧的内核映像，只保留当前版本</p>
+<p><code>sudo dpkg --get-selections | grep linux-headers</code>  查看已有的头文件库<br>
+<code>sudo apt-get purge linux-headers-2.6.28-19</code> 删除旧的头文件库<br>
+<code>sudo apt autoremove</code></p>
+<p>以上两步，对于权限不够的目录，在结束cd到上级目录，<code>sudo rm -rf XXX</code></p>
+<p><code>dpkg --get-selections | grep linux</code> 查看内核映像和组件<br>
+对于状态是<code>deinstall</code>的<br>
+<code>sudo dpkg -P linux-image-3.5.0-4[2-9]-generic</code><br>
+完成</p>
+<h3 id="删除孤立的库">删除孤立的库</h3>
+<p>也挺危险的…<br>
+<code>sudo deborphan | xargs sudo apt-get -y remove --purge</code></p>
+<h3 id="比较大的不常用installed-package">比较大的不常用Installed package</h3>
+<p>自己找找，删了就vans了。主要是安利下debian-goodies中的<code>dpigs</code>,方便啊:3</p>
+<h3 id="管理包">管理包</h3>
+<p><code>sudo gtkorphan</code></p>
+<h3 id="清除旧版本的snap-applications">清除旧版本的snap applications</h3>
+<p>snap applications 一般比较大，可以清除其旧版本释放空间。</p>
+<blockquote>
+<p>Snappy is a software deployment and package management system developed by Canonical for the Linux operating system. The packages, called snaps, and the tool for using them, snapd, work across a range of Linux distributions allowing distribution-agnostic upstream software packaging. Snappy was originally designed for Ubuntu Touch. The system is designed to work for internet of things, cloud and desktop computing. --Wiki</p>
+</blockquote>
+<p>查看占盘情况 <code>du -h /var/lib/snapd/snaps</code></p>
+<p>这里是Alan Pope (part of Snapcraft team at Canonical) 给出的shell脚本，清除旧版本</p>
+<pre class=" language-bash"><code class="prism  language-bash"><span class="token shebang important">#!/bin/bash</span>
+<span class="token comment"># Removes old revisions of snaps</span>
+<span class="token comment"># CLOSE ALL SNAPS BEFORE RUNNING THIS</span>
+<span class="token keyword">set</span> -eu
+snap list --all <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/disabled/{print <span class="token variable">$1</span>, <span class="token variable">$3</span>}'</span> <span class="token operator">|</span>
+    <span class="token keyword">while</span> <span class="token function">read</span> snapname revision<span class="token punctuation">;</span> <span class="token keyword">do</span>
+        snap remove <span class="token string">"<span class="token variable">$snapname</span>"</span> --revision<span class="token operator">=</span><span class="token string">"<span class="token variable">$revision</span>"</span>
+    <span class="token keyword">done</span>
+</code></pre>
+<p>代码分析</p>
+<ul>
+<li>set用来定制环境。-u,如果遇到不存在的变量，Bash 默认忽略它。-e脚本发生错误则终止执行。</li>
+<li>awk在文件或者字符串中基于指定规则浏览和抽取信息. awk对输入的每一行，也就是<code>snap list --all</code>得到的之中/disabled/下的<strong>每一行</strong>（即旧版本的snap apps）. 输出第1个和第3个参数至stdout(<strong>注意区分awk中$0是指整行,shell中的$0传的参是文件名</strong>)。</li>
+<li>$1这里是snapname, $3是revision. while循环,删除即可。</li>
+</ul>
+<h3 id="清除缩略图">清除缩略图</h3>
+<p>查看缩略图缓存<code>du -sh ~/.cache/thumbnails</code><br>
+清除<code>rm -rf ~/.cache/thumbnails/*</code></p>
+<blockquote>
+<p><strong>关于du的说明</strong><br>
+du用来查看文件大小<br>
+-h, --human-readable  以可读性较好的方式显示尺寸(例如：1K 234M 2G)<br>
+-s, --summarize       只分别计算命令列中每个参数所占的总用量<br>
+–max-depth=N     <em>显示目录总计(与–all 一起使用计算文件)</em><br>
+<em>当N 为指定数值时计算深度为N；</em><br>
+<em>–max-depth=0 等于–summarize</em></p>
+</blockquote>
+<h3 id="清除残余配置文件">清除残余配置文件</h3>
+<p>查看残余配置文件<code>dpkg --list | grep "^rc"</code><br>
+rc表示软件包已经删除，配置文件还在.</p>
+<p>提取这些软件包的名称<code>dpkg --list | grep "^rc" | cut -d " " -f 3</code></p>
+<p>删除这些软件包<code>dpkg --list | grep "^rc" | cut -d " " -f 3 | xargs sudo dpkg --purge</code></p>
+<h3 id="按需清理日志">按需清理日志</h3>
+<p>查看日志大小<code>du -h --max-depth=1 /var/log/*</code></p>
+<p><em><strong>对一些log的说明</strong></em></p>
+<blockquote>
+<p>/var/log/alternatives.log-更新替代信息都记录在这个文件中<br>
+<br>/var/log/apport.log -应用程序崩溃记录<br>
+<br>/var/log/apt/   -用apt-get安装卸载软件的信息<br>
+<br>/var/log/auth.log  -登录认证log<br>
+<br>/var/log/boot.log  -包含系统启动时的日志。 /var/log/btmp    -记录所有失败启动信息<br>
+<br>/var/log/Consolekit  - 记录控制台信息<br>
+<br>/var/log/cpus     - 涉及所有打印信息的日志<br>
+<br>/var/log/dist-upgrade  - dist-upgrade这种更新方式的信息<br>
+<br>/var/log/dmesg    -包含内核缓冲信息（kernel ringbuffer）。在系统启动时，显示屏幕上的与硬件有关的信息<br>
+<br>/var/log/dpkg.log   - 包括安装或dpkg命令清除软件包的日志。<br>
+<br>/var/log/faillog    - 包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。<br>
+<br>/var/log/fontconfig.log -与字体配置有关的log。<br>
+<br>/var/log/fsck     - 文件系统日志<br>
+<br>/var/log/faillog   -包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。<br>
+<br>/var/log/hp/<br>
+<br>/var/log/install/<br>
+<br>/var/log/jokey.log<br>
+<br>/var/log/kern.log –包含内核产生的日志，有助于在定制内核时解决问题。<br>
+<br>/var/log/lastlog —记录所有用户的最近信息。这不是一个ASCII文件，因此需要用lastlog命令查看内容。<br>
+<br>/var/log/faillog –包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。<br>
+<br>/var/log/lightdm/<br>
+<br>/var/log/mail/ – 这个子目录包含邮件服务器的额外日志。<br>
+<br>/var/log/mail.err    -类似于上面的<br>
+<br>/var/log/news/<br>
+<br>/var/log/pm-powersave.log<br>
+<br>/var/log/samba/ –包含由samba存储的信息。<br>
+<br>/var/log/syss.log<br>
+<br>/var/log/speech-dispacher/<br>
+<br>/var/log/udev<br>
+<br>/var/log/ufw.log<br>
+<br>/var/log/upstart/<br>
+<br>/var/log/uattended-upgrades/<br>
+<br>/var/log/wtmp —包含登录信息。使用wtmp可以找出谁正在登陆进入系统，谁使用命令显示这个文件或信息等。<br>
+<br>/var/log/xorg.*.log— 来自X的日志信息。</p>
+</blockquote>
+<p>一般来说，公司的服务器之类的,syslog和kern.log比较大，可以这样清理</p>
+<pre><code>sudo -i
 echo  &gt; /var/log/syslog
 echo  &gt; /var/log/kern.log
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">对于PC，journalctl会比较大</p><blockquote style="margin: 1em 20px;border-left-width: 4px; border-left-style: solid; border-left-color: rgb(230, 230, 230); padding: 0px 15px; font-style: italic;">
-<p style="margin: 1em 0px; word-wrap: break-word;margin-top: 0px;margin-bottom: 0px;">journalctl为什么这么大？因为全面～<br style="clear: both;">在Systemd出现之前，Linux系统及各应用的日志都是分别管理的，Systemd开始统一管理了所有Unit的启动日志，这样带来的好处就是可以只用一个 journalctl命令，查看所有内核和应用的日志</p>
-</blockquote><p style="margin: 1em 0px; word-wrap: break-word;">这样来整理journal~</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code>journalctl --disk-usage  //查看journal占用磁盘空间
+</code></pre>
+<p>对于PC，journalctl会比较大</p>
+<blockquote>
+<p>journalctl为什么这么大？因为全面～<br>
+在Systemd出现之前，Linux系统及各应用的日志都是分别管理的，Systemd开始统一管理了所有Unit的启动日志，这样带来的好处就是可以只用一个 journalctl命令，查看所有内核和应用的日志</p>
+</blockquote>
+<p>这样来整理journal~</p>
+<pre><code>journalctl --disk-usage  //查看journal占用磁盘空间
 journalctl --vacuum-size=500M //设置日志占用的空间
 journalctl --vacuum-time=1month //设置日至保存时间，2d(就是2 days，按需设置参数即可)
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">journalctl --disk-usage  //查看journal占用磁盘空间
-journalctl --vacuum-size=500M //设置日志占用的空间
-journalctl --vacuum-time=1month //设置日至保存时间，2d(就是2 days，按需设置参数即可)
-</code></pre><h3 id="更改apt-get下载地址" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="更改apt-get下载地址" href="#更改apt-get下载地址" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>更改apt-get下载地址</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">Ubuntu中使用apt-get install默认会把deb包下载到/var/cache/apt/archives/下，可以通过man apt-get来看到相应的设置<br style="clear: both;">如何更改呢？<br style="clear: both;">1 .在你想存放的位置建立一个文件夹<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">mkdir -p /path/apt-archives</code><br style="clear: both;">2 .在/path/apt-archives/下建立一个partial文件夹<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">mkdir partial</code></p><ol style="list-style-type: decimal;">
-<li style="display: list-item; line-height: 1.4em;">编辑/etc/apt/apt.conf，这个文件可能并不存在，直接vim就好，添加如下内容（记得用sudo）：<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">dir::cache::archives /path/apt-archives;</code></li></ol><h3 id="更改docker-image存储路径" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="更改docker-image存储路径" href="#更改docker-image存储路径" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>更改docker image存储路径</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">vbox太慢太卡，终于打算用docker了，但是有一点点问题，就是image太大了，如果全部存在<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">/var/lib/docker</code>下，系统盘很受伤。所以要更改存储路径<br style="clear: both;">1.更改配置</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code>mkdir /etc/systemd/system/docker.service.d
+</code></pre>
+<h3 id="更改apt-get下载地址">更改apt-get下载地址</h3>
+<p>Ubuntu中使用apt-get install默认会把deb包下载到/var/cache/apt/archives/下，可以通过man apt-get来看到相应的设置<br>
+如何更改呢？<br>
+1 .在你想存放的位置建立一个文件夹<br>
+<code>mkdir -p /path/apt-archives</code><br>
+2 .在/path/apt-archives/下建立一个partial文件夹<br>
+<code>mkdir partial</code><br>
+3. 编辑/etc/apt/apt.conf，这个文件可能并不存在，直接vim就好，添加如下内容（记得用sudo）：<br>
+<code>dir::cache::archives /path/apt-archives;</code></p>
+<h3 id="更改docker-image存储路径">更改docker image存储路径</h3>
+<p>vbox太慢太卡，终于打算用docker了，但是有一点点问题，就是image太大了，如果全部存在<code>/var/lib/docker</code>下，系统盘很受伤。所以要更改存储路径<br>
+1.更改配置</p>
+<pre><code>mkdir /etc/systemd/system/docker.service.d
 touch /etc/systemd/system/docker.service.d/docker-overlay.conf 
 vim /etc/systemd/system/docker.service.d/docker-overlay.conf
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">mkdir /etc/systemd/system/docker.service.d
-touch /etc/systemd/system/docker.service.d/docker-overlay.conf 
-vim /etc/systemd/system/docker.service.d/docker-overlay.conf
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">配置文件如下：<br style="clear: both;">其中<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">/home/docker</code>是你将要存储的路径（建议在你挂载的非系统盘的硬盘下建一个）</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code>[Service]
-ExecStart=
-ExecStart=/usr/bin/dockerd --graph=&quot;/home/docker&quot; --storage-driver=overlay
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">[Service]
+</code></pre>
+<p>配置文件如下：<br>
+其中<code>/home/docker</code>是你将要存储的路径（建议在你挂载的非系统盘的硬盘下建一个）</p>
+<pre><code>[Service]
 ExecStart=
 ExecStart=/usr/bin/dockerd --graph="/home/docker" --storage-driver=overlay
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">2.重启</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code>sudo systemctl daemon-reload
+</code></pre>
+<p>2.重启</p>
+<pre><code>sudo systemctl daemon-reload
 sudo systemctl restart docker
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">sudo systemctl daemon-reload
-sudo systemctl restart docker
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">3.查看是否更改成功<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo docker info</code><br style="clear: both;">注意看<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">Docker Root Dir:</code>这一项，这里就是你指定的位置</p><h2 id="perf安装的姿势" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="perf安装的姿势" href="#perf安装的姿势" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>perf安装的姿势</h2><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">（这个是真的坑，按照那种东缺点、西缺点的搞法，还定位不到缺的东西，难道要在网上下，然后一个个装吗？好像也未尝不是个办法呢~）<br style="clear: both;">perf安装按网上的随便来会出向各种依赖问题，究其原因，是版本不对。解决方案也很简单，就是指定版本。<br style="clear: both;">首先<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">uname -r</code>查看<br style="clear: both;">然后apt安装linux-tools时指定版本，也就是linux-tools-“你查到的版本”</p><h2 id="dpkg处理软件包报错" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="dpkg处理软件包报错" href="#dpkg处理软件包报错" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>dpkg处理软件包报错</h2><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">在<a style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a><a href="https://blog.csdn.net/u012483097/article/details/78994571" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">https://blog.csdn.net/u012483097/article/details/78994571</a>这里看到的解决方案</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code> sudo mv /var/lib/dpkg/info /var/lib/dpkg/info_old //现将info文件夹更名
-sudo mkdir /var/lib/dpkg/info //再新建一个新的info文件夹
- sudo apt-get update &amp;amp;&amp;amp; apt-get -f install //不用解释了吧
- sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info_old //新的info文件夹下生成的文件全部移到info_old文件夹下
- sudo rm -rf /var/lib/dpkg/info //把自己新建的info文件夹删掉
- sudo mv /var/lib/dpkg/info_old /var/lib/dpkg/info //把以前的info文件夹重新改
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;"> sudo mv /var/lib/dpkg/info /var/lib/dpkg/info_old //现将info文件夹更名
+</code></pre>
+<p>3.查看是否更改成功<br>
+<code>sudo docker info</code><br>
+注意看<code>Docker Root Dir:</code>这一项，这里就是你指定的位置</p>
+<h2 id="perf安装的姿势">perf安装的姿势</h2>
+<p>（这个是真的坑，按照那种东缺点、西缺点的搞法，还定位不到缺的东西，难道要在网上下，然后一个个装吗？好像也未尝不是个办法呢~）<br>
+perf安装按网上的随便来会出向各种依赖问题，究其原因，是版本不对。解决方案也很简单，就是指定版本。<br>
+首先<code>uname -r</code>查看<br>
+然后apt安装linux-tools时指定版本，也就是linux-tools-“你查到的版本”</p>
+<h2 id="dpkg处理软件包报错">dpkg处理软件包报错</h2>
+<p>在<a>https://blog.csdn.net/u012483097/article/details/78994571</a>这里看到的解决方案</p>
+<pre><code> sudo mv /var/lib/dpkg/info /var/lib/dpkg/info_old //现将info文件夹更名
 sudo mkdir /var/lib/dpkg/info //再新建一个新的info文件夹
  sudo apt-get update &amp;&amp; apt-get -f install //不用解释了吧
  sudo mv /var/lib/dpkg/info/* /var/lib/dpkg/info_old //新的info文件夹下生成的文件全部移到info_old文件夹下
  sudo rm -rf /var/lib/dpkg/info //把自己新建的info文件夹删掉
  sudo mv /var/lib/dpkg/info_old /var/lib/dpkg/info //把以前的info文件夹重新改
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">其实可以化简一下，先rm info,再创建，然后执行<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt-get update &amp;&amp; apt-get -f install</code><br style="clear: both;">这里-f是—fix-broken,是用来修复依赖关系的</p><h2 id="ubuntu源" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="ubuntu源" href="#ubuntu源" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Ubuntu源</h2><h3 id="改国内源" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="改国内源" href="#改国内源" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>改国内源</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo vim /etc/apt/sources.list</code></p><p style="margin: 1em 0px; word-wrap: break-word;">亦可用于多次配置报错问题的解决</p><h3 id="hash-sum-mismatch" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="hash-sum-mismatch" href="#hash-sum-mismatch" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Hash Sum mismatch</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">用apt-get update更新源时，出现“Hash Sum mismatch”的报错<br style="clear: both;">原因：透明缓存可以增加网络内部速度，减少出口的流量，但所获取的某些文件不是源服务器上的真正文件，是从缓存中获取的，当缓存中获取的一些校验信息跟源中不一致的时候，自然提示校验失败，无法继续更新。</p><p style="margin: 1em 0px; word-wrap: break-word;">清缓存法：</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code>$ sudo apt-get clean  
-$ sudo apt-get update --fix-missing
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">$ sudo apt-get clean  
-$ sudo apt-get update --fix-missing
-</code></pre><h2 id="ubuntu亮度问题（16.04）" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="ubuntu亮度问题（16.04）" href="#ubuntu亮度问题（16.04）" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Ubuntu亮度问题（16.04）</h2><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">之前的brightness-controller在把py<br style="clear: both;">1.<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt-get install laptop-mode-tools</code><br style="clear: both;">2.更改/etc/laptop-mode/laptop-mode.conf 文件：<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo gedit /etc/laptop-mode/laptop-mode.conf</code><br style="clear: both;"> 令<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">ENABLE_LAPTOP_MODE_ON_AC=1</code><br style="clear: both;">3.更改/etc/laptop-mode/conf.d/lcd-brightness.conf 文件：<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo gedit /etc/laptop-mode/conf.d/lcd-brightness.conf</code><br style="clear: both;">修改以下内容：<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">CONTROL_BRIGHTNESS=1</code><br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">BATT_BRIGHTNESS_COMMAND="echo 3"</code><br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">LM_AC_BRIGHTNESS_COMMAND="echo 3"</code><br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">NOLM_AC_BRIGHTNESS_COMMAND="echo 3"</code><br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">#BRIGHTNESS_OUTPUT="/proc/acpi/video/VID/LCD/brightness"</code><br style="clear: both;"> 最后一行添加：<br style="clear: both;"> <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">BRIGHTNESS_OUTPUT="/sys/class/backlight/acpi_video0/brightness"</code><br style="clear: both;">（记得要保存文件）<br style="clear: both;">4.最后，执行命令：<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo update-grub</code></p><p style="margin: 1em 0px; word-wrap: break-word;">然后，如果上述方法问题无法解决，建议直接下一个ubuntu原生的Brightness<br style="clear: both;">然后色温用gnome的redshift解决</p><h2 id=".crx插件的安装" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name=".crx插件的安装" href="#.crx插件的安装" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>.crx插件的安装</h2><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">对于大多数的离线插件，下载完成后打开更多工具&gt;&gt;拓展程序，开启开发者模式，直接拖动即可安装。<br style="clear: both;">少部分是会出现解析错误，把.crx改成.rar或.zip，然后用unzip命令解压后再安装（注意，一定要用终端，否则会有文件缺失）</p><h2 id="挂载硬盘的暗坑踩坑记录及正确姿势" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="挂载硬盘的暗坑踩坑记录及正确姿势" href="#挂载硬盘的暗坑踩坑记录及正确姿势" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>挂载硬盘的暗坑踩坑记录及正确姿势</h2><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cucnVub29iLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAxOS8wMS8yMDE5MDExNS0zLmpwZw?x-oss-process=image/format,png" alt="一个表情包而以" style="max-width: 100%;"></p><h3 id="挂载硬盘的正确姿势" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="挂载硬盘的正确姿势" href="#挂载硬盘的正确姿势" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>挂载硬盘的正确姿势</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">查看硬盘分区及大小，确定需要挂的盘：<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo fdisk -l</code></p><p style="margin: 1em 0px; word-wrap: break-word;">方法1（<strong>mount大法</strong> <em>适合传文件，用一下就好。或者不限麻烦愿意每次打开文件管理器手动挂载</em>）：</p><ol style="list-style-type: decimal;">
-<li style="display: list-item; line-height: 1.4em;">暂时挂载可以用mount <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo mount /dev/sda1 /media</code>(前一个是要挂的，后一个是挂载位置)</li><li style="display: list-item; line-height: 1.4em;">修改owner <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo chown -R username:username /media</code> -R是递归</li></ol><p style="margin: 1em 0px; word-wrap: break-word;">方法2（<strong>fstab大法</strong> <em>每次开机自动挂载</em>）</p><ol style="list-style-type: decimal;">
-<li style="display: list-item; line-height: 1.4em;">获取分区uuid: <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo blkid</code></li></ol><blockquote style="margin: 1em 20px;border-left-width: 4px; border-left-style: solid; border-left-color: rgb(230, 230, 230); padding: 0px 15px; font-style: italic;">
-<p style="margin: 1em 0px; word-wrap: break-word;margin-top: 0px;">注意：可能会出现</p>
-<pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code>/dev/sda1: UUID=&quot;DA70A0E270ACFGDR&quot; TYPE=&quot;ntfs&quot; PARTUUID=&quot;06cdfc10-01&quot;
-/dev/sda5: UUID=&quot;C63C5C1B4C543565&quot; TYPE=&quot;ntfs&quot; PARTUUID=&quot;06cdfc10-05&quot;
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">/dev/sda1: UUID="DA70A0E270ACFGDR" TYPE="ntfs" PARTUUID="06cdfc10-01"
-/dev/sda5: UUID="C63C5C1B4C543565" TYPE="ntfs" PARTUUID="06cdfc10-05"
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;margin-bottom: 0px;">你要记住UUID和type<strong>而不仅仅是UUID</strong>！！！！<br style="clear: both;">随便在fstab中填type为ext4会导致无法进系统（reboot后会导致ext4 file system崩掉）（别问我怎么知道的）</p>
-</blockquote><hr style="border: 0px none; height: 3px; padding: 0px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) 0px 0px repeat-x transparent;border: 1px solid rgb(204, 204, 204);border: 1px solid rgb(230, 230, 230);"><h5 id="what's-the-difference-between-uuid-and-partuuid" style="clear: both;font-size: 1.2em; font-weight: bold; margin: 0.855em 0px 0.57em;"><a name="what's-the-difference-between-uuid-and-partuuid" href="#what's-the-difference-between-uuid-and-partuuid" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>What’s the difference between UUID and PARTUUID</h5><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">A UUID is guaranteed to be unique. As far as I know, collisions will not happen within the lifetime of the universe. However, you’ll note that the PARTUUID is much shorter. These are meant to be “locally” unique, and collisions most likely occur between all known PARTUUIDs.</p><blockquote style="margin: 1em 20px;border-left-width: 4px; border-left-style: solid; border-left-color: rgb(230, 230, 230); padding: 0px 15px; font-style: italic;">
-<p style="margin: 1em 0px; word-wrap: break-word;margin-top: 0px;margin-bottom: 0px;">上述是 <a href="https://raspberrypi.stackexchange.com/questions/75027/whats-the-difference-between-uuid-and-partuuid/75030" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">https://raspberrypi.stackexchange.com/questions/75027/whats-the-difference-between-uuid-and-partuuid/75030</a> 上一个老哥的回答</p>
-</blockquote><hr style="border: 0px none; height: 3px; padding: 0px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) 0px 0px repeat-x transparent;border: 1px solid rgb(204, 204, 204);border: 1px solid rgb(230, 230, 230);"><ol style="list-style-type: decimal;">
-<li style="display: list-item; line-height: 1.4em;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo vim /etc/fstab</code> 按照这个文件原有的格式，填写UUID, TYPE等保存推出，愉快reboot</li></ol><hr style="border: 0px none; height: 3px; padding: 0px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) 0px 0px repeat-x transparent;border: 1px solid rgb(204, 204, 204);border: 1px solid rgb(230, 230, 230);"><p style="margin: 1em 0px; word-wrap: break-word;">我是怎么踩坑以及解决的？（按照上述提示的崽崽不会踩这个坑，但如果不幸，你已经像我一样，踩入了这个坑，该怎么做呢？）<br style="clear: both;"><strong>踩坑表现</strong></p><ul>
-<li style="display: list-item; line-height: 1.4em;">reboot之后进入不了系统</li><li style="display: list-item; line-height: 1.4em;">正常启动ubuntu时持续报错<strong>unsupported event</strong> </li><li style="display: list-item; line-height: 1.4em;">正常启动ubuntu时持续报错<strong>can’t find ext4 file system</strong>(因为我填错了type)</li><li style="display: list-item; line-height: 1.4em;">无法ctrl+D打开shell,  ctrl+alt+2(等等tty终端)打开后依旧<strong>unsupported event</strong> 刷屏</li><li style="display: list-item; line-height: 1.4em;"><p style="margin: 1em 0px; word-wrap: break-word;">recovery mode进入后进入emergency mode,要你键入密码查log，然而，查完了，修复个锤锤哟，还是进不了系统</p>
-<p style="margin: 1em 0px; word-wrap: break-word;">如何解决呢？问题很明显是填错了fstab,导致系统出错，所以，<strong>解决方法是把fstab改正确。</strong><br style="clear: both;">fstab存在于你的系统盘中，而你自己的系统现在崩了，所以用自己的系统改不太可能。这里如果你有<strong>live usb或者你的ubuntu引导盘</strong>（对，就是你装系统时烧的那个）。</p>
-</li></ul><ol style="list-style-type: decimal;">
-<li style="display: list-item; line-height: 1.4em;">修改bios，从usb启动。</li><li style="display: list-item; line-height: 1.4em;">不用重装系统，try ubuntu的选项已经提供了供我们使用的OS，点它，进入这个临时的ubuntu系统。</li><li style="display: list-item; line-height: 1.4em;">打开文档管理器，找到你本机的系统盘，记住它的/dev/XXXX位置（用<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo fdisk -l</code>命令亦可）(用<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">ls /dev | grep nvme</code>亦可)</li><li style="display: list-item; line-height: 1.4em;">如果能用文档管理器打开，就打开吧。打不开的话开sudo，<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo mount /dev/XXXX /mnt</code> 暴力挂载（这个姿势的原理：对于你原来的本机系统，这个盘是所需权限高的系统盘，可是对用usb启动的临时系统来说，它只是一个硬盘而已）</li><li style="display: list-item; line-height: 1.4em;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">cd /mnt</code>, <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">ls</code>(如果正常，会在/etc下)，<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">cd /etc</code>然后<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo vi fstab</code>。然后删掉或者修改你写的有问题的部分（UUID没写对的改UUID, TYPE没写对的改TYPE。不知道怎么改的崽，把你添加的删掉或者注释了。<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">:wq</code>）</li><li style="display: list-item; line-height: 1.4em;">reboot即可（这回就可以进本机系统了QAQ）</li></ol><hr style="border: 0px none; height: 3px; padding: 0px; background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) 0px 0px repeat-x transparent;border: 1px solid rgb(204, 204, 204);border: 1px solid rgb(230, 230, 230);"><h2 id="代理姿势" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="代理姿势" href="#代理姿势" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>代理姿势</h2><h3 id="tty代理(环境变量)" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="tty代理(环境变量)" href="#tty代理(环境变量)" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>tty代理(环境变量)</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">出现了 Failed to connect to 127.0.0.1 port 37389: 拒绝连接的错误？<br style="clear: both;">首先，这个错误是因为走了代理导致的，通过报错可知，是 ：“127.0.0.1 port 37389”。<br style="clear: both;">验证这个想法<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">env|grep -i proxy</code><br style="clear: both;">会出现：</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code>HTTPS_PROXY=http://127.0.0.1:37389/
-no_proxy=localhost,192.168.20.48
-HTTP_PROXY=http://127.0.0.1:37389/
-NO_PROXY=localhost,192.168.20.48
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">HTTPS_PROXY=http://127.0.0.1:37389/
-no_proxy=localhost,192.168.20.48
-HTTP_PROXY=http://127.0.0.1:37389/
-NO_PROXY=localhost,192.168.20.48
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">然后执行</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;"><code data-origin="<pre><code>unset HTTP_PROXY
-unset HTTPS_PROXY
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">unset HTTP_PROXY
-unset HTTPS_PROXY
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">即可<br style="clear: both;">在执行完<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">env|grep -i proxy</code>后，出现的http_proxy是大小写都有的，在用unset禁止proxy时，大小的也都要有。</p><p style="margin: 1em 0px; word-wrap: break-word;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">export http_proxy=http://127.0.0.1:8000</code><br style="clear: both;">类似这样即可设置环境变量</p><h3 id="apt-get代理" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="apt-get代理" href="#apt-get代理" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>apt-get代理</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">修改apt配置“/etc/apt/apt.conf”</p><p style="margin: 1em 0px; word-wrap: break-word;">例如</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;display: block; overflow-x: auto; padding: 0.5em; color: rgb(220, 220, 220); background: rgb(63, 63, 63);"><code class="bash" data-origin="<pre><code class=&quot;bash&quot;>Acquire::http::proxy &quot;http://127.0.0.1:8000/&quot;;
-Acquire::ftp::proxy &quot;ftp://127.0.0.1:8000/&quot;;
-Acquire::https::proxy &quot;https://127.0.0.1:8000/&quot;;
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">Acquire::http::proxy <span class="hljs-string" style="color: rgb(204, 147, 147);">"http://127.0.0.1:8000/"</span>;
-Acquire::ftp::proxy <span class="hljs-string" style="color: rgb(204, 147, 147);">"ftp://127.0.0.1:8000/"</span>;
-Acquire::https::proxy <span class="hljs-string" style="color: rgb(204, 147, 147);">"https://127.0.0.1:8000/"</span>;
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">也可以不使用apt.conf,而指定配置文件<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt-get -c ~/apt_proxy.conf update</code></p><p style="margin: 1em 0px; word-wrap: break-word;">或者直接设置：<br style="clear: both;"><code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt-get -o Acquire::http::proxy="http://127.0.0.1:8000/" update</code></p><h3 id="git代理" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="git代理" href="#git代理" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Git代理</h3><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;display: block; overflow-x: auto; padding: 0.5em; color: rgb(220, 220, 220); background: rgb(63, 63, 63);"><code class="bash" data-origin="<pre><code class=&quot;bash&quot;>git config --global http.proxy 'socks5://127.0.0.1:1080'
-git config --global https.proxy 'socks5://127.0.0.1:1080'
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">git config --global http.proxy <span class="hljs-string" style="color: rgb(204, 147, 147);">'socks5://127.0.0.1:1080'</span>
-git config --global https.proxy <span class="hljs-string" style="color: rgb(204, 147, 147);">'socks5://127.0.0.1:1080'</span>
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">只对github</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;display: block; overflow-x: auto; padding: 0.5em; color: rgb(220, 220, 220); background: rgb(63, 63, 63);"><code class="bash" data-origin="<pre><code class=&quot;bash&quot;>#只对github.com
-git config --global http.https://github.com.proxy socks5://127.0.0.1:1080
-
-#取消代理
-git config --global --unset http.https://github.com.proxy
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;"><span class="hljs-comment" style="color: rgb(127, 159, 127);">#只对github.com</span>
-git config --global http.https://github.com.proxy socks5://<span class="hljs-number" style="color: rgb(140, 208, 211);">127.0</span>.<span class="hljs-number" style="color: rgb(140, 208, 211);">0.1</span>:<span class="hljs-number" style="color: rgb(140, 208, 211);">1080</span>
-
-<span class="hljs-comment" style="color: rgb(127, 159, 127);">#取消代理</span>
-git config --global --unset http.https://github.com.proxy
-</code></pre><h3 id="bp代理" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="bp代理" href="#bp代理" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>bp代理</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">首先，把不管是ss,ssr还是v2ray开全局</p><p style="margin: 1em 0px; word-wrap: break-word;">找到bp的Upstream Proxy Severs(2.0版本：<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">User options&gt; connections&gt; Upstream Proxt Servers</code>. 1.6版本：<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">options&gt; connections&gt; Upstream Proxt Servers</code>),点击add</p><p style="margin: 1em 0px; word-wrap: break-word;">然后设置规则</p><blockquote style="margin: 1em 20px;border-left-width: 4px; border-left-style: solid; border-left-color: rgb(230, 230, 230); padding: 0px 15px; font-style: italic;">
-<p style="margin: 1em 0px; word-wrap: break-word;margin-top: 0px;">Destination host: * </p>
-<p style="margin: 1em 0px; word-wrap: break-word;margin-bottom: 0px;"><font color="green">*代表任意个字符或0个字符，?代表除.外的任意一个字符</font><br style="clear: both;">Proxy host: 127.0.0.1 <font color="green">代理服务器IP地址，空表示直连</font><br style="clear: both;">Proxy port: xxx</p>
-</blockquote><h2 id="n卡独显大坑" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="n卡独显大坑" href="#n卡独显大坑" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>N卡独显大坑</h2><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">写给对Nvidia又爱又恨的你。</p><h3 id="显卡驱动自动安装/图形化界面更改显驱" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="显卡驱动自动安装/图形化界面更改显驱" href="#显卡驱动自动安装/图形化界面更改显驱" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>显卡驱动自动安装/图形化界面更改显驱</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;"><em>有的朋友更新了内核到18.04，更改了各种conf还无法进入休眠模式可以更新显卡驱动试试<br style="clear: both;">至于16.04，这个内核本身就没有休眠模式，要想避免挂起后无法唤醒的问题，最好的方法就是—禁止挂起！（有个gnome的拓展，叫caffeine，禁止挂起，操作方便又轻量～）</em><br style="clear: both;">不要用开源的了，N卡非常傲娇，会有各种分辨率问题，搞不好轻则键盘鼠标延时，重则进入不了desktop(<del>用tty好像也不错呢</del> )<br style="clear: both;">老老实实用N家的显卡驱动吧。不过网上装显卡驱动文章的很多坑，如果盲目尝试可能又要踩坑了呢~</p><ol style="list-style-type: decimal;">
-<li style="display: list-item; line-height: 1.4em;">建议，如果可以，请用<strong>软件与更新</strong>图形界面更改显卡驱动，这个最稳妥。</li><li style="display: list-item; line-height: 1.4em;">命令的话，这个比较稳妥: 查看显卡型号和推荐显卡驱动 <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">ubuntu-drivers devices</code>；自动安显驱<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo ubuntu-drivers autoinstall</code></li></ol><h3 id="更新bios后的显示不正常" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="更新bios后的显示不正常" href="#更新bios后的显示不正常" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>更新bios后的显示不正常</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">2019.12.27更新了hp的bios，进入系统后分辨率不正常。查看<em>软件与更新</em>，驱动仍然使用nvidia-driver 435, 终端查看nvidia-smi, 显驱联系不上显卡。</p><p style="margin: 1em 0px; word-wrap: break-word;">这是因为：更新bios后，<strong>secure boot</strong>默认开启，导致第三方源驱动安装被禁止，第三方源驱动使用出现问题。 进入bios, 禁止secure boot(安全启动)，并且清空安全密钥。重启即可。</p><h3 id="键盘延时？！" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="键盘延时？！" href="#键盘延时？！" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>键盘延时？！</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">有没有这样的体验，显驱很匹配的情况下，偶尔一次两次，你的键盘输入延时了一小会。<br style="clear: both;">这可能是因为nvidia-setting启用了Sync To VBlank（垂直同步）。</p><blockquote style="margin: 1em 20px;border-left-width: 4px; border-left-style: solid; border-left-color: rgb(230, 230, 230); padding: 0px 15px; font-style: italic;">
-<p style="margin: 1em 0px; word-wrap: break-word;margin-top: 0px;margin-bottom: 0px;">Sync To VBlank 垂直同步：把帧数限制在60帧不超过显示屏刷新频率<br style="clear: both;">优点：减少无意义浪费。解决屏幕撕裂（如果你有这个问题的话）。<br style="clear: both;">缺点：可能导致输入延时。（当你着急开发的时候，这个问题尤为要命）</p>
-</blockquote><p style="margin: 1em 0px; word-wrap: break-word;">当然你可以自己更改Nvidia setting(谨慎！)，也可以用ccsm来更改<br style="clear: both;">下载<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt-get install compizconfig-settings-manager</code><br style="clear: both;">tty键入ccsm打开gui界面，打开General，再打开OpenGL， 取消Sync To VBlank前面的勾勾。</p><h3 id="xrandr报错-和-display-resolution" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="xrandr报错-和-display-resolution" href="#xrandr报错-和-display-resolution" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>xrandr报错 和 display resolution</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">2020.1.23晚上开着win系统就睡觉了，系统自动更新了然后重启，双系统默认启动ubuntu。早上起来发现显示不正常了。</p><p style="margin: 1em 0px; word-wrap: break-word;">排查问题及修复：</p><ul>
-<li style="display: list-item; line-height: 1.4em;">首先，看到显示不正常，分辨率有问题，马上看了设置，发现只有默认的一个分辨率的选项无法更改。估计是显卡驱动出了问题。</li><li style="display: list-item; line-height: 1.4em;">但是查看nvidia-smi一切正常，查看/etc/default/grub文件，<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">#GRUB_GFXMODE=640x480</code> 注释很正常，并且查看<em>软件与更新</em>，使用的仍然是n家驱动435没有自动更新，没有不匹配。</li><li style="display: list-item; line-height: 1.4em;">执行<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">xrandr</code>, 报错<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">xrandr: failed to get size of gamma for output default</code>. 尝试 <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">killall Xorg</code>, 发现没有在跑的。</li><li style="display: list-item; line-height: 1.4em;">并且此时发现系统上没有 <em>/var/log/Xorg.0.log</em> 和  <em>.xprofile</em> 这两个文件，此时推断xorg可能有点问题<br style="clear: both;">重装之 <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt-get install pkg-config make xutils-dev libtool xserver-xorg-dev libx11-dev libxi-dev libxrandr-dev libxinerama-dev libudev-dev</code></li><li style="display: list-item; line-height: 1.4em;">在askubuntu上，看到一个用<em>A卡</em>的人遇到了相似的问题，回答的人说, 是因为他在<strong>messed up专有显卡驱动</strong>的情况下尝试恢复使用该显驱， 所以使用了开源的默认显驱。建议是重装显驱。<br style="clear: both;">我呢，是个之前重装显驱把图形化界面搞崩了的倒霉崽崽，俗话说，一朝被蛇咬，处处闻啼鸟。加之新的440版本是开源的，我用的435是闭源的，干脆一并升级了OS内核和显驱。重启后解决。</li></ul><p style="margin: 1em 0px; word-wrap: break-word;">反思与总结：</p><p style="margin: 1em 0px; word-wrap: break-word;"> <strong>xrandr 命令</strong><br style="clear: both;">xrandr 是一款官方的 RandR (Resize and Rotate)Wikipedia:X Window System 扩展配置工具。它可以设置屏幕显示的大小、方向、镜像、分辨率等。</p><p style="margin: 1em 0px; word-wrap: break-word;">当没有添加任何选项直接运行时，xrandr 列出该系统可用的显示输出设备 (VGA-1, HDMI-1 等等) 和每一台设备可设置的分辨率，当前分辨率后面带有一个*号和一个+号。</p><p style="margin: 1em 0px; word-wrap: break-word;">你可以使用 xrandr 设置不同的分辨率（必须是出现在执行 <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">xrandr</code> 输出列表中的分辨率）：<br style="clear: both;">xrandr —output HDMI-1 —mode 1920x1080</p><p style="margin: 1em 0px; word-wrap: break-word;"><strong>xorg 和 x-server</strong><br style="clear: both;">给个很不错的link自己看吧<a href="https://blog.csdn.net/seaship/article/details/86233325" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">这里
-</a></p><h2 id="v2ray配置" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="v2ray配置" href="#v2ray配置" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>v2ray配置</h2><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">网上有很多一键配置的jio本，如果想一键配置在此就不多赘述了，自己搜吧。这里记录下手动安装的过程及遇见的问题</p><ol style="list-style-type: decimal;">
-<li style="display: list-item; line-height: 1.4em;">下载<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">wget https://github.com/v2ray/v2ray-core/releases/download/v3.24/v2ray-linux-64.zip</code></li><li style="display: list-item; line-height: 1.4em;">下一步是解压缩后进入目录，移动文件位置<br style="clear: both;">创建目录<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">mkdir /usr/bin/v2ray  /etc/v2ray/</code><br style="clear: both;">移动文件位置<pre class="bash hljs" style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;display: block; overflow-x: auto; padding: 0.5em; color: rgb(220, 220, 220); background: rgb(63, 63, 63);"><code class="bash" data-origin="<pre><code class=&quot;bash&quot;>cp v2ray /usr/bin/v2ray/v2ray
-cp v2ctl /usr/bin/v2ray/v2ctl
-cp geoip.dat /usr/bin/v2ray/geoip.dat
-cp geosite.dat /usr/bin/v2ray/geosite.dat
-cp vpoint_vmess_freedom.json /etc/v2ray/config.json
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">cp v2ray /usr/bin/v2ray/v2ray
-cp v2ctl /usr/bin/v2ray/v2ctl
-cp geoip.dat /usr/bin/v2ray/geoip.dat
-cp geosite.dat /usr/bin/v2ray/geosite.dat
-cp vpoint_vmess_freedom.json /etc/v2ray/config.json
 </code></pre>
-3.生成service<br style="clear: both;">这一步是生成systemctl service的关键<br style="clear: both;">找到v2ray下<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">systemd/v2ray.service</code>，cp到<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">/lib/systemd/system</code> 或者 <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">/etc/systemd/system</code>下。这一步和你自己之前的配置有关,看看你自己的.service文件都放在哪个路径下了。</li></ol><p style="margin: 1em 0px; word-wrap: break-word;">4.手动添加log</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;display: block; overflow-x: auto; padding: 0.5em; color: rgb(220, 220, 220); background: rgb(63, 63, 63);"><code class="bash" data-origin="<pre><code class=&quot;bash&quot;>mkdir /var/log/v2ray/
-touch /var/log/v2ray/access.log
-touch /var/log/v2ray/error.log
-touch /var/run/v2ray.pid
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">mkdir /var/<span class="hljs-built_in" style="color: rgb(204, 147, 147);">log</span>/v2ray/
-touch /var/<span class="hljs-built_in" style="color: rgb(204, 147, 147);">log</span>/v2ray/access.log
-touch /var/<span class="hljs-built_in" style="color: rgb(204, 147, 147);">log</span>/v2ray/error.log
-touch /var/run/v2ray.pid
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">至此，v2ray安装完毕<br style="clear: both;">检验：</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;display: block; overflow-x: auto; padding: 0.5em; color: rgb(220, 220, 220); background: rgb(63, 63, 63);"><code class="bash" data-origin="<pre><code class=&quot;bash&quot;>systemctl start v2ray
+<p>其实可以化简一下，先rm info,再创建，然后执行<code>sudo apt-get update &amp;&amp; apt-get -f install</code><br>
+这里-f是–fix-broken,是用来修复依赖关系的</p>
+<h2 id="ubuntu源">Ubuntu源</h2>
+<h3 id="改国内源">改国内源</h3>
+<p><code>sudo vim /etc/apt/sources.list</code></p>
+<p>亦可用于多次配置报错问题的解决</p>
+<h3 id="hash-sum-mismatch">Hash Sum mismatch</h3>
+<p>用apt-get update更新源时，出现“Hash Sum mismatch”的报错<br>
+原因：透明缓存可以增加网络内部速度，减少出口的流量，但所获取的某些文件不是源服务器上的真正文件，是从缓存中获取的，当缓存中获取的一些校验信息跟源中不一致的时候，自然提示校验失败，无法继续更新。</p>
+<p>清缓存法：</p>
+<pre><code>$ sudo apt-get clean  
+$ sudo apt-get update --fix-missing 
+</code></pre>
+<h2 id="ubuntu亮度问题（16.04）">Ubuntu亮度问题（16.04）</h2>
+<p>之前的brightness-controller在把py<br>
+1.<code>sudo apt-get install laptop-mode-tools</code><br>
+2.更改/etc/laptop-mode/laptop-mode.conf 文件：<br>
+<code>sudo gedit /etc/laptop-mode/laptop-mode.conf</code><br>
+令<code>ENABLE_LAPTOP_MODE_ON_AC=1</code><br>
+3.更改/etc/laptop-mode/conf.d/lcd-brightness.conf 文件：<br>
+<code>sudo gedit /etc/laptop-mode/conf.d/lcd-brightness.conf</code><br>
+修改以下内容：<code>CONTROL_BRIGHTNESS=1</code><br>
+<code>BATT_BRIGHTNESS_COMMAND="echo 3"</code><br>
+<code>LM_AC_BRIGHTNESS_COMMAND="echo 3"</code><br>
+<code>NOLM_AC_BRIGHTNESS_COMMAND="echo 3"</code><br>
+<code>#BRIGHTNESS_OUTPUT="/proc/acpi/video/VID/LCD/brightness"</code><br>
+最后一行添加：<br>
+<code>BRIGHTNESS_OUTPUT="/sys/class/backlight/acpi_video0/brightness"</code><br>
+（记得要保存文件）<br>
+4.最后，执行命令：<br>
+<code>sudo update-grub</code></p>
+<p>然后，如果上述方法问题无法解决，建议直接下一个ubuntu原生的Brightness<br>
+然后色温用gnome的redshift解决</p>
+<h2 id="crx插件的安装">.crx插件的安装</h2>
+<p>对于大多数的离线插件，下载完成后打开更多工具&gt;&gt;拓展程序，开启开发者模式，直接拖动即可安装。<br>
+少部分是会出现解析错误，把.crx改成.rar或.zip，然后用unzip命令解压后再安装（注意，一定要用终端，否则会有文件缺失）</p>
+<h2 id="挂载硬盘的暗坑踩坑记录及正确姿势">挂载硬盘的暗坑踩坑记录及正确姿势</h2>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly93d3cucnVub29iLmNvbS93cC1jb250ZW50L3VwbG9hZHMvMjAxOS8wMS8yMDE5MDExNS0zLmpwZw?x-oss-process=image/format,png" alt="一个表情包而以"></p>
+<h3 id="挂载硬盘的正确姿势">挂载硬盘的正确姿势</h3>
+<p>查看硬盘分区及大小，确定需要挂的盘：<code>sudo fdisk -l</code></p>
+<p>方法1（<strong>mount大法</strong> <em>适合传文件，用一下就好。或者不限麻烦愿意每次打开文件管理器手动挂载</em>）：</p>
+<ol>
+<li>暂时挂载可以用mount <code>sudo mount /dev/sda1 /media</code>(前一个是要挂的，后一个是挂载位置)</li>
+<li>修改owner <code>sudo chown -R username:username /media</code> -R是递归</li>
+</ol>
+<p>方法2（<strong>fstab大法</strong> <em>每次开机自动挂载</em>）</p>
+<ol>
+<li>获取分区uuid: <code>sudo blkid</code></li>
+</ol>
+<blockquote>
+<p>注意：可能会出现</p>
+<pre><code>/dev/sda1: UUID="DA70A0E270ACFGDR" TYPE="ntfs" PARTUUID="06cdfc10-01"
+/dev/sda5: UUID="C63C5C1B4C543565" TYPE="ntfs" PARTUUID="06cdfc10-05"
+</code></pre>
+<p>你要记住UUID和type<strong>而不仅仅是UUID</strong>！！！！<br>
+随便在fstab中填type为ext4会导致无法进系统（reboot后会导致ext4 file system崩掉）（别问我怎么知道的）</p>
+</blockquote>
+<hr>
+<h5 id="whats-the-difference-between-uuid-and-partuuid">What’s the difference between UUID and PARTUUID</h5>
+<p>A UUID is guaranteed to be unique. As far as I know, collisions will not happen within the lifetime of the universe. However, you’ll note that the PARTUUID is much shorter. These are meant to be “locally” unique, and collisions most likely occur between all known PARTUUIDs.</p>
+<blockquote>
+<p>上述是 <a href="https://raspberrypi.stackexchange.com/questions/75027/whats-the-difference-between-uuid-and-partuuid/75030">https://raspberrypi.stackexchange.com/questions/75027/whats-the-difference-between-uuid-and-partuuid/75030</a> 上一个老哥的回答</p>
+</blockquote>
+<hr>
+<ol start="2">
+<li><code>sudo vim /etc/fstab</code> 按照这个文件原有的格式，填写UUID, TYPE等保存推出，愉快reboot</li>
+</ol>
+<hr>
+<p>我是怎么踩坑以及解决的？（按照上述提示的崽崽不会踩这个坑，但如果不幸，你已经像我一样，踩入了这个坑，该怎么做呢？）<br>
+<strong>踩坑表现</strong></p>
+<ul>
+<li>reboot之后进入不了系统</li>
+<li>正常启动ubuntu时持续报错<strong>unsupported event</strong></li>
+<li>正常启动ubuntu时持续报错<strong>can’t find ext4 file system</strong>(因为我填错了type)</li>
+<li>无法ctrl+D打开shell,  ctrl+alt+2(等等tty终端)打开后依旧<strong>unsupported event</strong> 刷屏</li>
+<li>recovery mode进入后进入emergency mode,要你键入密码查log，然而，查完了，修复个锤锤哟，还是进不了系统</li>
+</ul>
+<p>如何解决呢？问题很明显是填错了fstab,导致系统出错，所以，<strong>解决方法是把fstab改正确。</strong><br>
+fstab存在于你的系统盘中，而你自己的系统现在崩了，所以用自己的系统改不太可能。这里如果你有<strong>live usb或者你的ubuntu引导盘</strong>（对，就是你装系统时烧的那个）。</p>
+<ol>
+<li>修改bios，从usb启动。</li>
+<li>不用重装系统，try ubuntu的选项已经提供了供我们使用的OS，点它，进入这个临时的ubuntu系统。</li>
+<li>打开文档管理器，找到你本机的系统盘，记住它的/dev/XXXX位置（用<code>sudo fdisk -l</code>命令亦可）(用<code>ls /dev | grep nvme</code>亦可)</li>
+<li>如果能用文档管理器打开，就打开吧。打不开的话开sudo，<code>sudo mount /dev/XXXX /mnt</code> 暴力挂载（这个姿势的原理：对于你原来的本机系统，这个盘是所需权限高的系统盘，可是对用usb启动的临时系统来说，它只是一个硬盘而已）</li>
+<li><code>cd /mnt</code>, <code>ls</code>(如果正常，会在/etc下)，<code>cd /etc</code>然后<code>sudo vi fstab</code>。然后删掉或者修改你写的有问题的部分（UUID没写对的改UUID, TYPE没写对的改TYPE。不知道怎么改的崽，把你添加的删掉或者注释了。<code>:wq</code>）</li>
+<li>reboot即可（这回就可以进本机系统了QAQ）</li>
+</ol>
+<hr>
+<h2 id="代理姿势">代理姿势</h2>
+<h3 id="tty代理环境变量">tty代理(环境变量)</h3>
+<p>出现了 Failed to connect to 127.0.0.1 port 37389: 拒绝连接的错误？<br>
+首先，这个错误是因为走了代理导致的，通过报错可知，是 ：“127.0.0.1 port 37389”。<br>
+验证这个想法<code>env|grep -i proxy</code><br>
+会出现：</p>
+<pre><code>HTTPS_PROXY=http://127.0.0.1:37389/
+no_proxy=localhost,192.168.20.48
+HTTP_PROXY=http://127.0.0.1:37389/
+NO_PROXY=localhost,192.168.20.48
+</code></pre>
+<p>然后执行</p>
+<pre><code>unset HTTP_PROXY
+unset HTTPS_PROXY
+</code></pre>
+<p>即可<br>
+在执行完<code>env|grep -i proxy</code>后，出现的http_proxy是大小写都有的，在用unset禁止proxy时，大小的也都要有。</p>
+<p><code>export http_proxy=http://127.0.0.1:8000</code><br>
+类似这样即可设置环境变量</p>
+<h3 id="apt-get代理">apt-get代理</h3>
+<p>修改apt配置“/etc/apt/apt.conf”</p>
+<p>例如</p>
+<pre class=" language-bash"><code class="prism  language-bash">Acquire::http::proxy <span class="token string">"http://127.0.0.1:8000/"</span><span class="token punctuation">;</span>
+Acquire::ftp::proxy <span class="token string">"ftp://127.0.0.1:8000/"</span><span class="token punctuation">;</span>
+Acquire::https::proxy <span class="token string">"https://127.0.0.1:8000/"</span><span class="token punctuation">;</span>
+</code></pre>
+<p>也可以不使用apt.conf,而指定配置文件<br>
+<code>sudo apt-get -c ~/apt_proxy.conf update</code></p>
+<p>或者直接设置：<br>
+<code>sudo apt-get -o Acquire::http::proxy="http://127.0.0.1:8000/" update</code></p>
+<h3 id="git代理">Git代理</h3>
+<pre class=" language-bash"><code class="prism  language-bash"><span class="token function">git</span> config --global http.proxy <span class="token string">'socks5://127.0.0.1:1080'</span>
+<span class="token function">git</span> config --global https.proxy <span class="token string">'socks5://127.0.0.1:1080'</span>
+</code></pre>
+<p>只对github</p>
+<pre class=" language-bash"><code class="prism  language-bash"><span class="token comment">#只对github.com</span>
+<span class="token function">git</span> config --global http.https://github.com.proxy socks5://127.0.0.1:1080
+
+<span class="token comment">#取消代理</span>
+<span class="token function">git</span> config --global --unset http.https://github.com.proxy
+</code></pre>
+<h3 id="bp代理">bp代理</h3>
+<p>首先，把不管是ss,ssr还是v2ray开全局</p>
+<p>找到bp的Upstream Proxy Severs(2.0版本：<code>User options&gt; connections&gt; Upstream Proxt Servers</code>. 1.6版本：<code>options&gt; connections&gt; Upstream Proxt Servers</code>),点击add</p>
+<p>然后设置规则</p>
+<blockquote>
+<p>Destination host: *<br>
+<font color="green">*代表任意个字符或0个字符，?代表除.外的任意一个字符</font><br>
+Proxy host: 127.0.0.1 <font color="green">代理服务器IP地址，空表示直连</font><br>
+Proxy port: xxx</p>
+</blockquote>
+<h2 id="n卡独显大坑">N卡独显大坑</h2>
+<p>写给对Nvidia又爱又恨的你。</p>
+<h3 id="显卡驱动自动安装图形化界面更改显驱">显卡驱动自动安装/图形化界面更改显驱</h3>
+<p><em>有的朋友更新了内核到18.04，更改了各种conf还无法进入休眠模式可以更新显卡驱动试试<br>
+至于16.04，这个内核本身就没有休眠模式，要想避免挂起后无法唤醒的问题，最好的方法就是–禁止挂起！（有个gnome的拓展，叫caffeine，禁止挂起，操作方便又轻量～）</em><br>
+不要用开源的了，N卡非常傲娇，会有各种分辨率问题，搞不好轻则键盘鼠标延时，重则进入不了desktop(<s>用tty好像也不错呢</s> )<br>
+老老实实用N家的显卡驱动吧。不过网上装显卡驱动文章的很多坑，如果盲目尝试可能又要踩坑了呢~</p>
+<ol>
+<li>建议，如果可以，请用<strong>软件与更新</strong>图形界面更改显卡驱动，这个最稳妥。</li>
+<li>命令的话，这个比较稳妥: 查看显卡型号和推荐显卡驱动 <code>ubuntu-drivers devices</code>；自动安显驱<code>sudo ubuntu-drivers autoinstall</code></li>
+</ol>
+<h3 id="更新bios后的显示不正常">更新bios后的显示不正常</h3>
+<p>2019.12.27更新了hp的bios，进入系统后分辨率不正常。查看<em>软件与更新</em>，驱动仍然使用nvidia-driver 435, 终端查看nvidia-smi, 显驱联系不上显卡。</p>
+<p>这是因为：更新bios后，<strong>secure boot</strong>默认开启，导致第三方源驱动安装被禁止，第三方源驱动使用出现问题。 进入bios, 禁止secure boot(安全启动)，并且清空安全密钥。重启即可。</p>
+<h3 id="键盘延时？！">键盘延时？！</h3>
+<p>有没有这样的体验，显驱很匹配的情况下，偶尔一次两次，你的键盘输入延时了一小会。<br>
+这可能是因为nvidia-setting启用了Sync To VBlank（垂直同步）。</p>
+<blockquote>
+<p>Sync To VBlank 垂直同步：把帧数限制在60帧不超过显示屏刷新频率<br>
+优点：减少无意义浪费。解决屏幕撕裂（如果你有这个问题的话）。<br>
+缺点：可能导致输入延时。（当你着急开发的时候，这个问题尤为要命）</p>
+</blockquote>
+<p>当然你可以自己更改Nvidia setting(谨慎！)，也可以用ccsm来更改<br>
+下载<code>sudo apt-get install compizconfig-settings-manager</code><br>
+tty键入ccsm打开gui界面，打开General，再打开OpenGL， 取消Sync To VBlank前面的勾勾。</p>
+<h3 id="xrandr报错-和-display-resolution">xrandr报错 和 display resolution</h3>
+<p>2020.1.23晚上开着win系统就睡觉了，系统自动更新了然后重启，双系统默认启动ubuntu。早上起来发现显示不正常了。</p>
+<p>排查问题及修复：</p>
+<ul>
+<li>首先，看到显示不正常，分辨率有问题，马上看了设置，发现只有默认的一个分辨率的选项无法更改。估计是显卡驱动出了问题。</li>
+<li>但是查看nvidia-smi一切正常，查看/etc/default/grub文件，<code>#GRUB_GFXMODE=640x480</code> 注释很正常，并且查看<em>软件与更新</em>，使用的仍然是n家驱动435没有自动更新，没有不匹配。</li>
+<li>执行<code>xrandr</code>, 报错<code>xrandr: failed to get size of gamma for output default</code>. 尝试 <code>killall Xorg</code>, 发现没有在跑的。</li>
+<li>并且此时发现系统上没有 <em>/var/log/Xorg.0.log</em> 和  <em>.xprofile</em> 这两个文件，此时推断xorg可能有点问题<br>
+重装之 <code>sudo apt-get install pkg-config make xutils-dev libtool xserver-xorg-dev libx11-dev libxi-dev libxrandr-dev libxinerama-dev libudev-dev</code></li>
+<li>在askubuntu上，看到一个用<em>A卡</em>的人遇到了相似的问题，回答的人说, 是因为他在<strong>messed up专有显卡驱动</strong>的情况下尝试恢复使用该显驱， 所以使用了开源的默认显驱。建议是重装显驱。<br>
+我呢，是个之前重装显驱把图形化界面搞崩了的倒霉崽崽，俗话说，一朝被蛇咬，处处闻啼鸟。加之新的440版本是开源的，我用的435是闭源的，干脆一并升级了OS内核和显驱。重启后解决。</li>
+</ul>
+<p>反思与总结：</p>
+<p><strong>xrandr 命令</strong><br>
+xrandr 是一款官方的 RandR (Resize and Rotate)Wikipedia:X Window System 扩展配置工具。它可以设置屏幕显示的大小、方向、镜像、分辨率等。</p>
+<p>当没有添加任何选项直接运行时，xrandr 列出该系统可用的显示输出设备 (VGA-1, HDMI-1 等等) 和每一台设备可设置的分辨率，当前分辨率后面带有一个*号和一个+号。</p>
+<p>你可以使用 xrandr 设置不同的分辨率（必须是出现在执行 <code>xrandr</code> 输出列表中的分辨率）：<br>
+xrandr --output HDMI-1 --mode 1920x1080</p>
+<p><strong>xorg 和 x-server</strong><br>
+给个很不错的link自己看吧<a href="https://blog.csdn.net/seaship/article/details/86233325">这里<br>
+</a></p>
+<h2 id="v2ray配置">v2ray配置</h2>
+<p>网上有很多一键配置的jio本，如果想一键配置在此就不多赘述了，自己搜吧。这里记录下手动安装的过程及遇见的问题</p>
+<ol>
+<li>下载<code>wget https://github.com/v2ray/v2ray-core/releases/download/v3.24/v2ray-linux-64.zip</code></li>
+<li>下一步是解压缩后进入目录，移动文件位置<br>
+创建目录<code>mkdir /usr/bin/v2ray /etc/v2ray/</code><br>
+移动文件位置</li>
+</ol>
+<pre class=" language-bash"><code class="prism  language-bash"><span class="token function">cp</span> v2ray /usr/bin/v2ray/v2ray
+<span class="token function">cp</span> v2ctl /usr/bin/v2ray/v2ctl
+<span class="token function">cp</span> geoip.dat /usr/bin/v2ray/geoip.dat
+<span class="token function">cp</span> geosite.dat /usr/bin/v2ray/geosite.dat
+<span class="token function">cp</span> vpoint_vmess_freedom.json /etc/v2ray/config.json
+</code></pre>
+<p>3.生成service<br>
+这一步是生成systemctl service的关键<br>
+找到v2ray下<code>systemd/v2ray.service</code>，cp到<code>/lib/systemd/system</code> 或者 <code>/etc/systemd/system</code>下。这一步和你自己之前的配置有关,看看你自己的.service文件都放在哪个路径下了。</p>
+<p>4.手动添加log</p>
+<pre class=" language-bash"><code class="prism  language-bash"><span class="token function">mkdir</span> /var/log/v2ray/
+<span class="token function">touch</span> /var/log/v2ray/access.log
+<span class="token function">touch</span> /var/log/v2ray/error.log
+<span class="token function">touch</span> /var/run/v2ray.pid
+</code></pre>
+<p>至此，v2ray安装完毕<br>
+检验：</p>
+<pre class=" language-bash"><code class="prism  language-bash">systemctl start v2ray
 systemctl status v2ray
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">systemctl start v2ray
-systemctl status v2ray
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">将其设置为系统自动启动<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">systemctl enable v2ray</code></p><h2 id="appimage报错" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="appimage报错" href="#appimage报错" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Appimage报错</h2><h3 id="cannot-run-due-to-existing-symlinks-in-/tmp-(fixme)" style="clear: both;font-size: 1.6em; font-weight: bold; margin: 1.125em 0px 0.75em;"><a name="cannot-run-due-to-existing-symlinks-in-/tmp-(fixme)" href="#cannot-run-due-to-existing-symlinks-in-/tmp-(fixme)" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Cannot run due to existing symlinks in /tmp (FIXME)</h3><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">用QQ的appimage时多次打开关闭出现该报错</p><p style="margin: 1em 0px; word-wrap: break-word;">Needs to be fixed in the AppImage AppRun script.<br style="clear: both;">Need to <code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">rm /tmp/ld-linux.so.2</code></p><h2 id="lua包管理，luarocks" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="lua包管理，luarocks" href="#lua包管理，luarocks" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>Lua包管理，luarocks</h2><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">在使用Lua的过程中遇到了少module的报错，本着以后方便的想法打算直接装包管理luarocks</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;display: block; overflow-x: auto; padding: 0.5em; color: rgb(220, 220, 220); background: rgb(63, 63, 63);"><code class="bash" data-origin="<pre><code class=&quot;bash&quot;>wget https://luarocks.org/releases/luarocks-3.3.0.tar.gz
-tar zxpf luarocks-3.3.0.tar.gz
-cd luarocks-3.3.0
-./configure &amp;amp;&amp;amp; make &amp;amp;&amp;amp; sudo make install
-sudo luarocks install luasocket
+</code></pre>
+<p>将其设置为系统自动启动<code>systemctl enable v2ray</code></p>
+<h2 id="appimage报错">Appimage报错</h2>
+<h3 id="cannot-run-due-to-existing-symlinks-in-tmp-fixme">Cannot run due to existing symlinks in /tmp (FIXME)</h3>
+<p>用QQ的appimage时多次打开关闭出现该报错</p>
+<p>Needs to be fixed in the AppImage AppRun script.<br>
+Need to <code>rm /tmp/ld-linux.so.2</code></p>
+<h2 id="lua包管理，luarocks">Lua包管理，luarocks</h2>
+<p>在使用Lua的过程中遇到了少module的报错，本着以后方便的想法打算直接装包管理luarocks</p>
+<pre class=" language-bash"><code class="prism  language-bash"><span class="token function">wget</span> https://luarocks.org/releases/luarocks-3.3.0.tar.gz
+<span class="token function">tar</span> zxpf luarocks-3.3.0.tar.gz
+<span class="token function">cd</span> luarocks-3.3.0
+./configure <span class="token operator">&amp;&amp;</span> <span class="token function">make</span> <span class="token operator">&amp;&amp;</span> <span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
+<span class="token function">sudo</span> luarocks <span class="token function">install</span> luasocket
 lua
-Lua 5.3.5 Copyright (C) 1994-2018 Lua.org, PUC-Rio
-&amp;gt; require &quot;socket&quot;
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">wget https://luarocks.org/releases/luarocks-<span class="hljs-number" style="color: rgb(140, 208, 211);">3.3</span>.<span class="hljs-number" style="color: rgb(140, 208, 211);">0</span>.tar.gz
-tar zxpf luarocks-<span class="hljs-number" style="color: rgb(140, 208, 211);">3.3</span>.<span class="hljs-number" style="color: rgb(140, 208, 211);">0</span>.tar.gz
-<span class="hljs-built_in" style="color: rgb(204, 147, 147);">cd</span> luarocks-<span class="hljs-number" style="color: rgb(140, 208, 211);">3.3</span>.<span class="hljs-number" style="color: rgb(140, 208, 211);">0</span>
-./configure &amp;&amp; make &amp;&amp; sudo make install
-sudo luarocks install luasocket
-lua
-Lua <span class="hljs-number" style="color: rgb(140, 208, 211);">5.3</span>.<span class="hljs-number" style="color: rgb(140, 208, 211);">5</span> Copyright (C) <span class="hljs-number" style="color: rgb(140, 208, 211);">1994</span>-<span class="hljs-number" style="color: rgb(140, 208, 211);">2018</span> Lua.org, PUC-Rio
-&gt; require <span class="hljs-string" style="color: rgb(204, 147, 147);">"socket"</span>
-</code></pre><p style="margin: 1em 0px; word-wrap: break-word;">安装的时候有一个小坑，报错缺少<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">lua.h</code><br style="clear: both;">由于我之前使用<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">z.lua</code>,安装了lua5.2,这里还要安装一下<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">lua5.3</code>（直接<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">apt install</code>即可）<br style="clear: both;">然后<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">sudo apt install liblua5.3-dev</code>,这个包里面有<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">lua.h</code></p><h2 id="burpsuite抓https包" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="burpsuite抓https包" href="#burpsuite抓https包" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>burpsuite抓https包</h2><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">其实是个很简单的事情，bp下载CA证书(无论是在<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">http://burp</code>还是在<code style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace; font-size: 85%; padding: 0.2em 0.5em; border: 0px; background-color: rgba(0, 0, 0, 0.0666667);">Proxy &gt; Options &gt; Proxy Listeners &gt; Import / export CA certificate</code>都可)， 然后导入浏览器即可。<br style="clear: both;">但是偏偏我遇到了一个问题，就是无论怎样，下载的CA 证书都是0 byte, 这解析个锤锤哟。<br style="clear: both;"><a href="https://forum.portswigger.net/thread/ssl-certificate-2d285027ba60d5457e3e" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);">这里</a>是在官网上看到的和我遇到的一模一样的问题。</p><blockquote style="margin: 1em 20px;border-left-width: 4px; border-left-style: solid; border-left-color: rgb(230, 230, 230); padding: 0px 15px; font-style: italic;">
-<p style="margin: 1em 0px; word-wrap: break-word;margin-top: 0px;margin-bottom: 0px;">Okey i discovered the problem.<br style="clear: both;">Im was using a beta version pro 1.6, i installed the 1.7 free version and now i can download my cert.</p>
-</blockquote><p style="margin: 1em 0px; word-wrap: break-word;">好巧不巧，我用的也是bp pro 1.6,所以这是个版本问题么…总之有点意思，下了新的版本就解决了。</p><h2 id="ubuntu播放mp4" style="clear: both;font-size: 1.8em; font-weight: bold; margin: 1.275em 0px 0.85em;border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(230, 230, 230); line-height: 1.6;"><a name="ubuntu播放mp4" href="#ubuntu播放mp4" style="text-decoration: none; vertical-align: baseline;color: rgb(50, 105, 160);"></a>ubuntu播放mp4</h2><p style="margin-top: 0px;margin: 1em 0px; word-wrap: break-word;">The reason you get the error is because your Ubuntu desktop is missing the required codecs or decoders. The video you’re trying to watch is using a copy-right protected technology and Ubuntu is not designed to play them.</p><p style="margin: 1em 0px; word-wrap: break-word;">You must install these packages below in order to play those videos. Run the commands below to install the missing codecs and decoders from Ubuntu Desktops.</p><pre style="border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); overflow: auto; padding: 0.5em;display: block; overflow-x: auto; padding: 0.5em; color: rgb(220, 220, 220); background: rgb(63, 63, 63);"><code class="bash" data-origin="<pre><code class=&quot;bash&quot;>sudo apt install libdvdnav4 libdvdread4 gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly libdvd-pkg
-sudo apt install ubuntu-restricted-extras
-</code></pre>" style="border: 0px; display: block;font-family: Consolas, Inconsolata, Courier, monospace; font-weight: bold; white-space: pre; margin: 0px;border-top-left-radius: 3px; border-top-right-radius: 3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px; word-wrap: break-word; border: 1px solid rgb(204, 204, 204); padding: 0px 5px; margin: 0px 2px;font-size: 0.9em; font-family: Consolas, Inconsolata, Courier, monospace;">sudo apt install libdvdnav4 libdvdread4 gstreamer1.<span class="hljs-number" style="color: rgb(140, 208, 211);">0</span>-plugins-bad gstreamer1.<span class="hljs-number" style="color: rgb(140, 208, 211);">0</span>-plugins-ugly libdvd-pkg
-sudo apt install ubuntu-restricted-extras
-</code></pre></div>
+Lua 5.3.5 Copyright <span class="token punctuation">(</span>C<span class="token punctuation">)</span> 1994-2018 Lua.org, PUC-Rio
+<span class="token operator">&gt;</span> require <span class="token string">"socket"</span>
+</code></pre>
+<p>安装的时候有一个小坑，报错缺少<code>lua.h</code><br>
+由于我之前使用<code>z.lua</code>,安装了lua5.2,这里还要安装一下<code>lua5.3</code>（直接<code>apt install</code>即可）<br>
+然后<code>sudo apt install liblua5.3-dev</code>,这个包里面有<code>lua.h</code></p>
+<h2 id="burpsuite抓https包">burpsuite抓https包</h2>
+<p>其实是个很简单的事情，bp下载CA证书(无论是在<code>http://burp</code>还是在<code>Proxy &gt; Options &gt; Proxy Listeners &gt; Import / export CA certificate</code>都可)， 然后导入浏览器即可。<br>
+但是偏偏我遇到了一个问题，就是无论怎样，下载的CA 证书都是0 byte, 这解析个锤锤哟。<br>
+<a href="https://forum.portswigger.net/thread/ssl-certificate-2d285027ba60d5457e3e">这里</a>是在官网上看到的和我遇到的一模一样的问题。</p>
+<blockquote>
+<p>Okey i discovered the problem.<br>
+Im was using a beta version pro 1.6, i installed the 1.7 free version and now i can download my cert.</p>
+</blockquote>
+<p>好巧不巧，我用的也是bp pro 1.6,所以这是个版本问题么…总之有点意思，下了新的版本就解决了。</p>
+<h2 id="ubuntu播放mp4">ubuntu播放mp4</h2>
+<p>The reason you get the error is because your Ubuntu desktop is missing the required codecs or decoders. The video you’re trying to watch is using a copy-right protected technology and Ubuntu is not designed to play them.</p>
+<p>You must install these packages below in order to play those videos. Run the commands below to install the missing codecs and decoders from Ubuntu Desktops.</p>
+<pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> libdvdnav4 libdvdread4 gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly libdvd-pkg
+<span class="token function">sudo</span> apt <span class="token function">install</span> ubuntu-restricted-extras
+</code></pre>
+<h2 id="ubuntu下的markdown编辑器和markdown-toc">Ubuntu下的Markdown编辑器和markdown-toc</h2>
+<p>之前，在我还用atom的时候，安了markdown的插件就没再管过，但是atom太慢了。后来我写代码主要是用vim了,就想着再装一个markdown editor.</p>
+<p>首先我用了韩国的haroopad,支持中文版和<code>[TOC]</code>,可以export到html和pdf,但是对中文字体的支持不好，那个字体看得难受。并且有只能显示一个mermaid Graph的bug。</p>
+<p>后来用了remarkable, 真是清爽。又轻量,界面又舒服，添加<a href="https://github.com/jonschlinkert/markdown-toc">markdown-toc</a> 即可使用<code>[TOC]</code>，唯一美中不足的是，每次更新目录都要re-run markdown-toc<br>
+在项目内安装markdown-toc <code>npm install --save markdown-toc</code><br>
+每次运行 <code>npx markdown-toc README.md</code><br>
+但是问题是，没办法直接像haroopad那样直接复制有style的html(虽然写了这个功能，但复制的结果就是markdown格式的QAQ)</p>
+<p>所以最后还是vim吧，vim插件们不香么。</p>
+<ol>
+<li>首先，添加实时预览 在<code>.vimrc</code>中添加plugin.(我用的包管理是vundle)</li>
+</ol>
+<pre><code>Plugin 'iamcco/mathjax-support-for-mkdp'
+Plugin 'iamcco/markdown-preview.vim'
+</code></pre>
+<p>然后在<code>.vimrc</code>的末尾添加预览的快捷键映射</p>
+<pre><code>nmap &lt;silent&gt; &lt;F8&gt; &lt;Plug&gt;MarkdownPreview        " for normal mode
+imap &lt;silent&gt; &lt;F8&gt; &lt;Plug&gt;MarkdownPreview        " for insert mode
+nmap &lt;silent&gt; &lt;F9&gt; &lt;Plug&gt;StopMarkdownPreview    " for normal mode
+imap &lt;silent&gt; &lt;F9&gt; &lt;Plug&gt;StopMarkdownPreview    " for insert mode
+</code></pre>
+<p>然后安装plugin们。</p>
+<p>意思是说，在普通模式下（n）和插入模式下（i），按下F8键就可以实时预览，按下F9键就可以停止预览。(用浏览器预览，很Nice)<br>
+还挺好看的，不过也不支持[TOC]</p>
+<ol start="2">
+<li>接下来就添加生成TOC的plugin<br>
+<a href="https://github.com/mzlogin/vim-markdown-toc">vim-markdown-toc</a>的详细说明</li>
+</ol>
+<p>在<code>.vimrc</code>中添加<code>Plugin 'mzlogin/vim-markdown-toc'</code>,然后install</p>
+<p>用法：把光标移动到想放的位置，然后键入</p>
+<pre><code>:GenTocGFM
+:GenTocRedcarpet
+:GenTocMarked
+:GenTocGitLab
+</code></pre>
+</div>
+</body>
+
+</html>
 
 
     </div>

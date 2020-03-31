@@ -1,6 +1,49 @@
 # Ubuntu 琐事
 
-[TOC]
+<!-- vim-markdown-toc GFM -->
+
+* [Ubuntu系统盘瘦身](#ubuntu系统盘瘦身)
+	* [对于想要为系统盘瘦身的你的忠告](#对于想要为系统盘瘦身的你的忠告)
+	* [清除apt缓存](#清除apt缓存)
+	* [删除旧内核](#删除旧内核)
+	* [删除孤立的库](#删除孤立的库)
+	* [比较大的不常用Installed package](#比较大的不常用installed-package)
+	* [管理包](#管理包)
+	* [清除旧版本的snap applications](#清除旧版本的snap-applications)
+	* [清除缩略图](#清除缩略图)
+	* [清除残余配置文件](#清除残余配置文件)
+	* [按需清理日志](#按需清理日志)
+	* [更改apt-get下载地址](#更改apt-get下载地址)
+	* [更改docker image存储路径](#更改docker-image存储路径)
+* [perf安装的姿势](#perf安装的姿势)
+* [dpkg处理软件包报错](#dpkg处理软件包报错)
+* [Ubuntu源](#ubuntu源)
+	* [改国内源](#改国内源)
+	* [Hash Sum mismatch](#hash-sum-mismatch)
+* [Ubuntu亮度问题（16.04）](#ubuntu亮度问题1604)
+* [.crx插件的安装](#crx插件的安装)
+* [挂载硬盘的暗坑踩坑记录及正确姿势](#挂载硬盘的暗坑踩坑记录及正确姿势)
+	* [挂载硬盘的正确姿势](#挂载硬盘的正确姿势)
+			* [What's the difference between UUID and PARTUUID](#whats-the-difference-between-uuid-and-partuuid)
+* [代理姿势](#代理姿势)
+	* [tty代理(环境变量)](#tty代理环境变量)
+	* [apt-get代理](#apt-get代理)
+	* [Git代理](#git代理)
+	* [bp代理](#bp代理)
+* [N卡独显大坑](#n卡独显大坑)
+	* [显卡驱动自动安装/图形化界面更改显驱](#显卡驱动自动安装图形化界面更改显驱)
+	* [更新bios后的显示不正常](#更新bios后的显示不正常)
+	* [键盘延时？！](#键盘延时)
+	* [xrandr报错 和 display resolution](#xrandr报错-和-display-resolution)
+* [v2ray配置](#v2ray配置)
+* [Appimage报错](#appimage报错)
+	* [Cannot run due to existing symlinks in /tmp (FIXME)](#cannot-run-due-to-existing-symlinks-in-tmp-fixme)
+* [Lua包管理，luarocks](#lua包管理luarocks)
+* [burpsuite抓https包](#burpsuite抓https包)
+* [ubuntu播放mp4](#ubuntu播放mp4)
+* [Ubuntu下的Markdown编辑器和markdown-toc](#ubuntu下的markdown编辑器和markdown-toc)
+
+<!-- vim-markdown-toc -->
 
 ## Ubuntu系统盘瘦身
 
@@ -91,42 +134,43 @@ rc表示软件包已经删除，配置文件还在.
 
 ### 按需清理日志
 查看日志大小`du -h --max-depth=1 /var/log/*`
->***对一些log的说明***
-> *******
->  /var/log/alternatives.log-更新替代信息都记录在这个文件中
-> /var/log/apport.log -应用程序崩溃记录
-> /var/log/apt/   -用apt-get安装卸载软件的信息
-> /var/log/auth.log  -登录认证log
-> /var/log/boot.log  -包含系统启动时的日志。 /var/log/btmp    -记录所有失败启动信息
-> /var/log/Consolekit  - 记录控制台信息
-> /var/log/cpus     - 涉及所有打印信息的日志
-> /var/log/dist-upgrade  - dist-upgrade这种更新方式的信息
-> /var/log/dmesg    -包含内核缓冲信息（kernel ringbuffer）。在系统启动时，显示屏幕上的与硬件有关的信息
-> /var/log/dpkg.log   - 包括安装或dpkg命令清除软件包的日志。
-> /var/log/faillog    - 包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。
-> /var/log/fontconfig.log -与字体配置有关的log。
-> /var/log/fsck     - 文件系统日志
-> /var/log/faillog   -包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。
-> /var/log/hp/
-> /var/log/install/
-> /var/log/jokey.log
-> /var/log/kern.log –包含内核产生的日志，有助于在定制内核时解决问题。
-> /var/log/lastlog —记录所有用户的最近信息。这不是一个ASCII文件，因此需要用lastlog命令查看内容。
-> /var/log/faillog –包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。
-> /var/log/lightdm/
-> /var/log/mail/ – 这个子目录包含邮件服务器的额外日志。
-> /var/log/mail.err    -类似于上面的
-> /var/log/news/
-> /var/log/pm-powersave.log
-> /var/log/samba/ –包含由samba存储的信息。
-> /var/log/syss.log
-> /var/log/speech-dispacher/
-> /var/log/udev
-> /var/log/ufw.log
-> /var/log/upstart/
-> /var/log/uattended-upgrades/
-> /var/log/wtmp —包含登录信息。使用wtmp可以找出谁正在登陆进入系统，谁使用命令显示这个文件或信息等。
-> /var/log/xorg.*.log— 来自X的日志信息。
+
+***对一些log的说明***
+
+> /var/log/alternatives.log-更新替代信息都记录在这个文件中
+> <br>/var/log/apport.log -应用程序崩溃记录
+> <br>/var/log/apt/   -用apt-get安装卸载软件的信息
+> <br>/var/log/auth.log  -登录认证log
+> <br>/var/log/boot.log  -包含系统启动时的日志。 /var/log/btmp    -记录所有失败启动信息
+> <br>/var/log/Consolekit  - 记录控制台信息
+> <br>/var/log/cpus     - 涉及所有打印信息的日志
+> <br>/var/log/dist-upgrade  - dist-upgrade这种更新方式的信息
+> <br>/var/log/dmesg    -包含内核缓冲信息（kernel ringbuffer）。在系统启动时，显示屏幕上的与硬件有关的信息
+> <br>/var/log/dpkg.log   - 包括安装或dpkg命令清除软件包的日志。
+> <br>/var/log/faillog    - 包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。
+> <br>/var/log/fontconfig.log -与字体配置有关的log。
+> <br>/var/log/fsck     - 文件系统日志
+> <br>/var/log/faillog   -包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。
+> <br>/var/log/hp/
+> <br>/var/log/install/
+> <br>/var/log/jokey.log
+> <br>/var/log/kern.log –包含内核产生的日志，有助于在定制内核时解决问题。
+> <br>/var/log/lastlog —记录所有用户的最近信息。这不是一个ASCII文件，因此需要用lastlog命令查看内容。
+> <br>/var/log/faillog –包含用户登录失败信息。此外，错误登录命令也会记录在本文件中。
+> <br>/var/log/lightdm/
+> <br>/var/log/mail/ – 这个子目录包含邮件服务器的额外日志。
+> <br>/var/log/mail.err    -类似于上面的
+> <br>/var/log/news/
+> <br>/var/log/pm-powersave.log
+> <br>/var/log/samba/ –包含由samba存储的信息。
+> <br>/var/log/syss.log
+> <br>/var/log/speech-dispacher/
+> <br>/var/log/udev
+> <br>/var/log/ufw.log
+> <br>/var/log/upstart/
+> <br>/var/log/uattended-upgrades/
+> <br>/var/log/wtmp —包含登录信息。使用wtmp可以找出谁正在登陆进入系统，谁使用命令显示这个文件或信息等。
+> <br>/var/log/xorg.*.log— 来自X的日志信息。
 
 一般来说，公司的服务器之类的,syslog和kern.log比较大，可以这样清理
 ```
@@ -506,6 +550,43 @@ sudo apt install ubuntu-restricted-extras
 首先我用了韩国的haroopad,支持中文版和`[TOC]`,可以export到html和pdf,但是对中文字体的支持不好，那个字体看得难受。并且有只能显示一个mermaid Graph的bug。
 
 后来用了remarkable, 真是清爽。又轻量,界面又舒服，添加[markdown-toc](https://github.com/jonschlinkert/markdown-toc) 即可使用`[TOC]`，唯一美中不足的是，每次更新目录都要re-run markdown-toc
-
 在项目内安装markdown-toc ` npm install --save markdown-toc`
 每次运行 `npx markdown-toc README.md`
+但是问题是，没办法直接像haroopad那样直接复制有style的html(虽然写了这个功能，但复制的结果就是markdown格式的QAQ)
+
+所以最后还是vim吧，vim插件们不香么。
+
+1. 首先，添加实时预览 在`.vimrc`中添加plugin.(我用的包管理是vundle)
+
+```
+Plugin 'iamcco/mathjax-support-for-mkdp'
+Plugin 'iamcco/markdown-preview.vim'
+```
+
+然后在`.vimrc`的末尾添加预览的快捷键映射
+
+```
+nmap <silent> <F8> <Plug>MarkdownPreview        " for normal mode
+imap <silent> <F8> <Plug>MarkdownPreview        " for insert mode
+nmap <silent> <F9> <Plug>StopMarkdownPreview    " for normal mode
+imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
+```
+
+然后安装plugin们。
+
+意思是说，在普通模式下（n）和插入模式下（i），按下F8键就可以实时预览，按下F9键就可以停止预览。(用浏览器预览，很Nice)
+还挺好看的，不过也不支持[TOC]
+
+2. 接下来就添加生成TOC的plugin
+[vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)的详细说明
+
+在`.vimrc`中添加`Plugin 'mzlogin/vim-markdown-toc'`,然后install
+
+用法：把光标移动到想放的位置，然后键入
+
+```
+:GenTocGFM
+:GenTocRedcarpet
+:GenTocMarked
+:GenTocGitLab
+```
