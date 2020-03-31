@@ -21,7 +21,6 @@
 `sudo dpkg --get-selections  | grep linux-image` 查看已安装内核映像
 `uname -r`  查看当前内核版本
 `sudo apt-get purge linux-image-2.6.32-26-generic` 删除旧的内核映像，只保留当前版本
-结束，（根据提示）执行 `sudo apt autoremove`
 
 `sudo dpkg --get-selections  | grep linux-headers`  查看已有的头文件库
 `sudo apt-get purge linux-headers-2.6.28-19` 删除旧的头文件库
@@ -35,6 +34,7 @@
 完成 
 
 ### 删除孤立的库
+也挺危险的...
 `sudo deborphan | xargs sudo apt-get -y remove --purge`
 
 ### 比较大的不常用Installed package
@@ -498,3 +498,14 @@ You must install these packages below in order to play those videos. Run the com
 sudo apt install libdvdnav4 libdvdread4 gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly libdvd-pkg
 sudo apt install ubuntu-restricted-extras
 ```
+
+## Ubuntu下的Markdown编辑器和markdown-toc
+
+之前，在我还用atom的时候，安了markdown的插件就没再管过，但是atom太慢了。后来我写代码主要是用vim了,就想着再装一个markdown editor.
+
+首先我用了韩国的haroopad,支持中文版和`[TOC]`,可以export到html和pdf,但是对中文字体的支持不好，那个字体看得难受。并且有只能显示一个mermaid Graph的bug。
+
+后来用了remarkable, 真是清爽。又轻量,界面又舒服，添加[markdown-toc](https://github.com/jonschlinkert/markdown-toc) 即可使用`[TOC]`，唯一美中不足的是，每次更新目录都要re-run markdown-toc
+
+在项目内安装markdown-toc ` npm install --save markdown-toc`
+每次运行 `npx markdown-toc README.md`

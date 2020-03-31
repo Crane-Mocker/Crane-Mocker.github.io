@@ -216,3 +216,22 @@ RE:(5种)
 ![](img/lexical-analysis-pic10.png)
 
 ### NFA -> DFA: 子集构造算法
+
+`a(b|c)*`
+
+对应的NFA：
+![](img/lexical-analysis-pic11.png)
+
+要构造与其等价的**DFA**(不包括ε边)：
+
+
+> 1. n0 -(a)->n1</br> n0 -(a)->n1,n2,n3,n4,n6,n9 </br><font color="green">n0读入字符a，所能走到的所有节点。将其记为集合q1:{n1,n2,n3,n4,n6,n9}。由于读入a后，可以走到这些节点，所以把q1叫做一个边界。将n0记为q0.</font>
+>2. q1 -(b <font color="green">考虑q1中所有节点是否可以接受b</font>)->n5  <font color="blue">在原来的NFA上看接受一个字符b后能做到哪些节点，该操作记为delta(q)</font> </br> q1 -(b)-> q2:{n5,n8,n9,n3,n4,n6} <font color="blue">在进行了delta(q)操作后，对与每个元素求ε边界，该过程称为ε-闭包</font>
+>3. q2 -> {...}
+> <font color="green">由于原NFA中n9为接受状态，所以在新的DFA中，有n9的都是接受状态。</font>
+
+子集构造算法是**不动点算法(fixed point algorithm)**。
+时间复杂度最坏情况
+
+$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，行内公式示例} $
+
