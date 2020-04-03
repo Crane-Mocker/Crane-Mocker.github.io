@@ -1,6 +1,26 @@
 # 词法分析
 
-[TOC]
+
+<!-- vim-markdown-toc GitLab -->
+
+* [编译器阶段](#编译器阶段)
+* [词法分析器](#词法分析器)
+	* [从字符流到记号流](#从字符流到记号流)
+	* [记号的数据结构定义](#记号的数据结构定义)
+* [词法分析器的手工编码实现](#词法分析器的手工编码实现)
+	* [两种实现方法](#两种实现方法)
+	* [转移图](#转移图)
+* [词法分析器自动生成](#词法分析器自动生成)
+	* [正则表达式RE](#正则表达式re)
+	* [有限状态自动机FA](#有限状态自动机fa)
+	* [RE -> NFA: Thompson算法](#re-nfa-thompson算法)
+	* [NFA -> DFA: 子集构造算法](#nfa-dfa-子集构造算法)
+* [DFA的最小化: Hopcroft最小化算法](#dfa的最小化-hopcroft最小化算法)
+* [从DFA生成分析算法](#从dfa生成分析算法)
+	* [转移表](#转移表)
+	* [跳转表](#跳转表)
+
+<!-- vim-markdown-toc -->
 
 ## 编译器阶段
 
@@ -224,14 +244,198 @@ RE:(5种)
 
 要构造与其等价的**DFA**(不包括ε边)：
 
-
 > 1. n0 -(a)->n1</br> n0 -(a)->n1,n2,n3,n4,n6,n9 </br><font color="green">n0读入字符a，所能走到的所有节点。将其记为集合q1:{n1,n2,n3,n4,n6,n9}。由于读入a后，可以走到这些节点，所以把q1叫做一个边界。将n0记为q0.</font>
 >2. q1 -(b <font color="green">考虑q1中所有节点是否可以接受b</font>)->n5  <font color="blue">在原来的NFA上看接受一个字符b后能做到哪些节点，该操作记为delta(q)</font> </br> q1 -(b)-> q2:{n5,n8,n9,n3,n4,n6} <font color="blue">在进行了delta(q)操作后，对与每个元素求ε边界，该过程称为ε-闭包</font>
 >3. q2 -> {...}
 > <font color="green">由于原NFA中n9为接受状态，所以在新的DFA中，有n9的都是接受状态。</font>
 
 子集构造算法是**不动点算法(fixed point algorithm)**。
-时间复杂度最坏情况
+时间复杂度最坏情况 O(2^N),但是在实际中不常发生，因为并不是每个子集都会出现。
 
-$ J_\alpha(x) = \sum_{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha} \text {，行内公式示例} $
+-----
 
+ε-闭包的计算：基于**深度优先遍历**的算法(伪代码)
+经过delta转化之后达到边界，但是还要读入ε,找到ε边界。所有这些节点构成其ε闭包。    
+
+```cpp
+set closure = {}; //闭包，一开始是空集
+
+void eps_closure (x) //计算x的闭包
+	closure += {x} //把x元素并到集合中
+	forsearch (y : x--ε--> y) //对满足条件的y循环
+		if (!visited(y))
+			eps_closure (y) //递归地去计算y的闭包
+```
+
+基于宽度优先的算法
+
+```cpp
+set closure = {};
+Q = []; //queue
+void eps-closure (x) = 
+	Q = [x];
+	while (Q not empty)
+		q <- deQueue (Q)
+		closure += q
+		forsearch(y: q--ε--> y)
+			if (!visited(y))
+				enQueue(Q, y) //q的所有后继节点y如果没有访问过，入队
+```
+
+-----
+
+子集构造算法：工作表算法 结合例子a(b|c)*
+
+```cpp
+q0 <- eps-closure (n0) //  eps-closure()计算ε闭包
+	Q <- {q0} //Q是DFA中所有的状态机
+	workList <- q0 //Queue
+	while (workList != [])
+		remove q from workList //从workList中取出q
+		foreach (character c) //对每一个字符c都要讨论e.g.若是ascii,则循环256遍
+			t <- eps-closure (delta(q, c)) //先作delta转换，然后计算其e-closure
+			D[q, c] <- t //D[]标记DFA中的状态转换，由q读入字符c到达t
+			if (t not in Q)
+				add t to Q and workList
+```
+
+## DFA的最小化: Hopcroft最小化算法
+
+对于DFA的各种状态，有的状态可以相互合并。状态和边越少，占用的计算资源越少。
+
+```cpp
+//基于等价类的思想
+split(S)
+    foreach(character c)
+        if(c can split s)
+            split s into T1, ..., Tk
+
+hopcroft()
+    split all nodes into N, A
+    while(set is still changes)
+        split(s)
+```
+Hopsroft 算法先根据非终结状态与非终结状态将所有的节点分为 N 和 A 两大类。 N 为非终结状态，A 为终结状态，之后再对每一组运用基于等价类实现的切割算法。不断切割，直到不能切割。
+
+![](img/lexical-analysis-pic12.jpg)
+
+q1,q2,q3 都有对状态 a 的转移，但是 q1 和 q2 转移到了同样的一个状态 S2, q3 转移到了 S3。所以 q1,q2 可以看做一组，因为它们对 a 的行为是一致的，都到了 S2。q3 单独一组。所以 a 这个字符将 S1 切为了两个子集。这就是等价类的思想。
+
+例子
+对于其DFA
+
+![](img/lexical-analysis-pic13.png)
+N是q0,A是{q1,q2,q3}
+在A中，字符b,c的状态转移，每个节点最后得到的都还是A这个状态，无法对q1,q2,q3进行区分。所以就将这三个节点融合为一个新的节点q4。
+
+![](img/lexical-analysis-pic14.jpg)
+
+例子
+![](img/lexical-analysis-pic15.jpg)
+1. N:{q0,q1,q2,q4}
+A:{q3,q5}
+2. 在N中q0和q1 在接受字符的条件下最终得到的状态还是在 N 的内部，但是q2和q4接受e的条件下得到的状态是A。所以可以将其根据e拆分成{q0,q1},{q2,q4},{q3,q5}
+3. 对于q2和q4都可以接受e，而且最终达到的状态一致，所以不能再进行切分
+4. q0和q1，在接受字符后q0最终得到还是在 {q0,q1} 这个状态的集合中，q1 却会落在{q2,q4}中，所以可以将 q0 和 q1 分为 {q0},{q1}。
+
+综上
+
+![](img/lexical-analysis-pic16.jpg)
+
+## 从DFA生成分析算法
+
+### 转移表
+
+DFA是一个有向图，可以用转移表，哈希表，跳转表等方式表示。
+
+如对于` a(b|c)*`最小化后的DFA
+![](img/lexical-analysis-pic17.jpg)
+
+可以将它编码成表
+
+|状态\接受字符|a|b|c|
+|----|----|----|----|
+|0|1|||
+|1||1|1|
+
+该表的实现为
+
+```cpp
+char table[M][N];
+
+table[0]['a'] = 1;
+table[1]['b'] = 1;
+table[1]['c'] = 1;
+//other table entries
+//are ERROR
+```
+
+驱动代码
+
+```cpp
+nextToken()
+    state = 0 //最初，为起始状态0
+    stack = [] //栈为空
+
+	//不断地寻找最长的匹配字符串
+	while(state != ERROR) //在上面的表格中表示不为空
+        c = getChar()
+        if(state is ACCEPT)  // 接受状态,q1； 表格中表示为状态1，有（1,b）, (1,c)
+            clear(stack) //若是接受状态，清空栈
+        push(state) //当前状态压栈
+        state = table[state][c] //当前状态更新为接受字符后的状态
+    
+	//实现在下一个终结状态匹配失败的时候能够实现回滚到上一各终结状态，实现捕捉到能够匹配的最长字符串。
+	while(state is not ACCEPT)
+        state = pop()
+        rollback()
+```
+
+-----
+
+**最长匹配**
+
+对于一个给定的字符串，默认寻找最长的匹配字符串。
+
+例如某语言中有关键字是其他关键字的前缀, if和ifif
+这里两个接受f后的状态都是终结状态，对于字符串ifif来说，要匹配到接受第二个f的终结状态。
+
+例如，对于ifii，会在第四个字符匹配出现ERROE，退出第一个循环，进入第二个循环进行回滚操作，最终匹配为if。
+
+------
+
+### 跳转表
+
+![](img/lexical-analysis-pic17.jpg)
+
+|状态\接受字符|a|b|c|
+|----|----|----|----|
+|0|1|||
+|1||1|1|
+
+(依旧是这个表)
+
+构建代码
+
+```cpp
+nextToken()
+    state = 0
+    stack = []
+    goto q0
+q0:
+    c = getChar()
+    if(state is ACCEPT)
+        clear(stack)
+    push(state)
+    if(c == 'a')
+        goto q1
+q1:
+    c = getChar()
+    if(state id ACCEPT)
+        clear(stack)
+    push(state)
+    if(c == 'b' || c == 'c')
+        goto q1
+```
+
+跳转表指定了转换的字符，可以提高转移的效率

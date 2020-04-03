@@ -42,6 +42,8 @@
 * [burpsuite抓https包](#burpsuite抓https包)
 * [ubuntu播放mp4](#ubuntu播放mp4)
 * [Ubuntu下的Markdown编辑器和markdown-toc](#ubuntu下的markdown编辑器和markdown-toc)
+* [vbox中虚拟机使用宿主机代理](#vbox中虚拟机使用宿主机代理)
+* [https://blog.csdn.net/bytxl/article/details/35569217](#httpsblogcsdnnetbytxlarticledetails35569217)
 
 <!-- vim-markdown-toc -->
 
@@ -590,3 +592,24 @@ imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
 :GenTocMarked
 :GenTocGitLab
 ```
+
+## vbox中虚拟机使用宿主机代理
+
+------
+参考：
+
+https://www.cnblogs.com/sakam0to/p/10627524.html
+
+https://blog.csdn.net/bytxl/article/details/35569217
+------
+
+VB默认使用NAT(Network Address Translation),它允许一个整体机构以一个公用IP地址出现在Internet上。
+这时，VB为电脑安装虚拟网卡，虚拟机的网络请求发到这个网卡上，再通过宿主机的真是网卡连上网络。不经过宿主机的代理。
+
+所以要将虚拟机设置为使用桥接模式，使宿主机作为网桥。
+
+vbox>>要改的虚拟机>>设置>>网络>>连接方式>>桥接网卡
+
+可能需要手动分配IPV4地址给虚拟机。
+
+然后设置虚拟机代理即可。(同时我在想，如果宿主机是使用mellow这样的透明代理，是不是直接选桥接模式就可以了呢？没有验证过，如果以后用mellow的话可以试一试)

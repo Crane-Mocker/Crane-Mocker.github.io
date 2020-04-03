@@ -13,6 +13,10 @@
   <link rel="icon" href="img/c0conut-small.ico" type="image/x-icon">
   <link rel="shortcut ico" href="img/c0conut-small.ico" type="image/x-icon">
 
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
@@ -73,8 +77,393 @@
   <!-- Post Content -->
   <article>
     <div class="container"> 
+
+
+  <div class="stackedit__html"><h1 id="词法分析">词法分析</h1>
+<!-- vim-markdown-toc GitLab -->
+<ul>
+<li><a href="#%E7%BC%96%E8%AF%91%E5%99%A8%E9%98%B6%E6%AE%B5">编译器阶段</a></li>
+<li><a href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8">词法分析器</a>
+<ul>
+<li><a href="#%E4%BB%8E%E5%AD%97%E7%AC%A6%E6%B5%81%E5%88%B0%E8%AE%B0%E5%8F%B7%E6%B5%81">从字符流到记号流</a></li>
+<li><a href="#%E8%AE%B0%E5%8F%B7%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%AE%9A%E4%B9%89">记号的数据结构定义</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8%E7%9A%84%E6%89%8B%E5%B7%A5%E7%BC%96%E7%A0%81%E5%AE%9E%E7%8E%B0">词法分析器的手工编码实现</a>
+<ul>
+<li><a href="#%E4%B8%A4%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95">两种实现方法</a></li>
+<li><a href="#%E8%BD%AC%E7%A7%BB%E5%9B%BE">转移图</a></li>
+</ul>
+</li>
+<li><a href="#%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90%E5%99%A8%E8%87%AA%E5%8A%A8%E7%94%9F%E6%88%90">词法分析器自动生成</a>
+<ul>
+<li><a href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8Fre">正则表达式RE</a></li>
+<li><a href="#%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BAfa">有限状态自动机FA</a></li>
+<li><a href="#re-nfa-thompson%E7%AE%97%E6%B3%95">RE -&gt; NFA: Thompson算法</a></li>
+<li><a href="#nfa-dfa-%E5%AD%90%E9%9B%86%E6%9E%84%E9%80%A0%E7%AE%97%E6%B3%95">NFA -&gt; DFA: 子集构造算法</a></li>
+</ul>
+</li>
+<li><a href="#dfa%E7%9A%84%E6%9C%80%E5%B0%8F%E5%8C%96-hopcroft%E6%9C%80%E5%B0%8F%E5%8C%96%E7%AE%97%E6%B3%95">DFA的最小化: Hopcroft最小化算法</a></li>
+<li><a href="#%E4%BB%8Edfa%E7%94%9F%E6%88%90%E5%88%86%E6%9E%90%E7%AE%97%E6%B3%95">从DFA生成分析算法</a>
+<ul>
+<li><a href="#%E8%BD%AC%E7%A7%BB%E8%A1%A8">转移表</a></li>
+<li><a href="#%E8%B7%B3%E8%BD%AC%E8%A1%A8">跳转表</a></li>
+</ul>
+</li>
+</ul>
+<!-- vim-markdown-toc -->
+<h2 id="编译器阶段">编译器阶段</h2>
+<p><img src="img/lexical-analysis-pic0.png" alt=""></p>
+<p>前端：<br>
+<img src="img/lexical-analysis-pic1.png" alt=""></p>
+<h2 id="词法分析器">词法分析器</h2>
+<h3 id="从字符流到记号流">从字符流到记号流</h3>
+<p>一段c源程序如下</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">if</span> <span class="token punctuation">(</span>x <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment">//这里有\n回车</span>
+	y <span class="token operator">=</span> <span class="token string">"hello"</span><span class="token punctuation">;</span>
+<span class="token keyword">else</span>
+	z <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">//EOF</span>
+</code></pre>
+<p>词法分析器将这段c源程序切分为一个个单词，空格被扔掉。<br>
+这里，字符串<code>"hello"</code>作为一个整体，两个引号和hello不会被切分。<br>
+切分之后得到记号/单词流</p>
+<pre class=" language-bash"><code class="prism  language-bash"><span class="token keyword">if</span> lparen ident<span class="token punctuation">(</span>x<span class="token punctuation">)</span> gt int<span class="token punctuation">(</span>5<span class="token punctuation">)</span> rparen
+	ident<span class="token punctuation">(</span>y<span class="token punctuation">)</span> assign string<span class="token punctuation">(</span><span class="token string">"hello"</span><span class="token punctuation">)</span> semicolon
+<span class="token keyword">else</span>
+	ident<span class="token punctuation">(</span>z<span class="token punctuation">)</span> assign int<span class="token punctuation">(</span>1<span class="token punctuation">)</span> semicolon eof
+</code></pre>
+<p>从字符流到记号流有两个重要问题要解决：</p>
+<ol>
+<li>记号数据结构的定义</li>
+<li>字符流转化为记号流的算法</li>
+</ol>
+<h3 id="记号的数据结构定义">记号的数据结构定义</h3>
+<p>如用C实现</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">enum</span> kind <span class="token punctuation">{</span>IF<span class="token punctuation">,</span> LPAREN<span class="token punctuation">,</span> ID<span class="token punctuation">,</span> INTLIT<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//一个名为kind的枚举类型</span>
+<span class="token comment">//从IF开始，所有类型的值被编码为一个整型数0,1,2,3...是对词法分析器所能实现的所有类型的值的分类</span>
+<span class="token keyword">struct</span> token<span class="token punctuation">{</span>
+	<span class="token keyword">enum</span> kind k<span class="token punctuation">;</span>
+	<span class="token keyword">char</span> <span class="token operator">*</span>lexeme<span class="token punctuation">;</span> <span class="token comment">//所识别出的单词的具体的值,如果为0代表未赋任何值</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+</code></pre>
+<p>例如, <code>if (x &gt; 5)</code>,所对应的token的伪代码是</p>
+<pre class=" language-cpp"><code class="prism  language-cpp">token<span class="token punctuation">{</span>k<span class="token operator">=</span>IF<span class="token punctuation">,</span> lexeme<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+token<span class="token punctuation">{</span>k<span class="token operator">=</span>LPAREN<span class="token punctuation">,</span> lexeme<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+token<span class="token punctuation">{</span>k<span class="token operator">=</span>ID<span class="token punctuation">,</span> lexeme<span class="token operator">=</span><span class="token string">"x"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+</code></pre>
+<h2 id="词法分析器的手工编码实现">词法分析器的手工编码实现</h2>
+<h3 id="两种实现方法">两种实现方法</h3>
+<ol>
+<li>手工编码 (gcc, LLVM …)</li>
+<li>词法分析器的生成器(可快速原型, 代码量较少； 但较难控制细节)</li>
+</ol>
+<h3 id="转移图">转移图</h3>
+<p>如有关系运算符: &lt;=, &lt;&gt;, &lt;, =, &gt;=, &gt;<br>
+数字n代表n号状态，*代表字符回滚<br>
+<img src="img/lexical-analysis-pic2.png" alt=""></p>
+<p>转移图算法如下</p>
+<pre class=" language-cpp"><code class="prism  language-cpp">token <span class="token function">nextToke</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	c <span class="token operator">=</span> <span class="token function">getChar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">switch</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">case</span> <span class="token string">'&lt;'</span> <span class="token operator">:</span> <span class="token punctuation">{</span>
+			c <span class="token operator">=</span> <span class="token function">getChar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token keyword">switch</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span><span class="token punctuation">{</span>
+				<span class="token keyword">case</span> <span class="token string">'='</span> <span class="token operator">:</span> <span class="token keyword">return</span> LE<span class="token punctuation">;</span>
+				<span class="token keyword">case</span> <span class="token string">'&gt;'</span> <span class="token operator">:</span> <span class="token keyword">return</span> NE<span class="token punctuation">;</span>
+				<span class="token keyword">default</span> <span class="token operator">:</span> <span class="token punctuation">{</span><span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">return</span> LT<span class="token punctuation">;</span><span class="token punctuation">}</span>
+			<span class="token punctuation">}</span>
+			<span class="token keyword">case</span> <span class="token string">'='</span> <span class="token operator">:</span> <span class="token keyword">return</span> EQ<span class="token punctuation">;</span>
+			<span class="token keyword">case</span> <span class="token string">'&gt;'</span> <span class="token operator">:</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token comment">//similar</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>标识符(ID)的转移图/算法类似<br>
+<img src="img/lexical-analysis-pic3.png" alt=""></p>
+<hr>
+<p>标识符和关键字？<br>
+很多语言中，标识符和关键字有交集。从词法分析的角度看，关键字是标识符的一部分。</p>
+<p>如，以c语言为例，关键字也满足标识符的词法规则<font color="grey">以字母或下划线开头，后跟0个或多个字母，下划线或数字</font>。<br>
+所以，识别关键字可以在识别标识符的基础上增添特殊情况。<br>
+<img src="img/lexical-analysis-pic4.png" alt=""></p>
+<p>关键字识别还有一种算法：关键字表算法</p>
+<ol>
+<li>对给定语言中所有的关键字，构造关键字构成的哈希表H <font color="grey">关键字是有限的，确定的</font></li>
+<li>对所有的标识符和关键字，先按统一标识符的转移图进行识别</li>
+<li>识别完成后，进一步查表H看是否是关键字</li>
+</ol>
+<p>哈希表的作用是，让查表操作快速完成。通过合理地构造哈希表(完美哈希)，可以在O(1)时间完成。</p>
+<hr>
+<h2 id="词法分析器自动生成">词法分析器自动生成</h2>
+<p>声明式的规范 -&gt; 自动生成工具(如lex, flex, jlex) -&gt; 词法分析器</p>
+<p>这样，就把写代码的工作化简为写声明式的规范，即正则表达式。</p>
+<h3 id="正则表达式re">正则表达式RE</h3>
+<p>定义：<br>
+<img src="img/lexical-analysis-pic5.png" alt=""><br>
+字符集取决于要编译的语言，如c语言，字符集为ascii; java, 字符集为unicode.<br>
+闭包(Kleene 闭包)是一元算符，MM用了连接。</p>
+<p>例子：用正则表达式表示c语言中的标识符<br>
+<code>(a|b|c|...|A|B|...|Z|_)(a|b|c|...|A|B|...|Z|_|0|1|...|9)*</code></p>
+<hr>
+<p><strong>语法糖 Syntactic sugar</strong><br>
+引入<em>语法糖</em>，简化构造</p>
+<pre><code>[c1-cn] == c1|c2|...|cn
+e+ == 一个或多个e
+e? == 零个或一个e
+"a*" == a*自身，不是a的Kleen闭包
+e{i,j} == i到j个e的连接
+. == 除'\n'外的任意字符
+
+实际上，所有的运算都可用**赋值**和**跳转**完成(汇编)。高级语言的语法实际上都是语法糖。是对这两种运算的不同封装，以方便代码的开发和维护。
+</code></pre>
+<hr>
+<h3 id="有限状态自动机fa">有限状态自动机FA</h3>
+<p>用来描述生成的状态。</p>
+<p>输入的字符串 -&gt; FA -&gt; {Yes, No}<br>
+是否能识别输入的字符串，若能，输出Yes; 否则，输出No</p>
+<p>可用五元组M描述有限状态自动机FA<br>
+<img src="img/lexical-analysis-pic6.png" alt=""><br>
+字母表是能识别的字符的集合。<br>
+状态集指有FA的状态。<br>
+转移函数描述了自动机在给定串的驱动下是如何工作的。(wiki: 转移函数是用来拟合或描述黑箱模型（系统）的输入与输出之间关系的数学表示。)</p>
+<p>一个确定有限状态自动机<strong>DFA</strong>(<font color="green">对所有状态，对于给定字符，状态转移是单元素的集合</font>)的例子<br>
+<img src="img/lexical-analysis-pic7.png" alt=""></p>
+<p>Σ = {a, b}<br>
+S = {0, 1, 2}<br>
+q0 = 0 <font color="green">起始状态，图上有单项箭头指向的状态</font><br>
+F =  {2} <font color="green">终结/接受状态，是集合，图上有双圈的状态</font></p>
+<p>转移函数：</p>
+<pre><code>{(q0,a)-&gt;q1, (q0,b)-&gt;q0,
+(q1,a)-&gt;q2, (q1,b)-&gt;q1,
+(q2,a)-&gt;q2,(q2,b)-&gt;q2}
+</code></pre>
+<p>一个非确定有限状态自动机的例子<strong>NFA</strong><br>
+<img src="img/lexical-analysis-pic8.png" alt=""><br>
+转移函数：</p>
+<pre><code>{(q0,a)-&gt;{q0,q1},
+(q0,b)-&gt;{q1},
+(q1,b)-&gt;{q0,q1}}
+</code></pre>
+<p>对于NFA来说，对于给定的串，只要某一中走法能到终结状态，就说该串能被<strong>接受</strong>。<br>
+所以在NFA上是否能接受，需要遍历的过程。所以，经常把NFA转化为与其等价的DFA，方便判断。<br>
+词法分析器是DFA</p>
+<p>RE -(Thompson算法)-&gt; NFA -(子集构造算法)-&gt; DFA -(Hopcroft最小优化算法)-&gt; 词法分析器代码</p>
+<h3 id="re---nfa-thompson算法">RE -&gt; NFA: Thompson算法</h3>
+<p><strong>Thompson算法</strong></p>
+<p>Thompson算法是基于归纳的算法：</p>
+<ul>
+<li>对于基本的RE(2种)直接构造</li>
+<li>对于符合的RE(3种)递归构造</li>
+</ul>
+<p>RE:(5种)</p>
+<pre><code>(1) e -&gt; ε
+(2) -&gt; c
+(3) -&gt; e1 e2
+(4) -&gt; e1 | e2
+(5) -&gt; e1*
+</code></pre>
+<p><img src="img/lexical-analysis-pic9.png" alt=""></p>
+<p>例子：<code>((ab)|c)*</code></p>
+<p><img src="img/lexical-analysis-pic10.png" alt=""></p>
+<h3 id="nfa---dfa-子集构造算法">NFA -&gt; DFA: 子集构造算法</h3>
+<p><code>a(b|c)*</code></p>
+<p>对应的NFA：<br>
+<img src="img/lexical-analysis-pic11.png" alt=""></p>
+<p>要构造与其等价的<strong>DFA</strong>(不包括ε边)：</p>
+<blockquote>
+<ol>
+<li>n0 -(a)-&gt;n1 n0 -(a)-&gt;n1,n2,n3,n4,n6,n9 <font color="green">n0读入字符a，所能走到的所有节点。将其记为集合q1:{n1,n2,n3,n4,n6,n9}。由于读入a后，可以走到这些节点，所以把q1叫做一个边界。将n0记为q0.</font></li>
+<li>q1 -(b <font color="green">考虑q1中所有节点是否可以接受b</font>)-&gt;n5  <font color="blue">在原来的NFA上看接受一个字符b后能做到哪些节点，该操作记为delta(q)</font>  q1 -(b)-&gt; q2:{n5,n8,n9,n3,n4,n6} <font color="blue">在进行了delta(q)操作后，对与每个元素求ε边界，该过程称为ε-闭包</font></li>
+<li>q2 -&gt; {…}<br>
+<font color="green">由于原NFA中n9为接受状态，所以在新的DFA中，有n9的都是接受状态。</font></li>
+</ol>
+</blockquote>
+<p>子集构造算法是<strong>不动点算法(fixed point algorithm)</strong>。<br>
+时间复杂度最坏情况 O(2^N),但是在实际中不常发生，因为并不是每个子集都会出现。</p>
+<hr>
+<p>ε-闭包的计算：基于<strong>深度优先遍历</strong>的算法(伪代码)<br>
+经过delta转化之后达到边界，但是还要读入ε,找到ε边界。所有这些节点构成其ε闭包。</p>
+<pre class=" language-cpp"><code class="prism  language-cpp">set closure <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">//闭包，一开始是空集</span>
+
+<span class="token keyword">void</span> <span class="token function">eps_closure</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token comment">//计算x的闭包</span>
+	closure <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">{</span>x<span class="token punctuation">}</span> <span class="token comment">//把x元素并到集合中</span>
+	<span class="token function">forsearch</span> <span class="token punctuation">(</span>y <span class="token operator">:</span> x<span class="token operator">--</span>ε<span class="token operator">--</span><span class="token operator">&gt;</span> y<span class="token punctuation">)</span> <span class="token comment">//对满足条件的y循环</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">visited</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span>
+			<span class="token function">eps_closure</span> <span class="token punctuation">(</span>y<span class="token punctuation">)</span> <span class="token comment">//递归地去计算y的闭包</span>
+</code></pre>
+<p>基于宽度优先的算法</p>
+<pre class=" language-cpp"><code class="prism  language-cpp">set closure <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+Q <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">//queue</span>
+<span class="token keyword">void</span> eps<span class="token operator">-</span><span class="token function">closure</span> <span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">=</span> 
+	Q <span class="token operator">=</span> <span class="token punctuation">[</span>x<span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>Q <span class="token operator">not</span> empty<span class="token punctuation">)</span>
+		q <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token function">deQueue</span> <span class="token punctuation">(</span>Q<span class="token punctuation">)</span>
+		closure <span class="token operator">+</span><span class="token operator">=</span> q
+		<span class="token function">forsearch</span><span class="token punctuation">(</span>y<span class="token operator">:</span> q<span class="token operator">--</span>ε<span class="token operator">--</span><span class="token operator">&gt;</span> y<span class="token punctuation">)</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">visited</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span>
+				<span class="token function">enQueue</span><span class="token punctuation">(</span>Q<span class="token punctuation">,</span> y<span class="token punctuation">)</span> <span class="token comment">//q的所有后继节点y如果没有访问过，入队</span>
+</code></pre>
+<hr>
+<p>子集构造算法：工作表算法 结合例子a(b|c)*</p>
+<pre class=" language-cpp"><code class="prism  language-cpp">q0 <span class="token operator">&lt;</span><span class="token operator">-</span> eps<span class="token operator">-</span><span class="token function">closure</span> <span class="token punctuation">(</span>n0<span class="token punctuation">)</span> <span class="token comment">//  eps-closure()计算ε闭包</span>
+	Q <span class="token operator">&lt;</span><span class="token operator">-</span> <span class="token punctuation">{</span>q0<span class="token punctuation">}</span> <span class="token comment">//Q是DFA中所有的状态机</span>
+	workList <span class="token operator">&lt;</span><span class="token operator">-</span> q0 <span class="token comment">//Queue</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>workList <span class="token operator">!=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+		remove q from workList <span class="token comment">//从workList中取出q</span>
+		<span class="token function">foreach</span> <span class="token punctuation">(</span>character c<span class="token punctuation">)</span> <span class="token comment">//对每一个字符c都要讨论e.g.若是ascii,则循环256遍</span>
+			t <span class="token operator">&lt;</span><span class="token operator">-</span> eps<span class="token operator">-</span><span class="token function">closure</span> <span class="token punctuation">(</span><span class="token function">delta</span><span class="token punctuation">(</span>q<span class="token punctuation">,</span> c<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//先作delta转换，然后计算其e-closure</span>
+			D<span class="token punctuation">[</span>q<span class="token punctuation">,</span> c<span class="token punctuation">]</span> <span class="token operator">&lt;</span><span class="token operator">-</span> t <span class="token comment">//D[]标记DFA中的状态转换，由q读入字符c到达t</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token operator">not</span> in Q<span class="token punctuation">)</span>
+				add t to Q <span class="token operator">and</span> workList
+</code></pre>
+<h2 id="dfa的最小化-hopcroft最小化算法">DFA的最小化: Hopcroft最小化算法</h2>
+<p>对于DFA的各种状态，有的状态可以相互合并。状态和边越少，占用的计算资源越少。</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token comment">//基于等价类的思想</span>
+<span class="token function">split</span><span class="token punctuation">(</span>S<span class="token punctuation">)</span>
+    <span class="token function">foreach</span><span class="token punctuation">(</span>character c<span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>c can split s<span class="token punctuation">)</span>
+            split s into T1<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> Tk
+
+<span class="token function">hopcroft</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    split all nodes into N<span class="token punctuation">,</span> A
+    <span class="token keyword">while</span><span class="token punctuation">(</span>set is still changes<span class="token punctuation">)</span>
+        <span class="token function">split</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
+</code></pre>
+<p>Hopsroft 算法先根据非终结状态与非终结状态将所有的节点分为 N 和 A 两大类。 N 为非终结状态，A 为终结状态，之后再对每一组运用基于等价类实现的切割算法。不断切割，直到不能切割。</p>
+<p><img src="img/lexical-analysis-pic12.jpg" alt=""></p>
+<p>q1,q2,q3 都有对状态 a 的转移，但是 q1 和 q2 转移到了同样的一个状态 S2, q3 转移到了 S3。所以 q1,q2 可以看做一组，因为它们对 a 的行为是一致的，都到了 S2。q3 单独一组。所以 a 这个字符将 S1 切为了两个子集。这就是等价类的思想。</p>
+<p>例子<br>
+对于其DFA</p>
+<p><img src="img/lexical-analysis-pic13.png" alt=""><br>
+N是q0,A是{q1,q2,q3}<br>
+在A中，字符b,c的状态转移，每个节点最后得到的都还是A这个状态，无法对q1,q2,q3进行区分。所以就将这三个节点融合为一个新的节点q4。</p>
+<p><img src="img/lexical-analysis-pic14.jpg" alt=""></p>
+<p>例子<br>
+<img src="img/lexical-analysis-pic15.jpg" alt=""></p>
+<ol>
+<li>N:{q0,q1,q2,q4}<br>
+A:{q3,q5}</li>
+<li>在N中q0和q1 在接受字符的条件下最终得到的状态还是在 N 的内部，但是q2和q4接受e的条件下得到的状态是A。所以可以将其根据e拆分成{q0,q1},{q2,q4},{q3,q5}</li>
+<li>对于q2和q4都可以接受e，而且最终达到的状态一致，所以不能再进行切分</li>
+<li>q0和q1，在接受字符后q0最终得到还是在 {q0,q1} 这个状态的集合中，q1 却会落在{q2,q4}中，所以可以将 q0 和 q1 分为 {q0},{q1}。</li>
+</ol>
+<p>综上</p>
+<p><img src="img/lexical-analysis-pic16.jpg" alt=""></p>
+<h2 id="从dfa生成分析算法">从DFA生成分析算法</h2>
+<h3 id="转移表">转移表</h3>
+<p>DFA是一个有向图，可以用转移表，哈希表，跳转表等方式表示。</p>
+<p>如对于<code>a(b|c)*</code>最小化后的DFA<br>
+<img src="img/lexical-analysis-pic17.jpg" alt=""></p>
+<p>可以将它编码成表</p>
+
+<table>
+<thead>
+<tr>
+<th>状态\接受字符</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table><p>该表的实现为</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">char</span> table<span class="token punctuation">[</span>M<span class="token punctuation">]</span><span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+table<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+table<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'b'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+table<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'c'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token comment">//other table entries</span>
+<span class="token comment">//are ERROR</span>
+</code></pre>
+<p>驱动代码</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token function">nextToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    state <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment">//最初，为起始状态0</span>
+    stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token comment">//栈为空</span>
+
+	<span class="token comment">//不断地寻找最长的匹配字符串</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span>state <span class="token operator">!=</span> ERROR<span class="token punctuation">)</span> <span class="token comment">//在上面的表格中表示不为空</span>
+        c <span class="token operator">=</span> <span class="token function">getChar</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>state is ACCEPT<span class="token punctuation">)</span>  <span class="token comment">// 接受状态,q1； 表格中表示为状态1，有（1,b）, (1,c)</span>
+            <span class="token function">clear</span><span class="token punctuation">(</span>stack<span class="token punctuation">)</span> <span class="token comment">//若是接受状态，清空栈</span>
+        <span class="token function">push</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token comment">//当前状态压栈</span>
+        state <span class="token operator">=</span> table<span class="token punctuation">[</span>state<span class="token punctuation">]</span><span class="token punctuation">[</span>c<span class="token punctuation">]</span> <span class="token comment">//当前状态更新为接受字符后的状态</span>
     
-<!-- Post content here -->
+	<span class="token comment">//实现在下一个终结状态匹配失败的时候能够实现回滚到上一各终结状态，实现捕捉到能够匹配的最长字符串。</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span>state is <span class="token operator">not</span> ACCEPT<span class="token punctuation">)</span>
+        state <span class="token operator">=</span> <span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token function">rollback</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
+<hr>
+<p><strong>最长匹配</strong></p>
+<p>对于一个给定的字符串，默认寻找最长的匹配字符串。</p>
+<p>例如某语言中有关键字是其他关键字的前缀, if和ifif<br>
+这里两个接受f后的状态都是终结状态，对于字符串ifif来说，要匹配到接受第二个f的终结状态。</p>
+<p>例如，对于ifii，会在第四个字符匹配出现ERROE，退出第一个循环，进入第二个循环进行回滚操作，最终匹配为if。</p>
+<hr>
+<h3 id="跳转表">跳转表</h3>
+<p><img src="img/lexical-analysis-pic17.jpg" alt=""></p>
+
+<table>
+<thead>
+<tr>
+<th>状态\接受字符</th>
+<th>a</th>
+<th>b</th>
+<th>c</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>1</td>
+<td></td>
+<td>1</td>
+<td>1</td>
+</tr>
+</tbody>
+</table><p>(依旧是这个表)</p>
+<p>构建代码</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token function">nextToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    state <span class="token operator">=</span> <span class="token number">0</span>
+    stack <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">goto</span> q0
+q0<span class="token operator">:</span>
+    c <span class="token operator">=</span> <span class="token function">getChar</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>state is ACCEPT<span class="token punctuation">)</span>
+        <span class="token function">clear</span><span class="token punctuation">(</span>stack<span class="token punctuation">)</span>
+    <span class="token function">push</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">'a'</span><span class="token punctuation">)</span>
+        <span class="token keyword">goto</span> q1
+q1<span class="token operator">:</span>
+    c <span class="token operator">=</span> <span class="token function">getChar</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>state id ACCEPT<span class="token punctuation">)</span>
+        <span class="token function">clear</span><span class="token punctuation">(</span>stack<span class="token punctuation">)</span>
+    <span class="token function">push</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">'b'</span> <span class="token operator">||</span> c <span class="token operator">==</span> <span class="token string">'c'</span><span class="token punctuation">)</span>
+        <span class="token keyword">goto</span> q1
+</code></pre>
+<p>跳转表指定了转换的字符，可以提高转移的效率</p>
+
 
 	</div>
   </article>
