@@ -1,11 +1,23 @@
 # TCP/IP
 
-[TOC]
+
+<!-- vim-markdown-toc GitLab -->
+
+* [Reference](#reference)
+* [Acknowledgements](#acknowledgements)
+* [Basic concepts](#basic-concepts)
+* [Centralized systems and distributed systems](#centralized-systems-and-distributed-systems)
+
+<!-- vim-markdown-toc -->
 
 ## Reference
 
 *TCP/IP Clearly Explained* by <font color="red">Pete Loshin</font>
 *TCP/IP Illustrated Volume 1, Second Edition, The Protocols (Chinese version)* by <font color="red">Kevin R. Fall, W. Richard Stevens</font>
+
+## Acknowledgements
+
+Prof.Li Chenliang gives me useful suggestions on understanding some certain words and sentences.
 
 ## Basic concepts
 
@@ -62,3 +74,8 @@ A router usually operates only on network data, the data's destination, without 
 
 Application gateway: A system that translates data from one application into a form that will make it accessible to another application.
 <font color="grey">A gateway translates network data into a form that will be usable at its destination.</font>
+
+## Centralized systems and distributed systems
+
+**Centralized systems** tend to work well with small-scaled network. But they are susceptible(易受影响的) to dramatic failures. The reason is simple: if a single node provides an indispensable(不可缺少的) service, effecting this node means effecting the entire network. 
+And everytime a node changes, it must be communicated to the centralized name and adress servers. Any single system has to handle millions of concurrent requests. So the centralized systems tend to generate a lot of traffic, they use a significant protion of available bandwidth to carry requests for up-to-date information, and all the extra network traffic they generate tends to slow down all the network performance. By the way, requests and responses to and from remote nodes must travel long distances to get to the centralized server, which means as the number of nodes increases the proportion of time(时间占比) that the centralized system is out of sync with the actual internet also increases.

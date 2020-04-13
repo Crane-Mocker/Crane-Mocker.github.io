@@ -12,6 +12,7 @@
 
   <link rel="icon" href="img/c0conut-small.ico" type="image/x-icon">
   <link rel="shortcut ico" href="img/c0conut-small.ico" type="image/x-icon">
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
 
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -74,18 +75,7 @@
   <article>
     <div class="container"> 
 
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome file</title>
-  <link rel="stylesheet" href="https://stackedit.io/style.css" />
-</head>
-
-<body class="stackedit">
-  <div class="stackedit__html"><h1 id="ubuntu-琐事">Ubuntu 琐事</h1>
+<h1 id="ubuntu-琐事">Ubuntu 琐事</h1>
 <!-- vim-markdown-toc GFM -->
 <ul>
 <li><a href="#ubuntu%E7%B3%BB%E7%BB%9F%E7%9B%98%E7%98%A6%E8%BA%AB">Ubuntu系统盘瘦身</a>
@@ -146,6 +136,15 @@
 <li><a href="#burpsuite%E6%8A%93https%E5%8C%85">burpsuite抓https包</a></li>
 <li><a href="#ubuntu%E6%92%AD%E6%94%BEmp4">ubuntu播放mp4</a></li>
 <li><a href="#ubuntu%E4%B8%8B%E7%9A%84markdown%E7%BC%96%E8%BE%91%E5%99%A8%E5%92%8Cmarkdown-toc">Ubuntu下的Markdown编辑器和markdown-toc</a></li>
+<li><a href="#vbox%E4%B8%AD%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86">vbox中虚拟机使用宿主机代理</a></li>
+<li><a href="#ubuntu%E5%AE%89%E8%A3%85jdk18%E5%8F%8A%E5%A4%9Ajdk%E7%AE%A1%E7%90%86">Ubuntu安装jdk1.8及多jdk管理</a>
+<ul>
+<li><a href="#ppa%E5%AE%89%E8%A3%85">ppa安装</a></li>
+<li><a href="#oracle%E5%AE%98%E7%BD%91%E5%AE%89%E8%A3%85">oracle官网安装</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85openjdk-8-jdk">安装openjdk-8-jdk</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E5%A4%9A%E7%89%88%E6%9C%AC">配置多版本</a></li>
+</ul>
+</li>
 </ul>
 <!-- vim-markdown-toc -->
 <h2 id="ubuntu系统盘瘦身">Ubuntu系统盘瘦身</h2>
@@ -596,10 +595,50 @@ imap &lt;silent&gt; &lt;F9&gt; &lt;Plug&gt;StopMarkdownPreview    " for insert m
 :GenTocMarked
 :GenTocGitLab
 </code></pre>
-</div>
-</body>
+<h2 id="vbox中虚拟机使用宿主机代理">vbox中虚拟机使用宿主机代理</h2>
+<p>参考：<br>
+<a href="https://www.cnblogs.com/sakam0to/p/10627524.html">https://www.cnblogs.com/sakam0to/p/10627524.html</a><br>
+<a href="https://blog.csdn.net/bytxl/article/details/35569217">https://blog.csdn.net/bytxl/article/details/35569217</a></p>
+<p>VB默认使用NAT(Network Address Translation),它允许一个整体机构以一个公用IP地址出现在Internet上。<br>
+这时，VB为电脑安装虚拟网卡，虚拟机的网络请求发到这个网卡上，再通过宿主机的真是网卡连上网络。不经过宿主机的代理。</p>
+<p>所以要将虚拟机设置为使用桥接模式，使宿主机作为网桥。</p>
+<p>vbox&gt;&gt;要改的虚拟机&gt;&gt;设置&gt;&gt;网络&gt;&gt;连接方式&gt;&gt;桥接网卡</p>
+<p>可能需要手动分配IPV4地址给虚拟机。</p>
+<p>然后设置虚拟机代理即可。(同时我在想，如果宿主机是使用mellow这样的透明代理，是不是直接选桥接模式就可以了呢？没有验证过，如果以后用mellow的话可以试一试)</p>
+<h2 id="ubuntu安装jdk1.8及多jdk管理">Ubuntu安装jdk1.8及多jdk管理</h2>
+<p>JDK在linux有两个版本，一个开源版本Openjdk(比如ubuntu默认的java11就是openjdk)，还有一个oracle官方版本jdk。</p>
+<p>oracle JDK既可以通过添加ppa源命令行安装，也可以去官网下载jdk压缩包安装。</p>
+<hr>
+<h3 id="ppa安装">ppa安装</h3>
+<p><code>sudo apt-get install python-software-properties</code>安装依赖<br>
+<code>sudo add-apt-repository ppa:webupd8team/java</code>添加ppa<br>
+<code>sudo apt-get update</code><br>
+<code>sudo apt-get install oracle-java8-installer</code><br>
+接受协议即可</p>
+<hr>
+<hr>
+<h3 id="oracle官网安装">oracle官网安装</h3>
+<p>用<a href="https://www.oracle.com/java/technologies/javase-downloads.html">官网</a>下载也可。<br>
+过程可以参考<a href="https://blog.csdn.net/m0_37921080/article/details/79903448">这篇博客</a>。<br>
+唯一的问题是要注册oracle的账号，好麻烦。</p>
+<hr>
+<h3 id="安装openjdk-8-jdk">安装openjdk-8-jdk</h3>
+<p><code>sudo apt-get install openjdk-8-jdk</code><br>
+查看安装路径<code>dpkg -L openjdk-8-jdk</code><br>
+对于我来说，我可以看到<code>/usr/lib/jvm/java-8-openjdk-amd64</code>等</p>
+<p>接下来配置环境变量<code>sudo vim .bashrc</code></p>
+<pre class=" language-bash"><code class="prism  language-bash"><span class="token comment">#配置openjdk8环境变量</span>
+<span class="token function">export</span> JAVA_HOME<span class="token operator">=</span>/usr/lib/jvm/java-8-openjdk-amd64  
+<span class="token function">export</span> JRE_HOME<span class="token operator">=</span><span class="token variable">${JAVA_HOME}</span>/jre  
+<span class="token function">export</span> CLASSPATH<span class="token operator">=</span>.:<span class="token variable">${JAVA_HOME}</span>/lib:<span class="token variable">${JRE_HOME}</span>/lib  
+<span class="token function">export</span> PATH<span class="token operator">=</span><span class="token variable">${JAVA_HOME}</span>/bin:<span class="token variable">$PATH</span>
+</code></pre>
+<p>重新打开tty，<code>java -version</code>就可以愉快看见配置成功了。</p>
+<h3 id="配置多版本">配置多版本</h3>
+<p>然后就可以愉快配置多版本了。</p>
+<p>查看所有jdk安装版本<code>sudo update-java-alternatives -l</code></p>
+<p><code>sudo update-java-alternatives -s [java版本]</code>即可切换。</p>
 
-</html>
 
 
     </div>

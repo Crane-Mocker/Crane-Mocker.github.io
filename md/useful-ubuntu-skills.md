@@ -43,7 +43,11 @@
 * [ubuntu播放mp4](#ubuntu播放mp4)
 * [Ubuntu下的Markdown编辑器和markdown-toc](#ubuntu下的markdown编辑器和markdown-toc)
 * [vbox中虚拟机使用宿主机代理](#vbox中虚拟机使用宿主机代理)
-* [https://blog.csdn.net/bytxl/article/details/35569217](#httpsblogcsdnnetbytxlarticledetails35569217)
+* [Ubuntu安装jdk1.8及多jdk管理](#ubuntu安装jdk18及多jdk管理)
+	* [ppa安装](#ppa安装)
+	* [oracle官网安装](#oracle官网安装)
+	* [安装openjdk-8-jdk](#安装openjdk-8-jdk)
+	* [配置多版本](#配置多版本)
 
 <!-- vim-markdown-toc -->
 
@@ -595,13 +599,9 @@ imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
 
 ## vbox中虚拟机使用宿主机代理
 
-------
 参考：
-
 https://www.cnblogs.com/sakam0to/p/10627524.html
-
 https://blog.csdn.net/bytxl/article/details/35569217
-------
 
 VB默认使用NAT(Network Address Translation),它允许一个整体机构以一个公用IP地址出现在Internet上。
 这时，VB为电脑安装虚拟网卡，虚拟机的网络请求发到这个网卡上，再通过宿主机的真是网卡连上网络。不经过宿主机的代理。
@@ -613,3 +613,58 @@ vbox>>要改的虚拟机>>设置>>网络>>连接方式>>桥接网卡
 可能需要手动分配IPV4地址给虚拟机。
 
 然后设置虚拟机代理即可。(同时我在想，如果宿主机是使用mellow这样的透明代理，是不是直接选桥接模式就可以了呢？没有验证过，如果以后用mellow的话可以试一试)
+
+## Ubuntu安装jdk1.8及多jdk管理
+
+JDK在linux有两个版本，一个开源版本Openjdk(比如ubuntu默认的java11就是openjdk)，还有一个oracle官方版本jdk。
+
+oracle JDK既可以通过添加ppa源命令行安装，也可以去官网下载jdk压缩包安装。
+
+----
+
+### ppa安装
+
+`sudo apt-get install python-software-properties`安装依赖
+`sudo add-apt-repository ppa:webupd8team/java`添加ppa
+`sudo apt-get update`
+`sudo apt-get install oracle-java8-installer`
+接受协议即可
+
+----
+
+----
+
+### oracle官网安装
+
+用[官网](https://www.oracle.com/java/technologies/javase-downloads.html)下载也可。
+过程可以参考[这篇博客](https://blog.csdn.net/m0_37921080/article/details/79903448)。
+唯一的问题是要注册oracle的账号，好麻烦。
+
+----
+
+### 安装openjdk-8-jdk 
+
+
+`sudo apt-get install openjdk-8-jdk`
+查看安装路径`dpkg -L openjdk-8-jdk`
+对于我来说，我可以看到`/usr/lib/jvm/java-8-openjdk-amd64`等
+
+接下来配置环境变量`sudo vim .bashrc`
+
+```bash
+#配置openjdk8环境变量
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64  
+export JRE_HOME=${JAVA_HOME}/jre  
+export CLASSPATH=.:${JAVA_HOME}/lib:${JRE_HOME}/lib  
+export PATH=${JAVA_HOME}/bin:$PATH
+```
+
+重新打开tty，`java -version`就可以愉快看见配置成功了。
+
+### 配置多版本
+
+然后就可以愉快配置多版本了。
+
+查看所有jdk安装版本`sudo update-java-alternatives -l`
+
+`sudo update-java-alternatives -s [java版本]`即可切换。
