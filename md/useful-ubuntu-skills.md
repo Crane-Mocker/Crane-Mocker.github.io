@@ -24,7 +24,6 @@
 * [.crx插件的安装](#crx插件的安装)
 * [挂载硬盘的暗坑踩坑记录及正确姿势](#挂载硬盘的暗坑踩坑记录及正确姿势)
 	* [挂载硬盘的正确姿势](#挂载硬盘的正确姿势)
-			* [What's the difference between UUID and PARTUUID](#whats-the-difference-between-uuid-and-partuuid)
 * [代理姿势](#代理姿势)
 	* [tty代理(环境变量)](#tty代理环境变量)
 	* [apt-get代理](#apt-get代理)
@@ -36,8 +35,9 @@
 	* [键盘延时？！](#键盘延时)
 	* [xrandr报错 和 display resolution](#xrandr报错-和-display-resolution)
 * [v2ray配置](#v2ray配置)
-* [Appimage报错](#appimage报错)
+* [Appimage](#appimage)
 	* [Cannot run due to existing symlinks in /tmp (FIXME)](#cannot-run-due-to-existing-symlinks-in-tmp-fixme)
+	* [删除menu entries](#删除menu-entries)
 * [Lua包管理，luarocks](#lua包管理luarocks)
 * [burpsuite抓https包](#burpsuite抓https包)
 * [ubuntu播放mp4](#ubuntu播放mp4)
@@ -311,16 +311,19 @@ $ sudo apt-get update --fix-missing
 > 你要记住UUID和type**而不仅仅是UUID**！！！！
 > 随便在fstab中填type为ext4会导致无法进系统（reboot后会导致ext4 file system崩掉）（别问我怎么知道的）
 
-****
-##### What's the difference between UUID and PARTUUID
+----
+
+What's the difference between UUID and PARTUUID
 A UUID is guaranteed to be unique. As far as I know, collisions will not happen within the lifetime of the universe. However, you'll note that the PARTUUID is much shorter. These are meant to be "locally" unique, and collisions most likely occur between all known PARTUUIDs.
 
 >上述是 https://raspberrypi.stackexchange.com/questions/75027/whats-the-difference-between-uuid-and-partuuid/75030 上一个老哥的回答
 
-****
+----
+
 2. `sudo vim /etc/fstab` 按照这个文件原有的格式，填写UUID, TYPE等保存推出，愉快reboot
 
-***
+----
+
 我是怎么踩坑以及解决的？（按照上述提示的崽崽不会踩这个坑，但如果不幸，你已经像我一样，踩入了这个坑，该怎么做呢？）
 **踩坑表现**
 
@@ -339,7 +342,8 @@ A UUID is guaranteed to be unique. As far as I know, collisions will not happen 
  5. `cd /mnt`, `ls`(如果正常，会在/etc下)，`cd /etc`然后`sudo vi fstab`。然后删掉或者修改你写的有问题的部分（UUID没写对的改UUID, TYPE没写对的改TYPE。不知道怎么改的崽，把你添加的删掉或者注释了。`:wq`）
  6. reboot即可（这回就可以进本机系统了QAQ）
 
-***
+---- 
+
 ## 代理姿势
 ### tty代理(环境变量)
 
@@ -414,8 +418,8 @@ git config --global --unset http.https://github.com.proxy
 ## N卡独显大坑
 写给对Nvidia又爱又恨的你。
 ### 显卡驱动自动安装/图形化界面更改显驱
-*有的朋友更新了内核到18.04，更改了各种conf还无法进入休眠模式可以更新显卡驱动试试
-至于16.04，这个内核本身就没有休眠模式，要想避免挂起后无法唤醒的问题，最好的方法就是--禁止挂起！（有个gnome的拓展，叫caffeine，禁止挂起，操作方便又轻量～）*
+有的朋友更新了内核到18.04，更改了各种conf还无法进入休眠模式可以更新显卡驱动试试
+至于16.04，这个内核本身就没有休眠模式，要想避免挂起后无法唤醒的问题，最好的方法就是--禁止挂起！（有个gnome的拓展，叫caffeine，禁止挂起，操作方便又轻量～）
 不要用开源的了，N卡非常傲娇，会有各种分辨率问题，搞不好轻则键盘鼠标延时，重则进入不了desktop(~~用tty好像也不错呢~~ )
 老老实实用N家的显卡驱动吧。不过网上装显卡驱动文章的很多坑，如果盲目尝试可能又要踩坑了呢~
 1. 建议，如果可以，请用**软件与更新**图形界面更改显卡驱动，这个最稳妥。
@@ -499,7 +503,7 @@ systemctl status v2ray
 
 将其设置为系统自动启动` systemctl enable v2ray`
 
-## Appimage报错
+## Appimage
 
 ### Cannot run due to existing symlinks in /tmp (FIXME)
 
@@ -507,6 +511,12 @@ systemctl status v2ray
 
 Needs to be fixed in the AppImage AppRun script.
 Need to `rm /tmp/ld-linux.so.2`
+
+### 删除menu entries
+
+appimage无需安装，也就无需卸载，当不用的时候，把这个file删掉就行。
+有时删除后，menu entry仍然存在。
+debian系中，可以在`/home/$USER/.local/share/applications`找到menu entries, 删除对应的即可。
 
 ## Lua包管理，luarocks
 
