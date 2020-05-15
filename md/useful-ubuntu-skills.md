@@ -48,6 +48,12 @@
 	* [oracle官网安装](#oracle官网安装)
 	* [安装openjdk-8-jdk](#安装openjdk-8-jdk)
 	* [配置多版本](#配置多版本)
+* [vbox failed to import appliance](#vbox-failed-to-import-appliance)
+* [*e.g.The shopping channel is known for selling home appliances.*](#egthe-shopping-channel-is-known-for-selling-home-appliances)
+	* [Image file corrupt](#image-file-corrupt)
+	* [Attach as a virtual hard disk](#attach-as-a-virtual-hard-disk)
+	* [Administrative privileges for vboxmanage.exe](#administrative-privileges-for-vboxmanageexe)
+	* [Corrupted VirtualBox installation](#corrupted-virtualbox-installation)
 
 <!-- vim-markdown-toc -->
 
@@ -678,3 +684,51 @@ export PATH=${JAVA_HOME}/bin:$PATH
 查看所有jdk安装版本`sudo update-java-alternatives -l`
 
 `sudo update-java-alternatives -s [java版本]`即可切换。
+
+## vbox failed to import appliance
+
+----
+
+equipment, device, appliance区分
+
+- **equipment**: 特定活动所需的设备、器械，*un*.
+一件设备:<font color="blue"> a piece of equipment</font>
+Equipment通常指成套的，不只一件的设备。与device和appliance不同，equipment 不光包括电子设备，还包含相关的工具。
+医疗设备: <font color="blue">medical equipment</font>
+听诊器stethoscope是一种medical equipment, 但它并不是一个medical device，因为听诊器不是电子的。
+*e.g.The hospital has been donated medical equipment that’s worth a million pounds.*
+
+- **device**通常指小巧的电子装置或设备, *cn*.
+移动设备: <font color="blue">mobile device</font>
+听力装置: <font color="blue">listening device</font>
+*e.g.All mobile devices should be switched off during this flight.*
+
+- **Appliance**由指家用电器home appliances, *cn*，比如冰箱、烤箱、洗衣机等等。
+通常，冰箱本身并不是device，但可以把控制家电的智能家居设备叫做<font color="blue">home device。</font>
+*e.g.The shopping channel is known for selling home appliances.*
+----
+
+### Image file corrupt
+
+This happens because of network issues during the download or the file is not downloaded completely.
+
+To resolve the error we re-download the file and try to import the file.
+
+### Attach as a virtual hard disk
+
+In this case, the file downloaded properly, but still facing the same error. 
+Here, we create a new VM and attach the file as a virtual disk.
+We open Virtualbox Manager and click on New.
+Now we enter the Name, Type, and version of the operating system and click next.
+Then we select the Allocated memory size and click next.
+Select the option Use an existing virtual hard disk file. Now we browse and locate the file. Click on Create.
+Thus it creates a new virtual machine with the attached file.
+
+### Administrative privileges for vboxmanage.exe
+
+Another common reason for import appliance failure in **Windows** happens when the vboxmanage.exe file does not have the administrative privileges. 
+This occurs when trying to *attach the disk from the USB drive*. This is because the USB drive requires admin rights. So our Support Engineers run the application as an administrator and import Appliance in VirtualBox.
+
+### Corrupted VirtualBox installation
+
+The corrupted VirtualBox installation will also fail to import appliance. During corrupted VirtualBox, the only option is to re-install the whole VirtualBox. So our Support Engineers re-install the VirtualBox once again and import the appliance.

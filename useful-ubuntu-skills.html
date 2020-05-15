@@ -147,6 +147,15 @@
 <li><a href="#%E9%85%8D%E7%BD%AE%E5%A4%9A%E7%89%88%E6%9C%AC">配置多版本</a></li>
 </ul>
 </li>
+<li><a href="#vbox-failed-to-import-appliance">vbox failed to import appliance</a></li>
+<li><a href="#egthe-shopping-channel-is-known-for-selling-home-appliances"><em>e.g.The shopping channel is known for selling home appliances.</em></a>
+<ul>
+<li><a href="#image-file-corrupt">Image file corrupt</a></li>
+<li><a href="#attach-as-a-virtual-hard-disk">Attach as a virtual hard disk</a></li>
+<li><a href="#administrative-privileges-for-vboxmanageexe">Administrative privileges for vboxmanage.exe</a></li>
+<li><a href="#corrupted-virtualbox-installation">Corrupted VirtualBox installation</a></li>
+</ul>
+</li>
 </ul>
 <!-- vim-markdown-toc -->
 <h2 id="ubuntu系统盘瘦身">Ubuntu系统盘瘦身</h2>
@@ -644,6 +653,47 @@ imap &lt;silent&gt; &lt;F9&gt; &lt;Plug&gt;StopMarkdownPreview    " for insert m
 <p>然后就可以愉快配置多版本了。</p>
 <p>查看所有jdk安装版本<code>sudo update-java-alternatives -l</code></p>
 <p><code>sudo update-java-alternatives -s [java版本]</code>即可切换。</p>
+<h2 id="vbox-failed-to-import-appliance">vbox failed to import appliance</h2>
+<hr>
+<p>equipment, device, appliance区分</p>
+<ul>
+<li>
+<p><strong>equipment</strong>: 特定活动所需的设备、器械，<em>un</em>.<br>
+一件设备:<font color="blue"> a piece of equipment</font><br>
+Equipment通常指成套的，不只一件的设备。与device和appliance不同，equipment 不光包括电子设备，还包含相关的工具。<br>
+医疗设备: <font color="blue">medical equipment</font><br>
+听诊器stethoscope是一种medical equipment, 但它并不是一个medical device，因为听诊器不是电子的。<br>
+<em>e.g.The hospital has been donated medical equipment that’s worth a million pounds.</em></p>
+</li>
+<li>
+<p><strong>device</strong>通常指小巧的电子装置或设备, <em>cn</em>.<br>
+移动设备: <font color="blue">mobile device</font><br>
+听力装置: <font color="blue">listening device</font><br>
+<em>e.g.All mobile devices should be switched off during this flight.</em></p>
+</li>
+<li>
+<p><strong>Appliance</strong>由指家用电器home appliances, <em>cn</em>，比如冰箱、烤箱、洗衣机等等。<br>
+通常，冰箱本身并不是device，但可以把控制家电的智能家居设备叫做<font color="blue">home device。</font><br>
+<em>e.g.The shopping channel is known for selling home appliances.</em></p>
+</li>
+</ul>
+<hr>
+<h3 id="image-file-corrupt">Image file corrupt</h3>
+<p>This happens because of network issues during the download or the file is not downloaded completely.</p>
+<p>To resolve the error we re-download the file and try to import the file.</p>
+<h3 id="attach-as-a-virtual-hard-disk">Attach as a virtual hard disk</h3>
+<p>In this case, the file downloaded properly, but still facing the same error.<br>
+Here, we create a new VM and attach the file as a virtual disk.<br>
+We open Virtualbox Manager and click on New.<br>
+Now we enter the Name, Type, and version of the operating system and click next.<br>
+Then we select the Allocated memory size and click next.<br>
+Select the option Use an existing virtual hard disk file. Now we browse and locate the file. Click on Create.<br>
+Thus it creates a new virtual machine with the attached file.</p>
+<h3 id="administrative-privileges-for-vboxmanage.exe">Administrative privileges for vboxmanage.exe</h3>
+<p>Another common reason for import appliance failure in <strong>Windows</strong> happens when the vboxmanage.exe file does not have the administrative privileges.<br>
+This occurs when trying to <em>attach the disk from the USB drive</em>. This is because the USB drive requires admin rights. So our Support Engineers run the application as an administrator and import Appliance in VirtualBox.</p>
+<h3 id="corrupted-virtualbox-installation">Corrupted VirtualBox installation</h3>
+<p>The corrupted VirtualBox installation will also fail to import appliance. During corrupted VirtualBox, the only option is to re-install the whole VirtualBox. So our Support Engineers re-install the VirtualBox once again and import the appliance.</p>
 </div>
 </div>
 
