@@ -178,7 +178,7 @@ printf("a = %d, b = %d\n", a, b); //a=3, b=2
 
 **引用**
 一段连续的存储空间不一定只有一个别名，引用可以看作一个已定义变量的别名。
-语法: Type& name = var;
+语法: `Type& name = var;`
 
 ```cpp
 int a = 4;
@@ -195,14 +195,67 @@ b = 5; //操作b就是操作a
 
 ```cpp
 void swap(int& a, int& b){
+	//函数中的引用参数不需要初始化，初始化在函数调用时完成
+	//a,b为引用，所以调用时是swap(a, b);
 	int tmp = a;
 	a = b;
 	b = t;
 }
 
-void swap(int* a, int* b){
+void swap(int* a, int* b){ //调用时是swap(&a, &b);
+	//传入a, b的地址
 	int t = *a;
 	*a = *b;
 	*b = t;
 }
+```
+
+**const引用**
+语法: `const Type& name = var;` , 让变量拥有只读属性
+
+例子:
+
+```cpp
+int a = 4;
+const int& b = a; //引用，代表b是变量a的别名
+int* p = (int*)&b; //指针p指向a的地址
+
+b = 5; //Error, b有const修饰, （a,b是）只读变量
+*p = 5; //正确，还是可以用指针修改变量a的值
+```
+
+当使用常量对const引用进行初始化时，C++编译器会为常量值分配空间，并将引用名作为这段空间的别名。
+
+```cpp
+const int& b = 1; //ok
+int* p = (int*)&b;
+b = 5; //Error
+*p = 5; // ok
+```
+
+引用是另一个变量的别名，那么引用本身有存储空间吗？有
+（指针是一个变量，保存着内存地址，具有存储空间）
+
+```cpp
+struct TRef{
+	char& r;
+};
+
+int main(){
+	char c = 'c';
+	char& rc = c;
+	TRef ref = {c};
+
+	printf("%d\n", sizeof(char&)); //1
+	printf("%d\n", sizeof(rc)); //sizeof(c) => 1
+	printf("%d\n", sizeof(TRef)); //4, 指针也是占用4 bytes
+	printf("%d\n", sizeof()); //sizof(c) => 1
+}
+```
+
+实际上，引用在C++中的内部实现是一个指针常量，所以引用所占用的空间大小与指针相同。
+因为引用只是一个别名，C++为了实用性而隐藏了引用的存储空间。
+
+```cpp
+Type& name; //<=> Type* const name;
 ```
