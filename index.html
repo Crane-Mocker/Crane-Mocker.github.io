@@ -24,6 +24,22 @@
   <!-- Custom styles for this template -->
   <link href="css/clean-blog.min.css" rel="stylesheet">
 
+  <!-- 不蒜子统计访问人数 -->
+  <!-- 添加Offset,不蒜子异步加载, 定时轮询处理, 使Offset生效-->
+  <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+  <script>
+    $(document).ready(function() {
+        var int = setInterval(fixCount, 100);
+        var busuanziSiteOffset = parseInt(1000);
+        function fixCount() {
+            if ($("#busuanzi_container_site_pv").css("display") != "none") {
+                clearInterval(int);
+                $("#busuanzi_value_site_pv").html(parseInt($("#busuanzi_value_site_pv").html()) + busuanziSiteOffset);
+            }
+        }
+    });
+</script>
+
 </head>
 
 <body>
@@ -182,6 +198,7 @@
             </li>
           </ul>
           <p class="copyright text-muted">Il est bien des choses qui ne paraissent impossibles que tant qu’on ne les a pas tentées.</p>
+		  <div class="copyright text-muted" id="busuanzi_container_site_pv">本站总访问量<span id="busuanzi_value_site_pv"></span>次</div>
         </div>
       </div>
     </div>
