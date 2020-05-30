@@ -1,5 +1,6 @@
 # Ubuntu 琐事
 
+
 <!-- vim-markdown-toc GFM -->
 
 * [Ubuntu系统盘瘦身](#ubuntu系统盘瘦身)
@@ -41,7 +42,6 @@
 * [Lua包管理，luarocks](#lua包管理luarocks)
 * [burpsuite抓https包](#burpsuite抓https包)
 * [ubuntu播放mp4](#ubuntu播放mp4)
-* [Ubuntu下的Markdown编辑器和markdown-toc](#ubuntu下的markdown编辑器和markdown-toc)
 * [vbox中虚拟机使用宿主机代理](#vbox中虚拟机使用宿主机代理)
 * [Ubuntu安装jdk1.8及多jdk管理](#ubuntu安装jdk18及多jdk管理)
 	* [ppa安装](#ppa安装)
@@ -54,6 +54,9 @@
 	* [Attach as a virtual hard disk](#attach-as-a-virtual-hard-disk)
 	* [Administrative privileges for vboxmanage.exe](#administrative-privileges-for-vboxmanageexe)
 	* [Corrupted VirtualBox installation](#corrupted-virtualbox-installation)
+* [vim](#vim)
+	* [Ubuntu下的Markdown编辑器和markdown-toc](#ubuntu下的markdown编辑器和markdown-toc)
+	* [Spacevim大坑](#spacevim大坑)
 
 <!-- vim-markdown-toc -->
 
@@ -565,54 +568,6 @@ sudo apt install libdvdnav4 libdvdread4 gstreamer1.0-plugins-bad gstreamer1.0-pl
 sudo apt install ubuntu-restricted-extras
 ```
 
-## Ubuntu下的Markdown编辑器和markdown-toc
-
-之前，在我还用atom的时候，安了markdown的插件就没再管过，但是atom太慢了。后来我写代码主要是用vim了,就想着再装一个markdown editor.
-
-首先我用了韩国的haroopad,支持中文版和`[TOC]`,可以export到html和pdf,但是对中文字体的支持不好，那个字体看得难受。并且有只能显示一个mermaid Graph的bug。
-
-后来用了remarkable, 真是清爽。又轻量,界面又舒服，添加[markdown-toc](https://github.com/jonschlinkert/markdown-toc) 即可使用`[TOC]`，唯一美中不足的是，每次更新目录都要re-run markdown-toc
-在项目内安装markdown-toc ` npm install --save markdown-toc`
-每次运行 `npx markdown-toc README.md`
-但是问题是，没办法直接像haroopad那样直接复制有style的html(虽然写了这个功能，但复制的结果就是markdown格式的QAQ)
-
-所以最后还是vim吧，vim插件们不香么。
-
-1. 首先，添加实时预览 在`.vimrc`中添加plugin.(我用的包管理是vundle)
-
-```
-Plugin 'iamcco/mathjax-support-for-mkdp'
-Plugin 'iamcco/markdown-preview.vim'
-```
-
-然后在`.vimrc`的末尾添加预览的快捷键映射
-
-```
-nmap <silent> <F8> <Plug>MarkdownPreview        " for normal mode
-imap <silent> <F8> <Plug>MarkdownPreview        " for insert mode
-nmap <silent> <F9> <Plug>StopMarkdownPreview    " for normal mode
-imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
-```
-
-然后安装plugin们。
-
-意思是说，在普通模式下（n）和插入模式下（i），按下F8键就可以实时预览，按下F9键就可以停止预览。(用浏览器预览，很Nice)
-还挺好看的，不过也不支持[TOC]
-
-2. 接下来就添加生成TOC的plugin
-[vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)的详细说明
-
-在`.vimrc`中添加`Plugin 'mzlogin/vim-markdown-toc'`,然后install
-
-用法：把光标移动到想放的位置，然后键入
-
-```
-:GenTocGFM
-:GenTocRedcarpet
-:GenTocMarked
-:GenTocGitLab
-```
-
 ## vbox中虚拟机使用宿主机代理
 
 参考：
@@ -732,3 +687,93 @@ This occurs when trying to *attach the disk from the USB drive*. This is because
 ### Corrupted VirtualBox installation
 
 The corrupted VirtualBox installation will also fail to import appliance. During corrupted VirtualBox, the only option is to re-install the whole VirtualBox. So our Support Engineers re-install the VirtualBox once again and import the appliance.
+
+## vim
+
+### Ubuntu下的Markdown编辑器和markdown-toc
+
+之前，在我还用atom的时候，安了markdown的插件就没再管过，但是atom太慢了。后来我写代码主要是用vim了,就想着再装一个markdown editor.
+
+首先我用了韩国的haroopad,支持中文版和`[TOC]`,可以export到html和pdf,但是对中文字体的支持不好，那个字体看得难受。并且有只能显示一个mermaid Graph的bug。
+
+后来用了remarkable, 真是清爽。又轻量,界面又舒服，添加[markdown-toc](https://github.com/jonschlinkert/markdown-toc) 即可使用`[TOC]`，唯一美中不足的是，每次更新目录都要re-run markdown-toc
+在项目内安装markdown-toc ` npm install --save markdown-toc`
+每次运行 `npx markdown-toc README.md`
+但是问题是，没办法直接像haroopad那样直接复制有style的html(虽然写了这个功能，但复制的结果就是markdown格式的QAQ)
+
+所以最后还是vim吧，vim插件们不香么。
+
+1. 首先，添加实时预览 在`.vimrc`中添加plugin.(我用的包管理是vundle)
+
+```
+Plugin 'iamcco/mathjax-support-for-mkdp'
+Plugin 'iamcco/markdown-preview.vim'
+```
+
+然后在`.vimrc`的末尾添加预览的快捷键映射
+
+```
+nmap <silent> <F8> <Plug>MarkdownPreview        " for normal mode
+imap <silent> <F8> <Plug>MarkdownPreview        " for insert mode
+nmap <silent> <F9> <Plug>StopMarkdownPreview    " for normal mode
+imap <silent> <F9> <Plug>StopMarkdownPreview    " for insert mode
+```
+
+然后安装plugin们。
+
+意思是说，在普通模式下（n）和插入模式下（i），按下F8键就可以实时预览，按下F9键就可以停止预览。(用浏览器预览，很Nice)
+还挺好看的，不过也不支持[TOC]
+
+2. 接下来就添加生成TOC的plugin
+[vim-markdown-toc](https://github.com/mzlogin/vim-markdown-toc)的详细说明
+
+在`.vimrc`中添加`Plugin 'mzlogin/vim-markdown-toc'`,然后install
+
+用法：把光标移动到想放的位置，然后键入
+
+```
+:GenTocGFM
+:GenTocRedcarpet
+:GenTocMarked
+:GenTocGitLab
+```
+
+### Spacevim大坑
+
+搞java开发看人安利了spacevim，就以为那是个plugin,安了。哪想到 `.vim->.Spacevim` orz
+好吧，幸好安装时有backup, `curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall`之后就开始恢复vim
+首先根据备份把.vim/和.vimrc恢复到~/
+
+----
+
+我遇到一个小问题，之前我把这些`*_back`都mv到了我自己作备份用的文件夹，在未卸载spacevim时执行`cp .vimrc_back ~/.vimrc`之后，在~/还是找不到.vimrc
+然后我在他们官网找到了答案
+
+> Can I try SpaceVim without overwriting my vimrc?
+The SpaceVim install script will move your ~/.vimrc to ~/.vimrc_back. If you want to have a try SpaceVim without overwriting your own Vim configuration you can:
+> 
+> Clone SpaceVim manually.
+> 
+> git clone https://github.com/SpaceVim/SpaceVim.git ~/.SpaceVim
+> Then, start Vim via vim -u ~/.SpaceVim/vimrc. You can also put this alias into your bashrc.
+> 
+> alias svim='vim -u ~/.SpaceVim/vimrc'
+
+啊我的心好痛
+这件事告诉我一个道理：用专门的dir作备份，恢复时用cp不用mv
+
+----
+
+恢复完了就是无尽的报错
+
+```
+处理 function down_quote_syntax#enable_quote_syntax[7]..markdown_quote_synta
+x#include_other_syntax 时发生错误:
+第    9 行:
+E484: 无法打开文件 syntax/coffee.vim
+E484: 无法打开文件 syntax/mustache.vim
+```
+
+你品，你细品，这些个东西还损坏了，重新install吧。
+
+总结一句，spacevim比较适合vim小白，它更像是个配置好的ide而不是你独一无二的vim.对于一个vimer来说，所有的.vimrc都是经过了时间和不断的使用找出来的最适合自己的配置。与其你去熟悉去适应某个ide的用法，不如使editor去适应你。这大概也是大家喜欢vim的原因吧。
