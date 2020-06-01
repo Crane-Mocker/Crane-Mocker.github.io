@@ -11,7 +11,12 @@
 	* [运行class文件](#运行class文件)
 	* [打包jar](#打包jar)
 	* [运行jar](#运行jar)
+* [java makefile](#java-makefile)
 * [java中的xml](#java中的xml)
+* [java包](#java包)
+	* [import和包机制](#import和包机制)
+	* [库](#库)
+	* [包名](#包名)
 
 <!-- vim-markdown-toc -->
 
@@ -21,6 +26,8 @@
 > https://blog.csdn.net/yeqiuBOke/article/details/80897611
 > https://users.soe.ucsc.edu/~eaugusti/archive/102-winter16/misc/howToCompileAndRunFromCommandLine.html
 > https://www.cnblogs.com/by-1075324834/p/5558035.html
+> 菜鸟教程
+> think in java 第四版
 
 ## 脱离IDE编译java
 
@@ -87,69 +94,69 @@ java -jar xxx.jar
 
 '''bash
  # A general java project makefile
-# Author: Wu Jiqing (jiqingwu@gmail.com)
-# create: 2012-06-12
-# update: 2012-06-13
-# version: 0.7
+ # Author: Wu Jiqing (jiqingwu@gmail.com)
+ # create: 2012-06-12
+ # update: 2012-06-13
+ # version: 0.7
 
-# 设置你要生成的jar包的文件名
-# Set the file name of your jar package:
+ # 设置你要生成的jar包的文件名
+ # Set the file name of your jar package:
 JAR_PKG = a.jar
-# 设置你的项目的入口点
-# Set your entry point of your java app:
+ # 设置你的项目的入口点
+ # Set your entry point of your java app:
 ENTRY_POINT = test.A
-# 是否需要res目录，如果你的程序有图片、文档等，
-# 最好放入res目录中。
-# yes: 需要；no：不需要
+ # 是否需要res目录，如果你的程序有图片、文档等，
+ # 最好放入res目录中。
+ # yes: 需要；no：不需要
 RES_DIR = yes
-# 设置你项目包含的源文件
-# 如果你使用了package，请自己在src下建立相应的目录层次，
-# 并将源文件放在对应的目录中。
-# 如你要生成的一个类是 com.game.A，
-# 那么你的源文件应该是 com/game/A.java。
-# 多个类之间用空格间隔，如果一行太长，用'\'换行，
-# 建议一行一个。
-# 另外注意顺序，如果class A 引用 class B，那么B.java应该放在A.java前。
+ # 设置你项目包含的源文件
+ # 如果你使用了package，请自己在src下建立相应的目录层次，
+ # 并将源文件放在对应的目录中。
+ # 如你要生成的一个类是 com.game.A，
+ # 那么你的源文件应该是 com/game/A.java。
+ # 多个类之间用空格间隔，如果一行太长，用'\'换行，
+ # 建议一行一个。
+ # 另外注意顺序，如果class A 引用 class B，那么B.java应该放在A.java前。
 SOURCE_FILES = \
 test/B.java \
 test/A.java
 
-# 设置你的java编译器
-# Set your java compiler here:
+ # 设置你的java编译器
+ # Set your java compiler here:
 JAVAC = javac
-# 设置你的编译选项
+ # 设置你的编译选项
 JFLAGS = -encoding UTF-8
 
-# 用法：
-# make new: 在你的工程目录下生成src, bin, res子目录。
-# 如果你定义的类包含在某个包里：请自己在src下建立相应的目录层次。
-# 最终的目录结构如下：
-# ├── a.jar
-# ├── bin
-# │     └── test
-# │             ├── A.class
-# │             └── B.class
-# ├── makefile
-# ├── res
-# │     └── doc
-# │            └── readme.txt
-# └── src
-#        └── test
-#                ├── A.java
-#                └── B.java
+ # 用法：
+ # make new: 在你的工程目录下生成src, bin, res子目录。
+ # 如果你定义的类包含在某个包里：请自己在src下建立相应的目录层次。
+ # 最终的目录结构如下：
+ # ├── a.jar
+ # ├── bin
+ # │     └── test
+ # │             ├── A.class
+ # │             └── B.class
+ # ├── makefile
+ # ├── res
+ # │     └── doc
+ # │            └── readme.txt
+ # └── src
+ #        └── test
+ #                ├── A.java
+ #                └── B.java
 
-# make build: 编译，在bin目录下生成 java classes。
-# make clean: 清理编译结果，以便重新编译
-# make rebuild: 清理编译结果，重新编译。
-# make run: make 之后，可以通过make run查看运行结果。
-# make jar: 生成可执行的jar包。
+ # make build: 编译，在bin目录下生成 java classes。
+ # make clean: 清理编译结果，以便重新编译
+ # make rebuild: 清理编译结果，重新编译。
+ # make run: make 之后，可以通过make run查看运行结果。
+ # make jar: 生成可执行的jar包。
 
-#############下面的内容建议不要修改####################
+ #############下面的内容建议不要修改####################
 
 vpath %.class bin
 vpath %.java src
 
-# show help message by default
+ # show help message by default
 Default:
     @echo "make new: new project, create src, bin, res dirs."
     @echo "make build: build project."
@@ -160,8 +167,8 @@ Default:
 
 build: $(SOURCE_FILES:.java=.class)
 
-# pattern rule
-# 不能处理两个类互相引用的情况，尽量避免
+ # pattern rule
+ # 不能处理两个类互相引用的情况，尽量避免
 %.class: %.java
     $(JAVAC) -cp bin -d bin $(JFLAGS) $<
 
@@ -204,4 +211,78 @@ make: 显示帮助信息。
 2. 存放配置信息
 
 IDEA的maven项目中，默认源代码目录下（src/main/java目录）的xml等资源文件并不会在编译的时候一块打包进classes文件夹，而是直接舍弃掉。如果使用的是Eclipse，Eclipse的src目录下的xml等资源文件在编译的时候会自动打包进输出到classes文件夹。
+
+## java包
+
+### import和包机制
+Java中的一个包就是一个类库单元,<font color="red">用import导入一个完整的库时，就会获得包， 例如`import java.util.*`</font>  , 包内包含有一组类，它们在单一的名称空间之下被组织在了一起。这个名称空间就是包名。
+
+单独导入一个类，如位于java.util(utility库)中的Vector，可以在import语句中指定类的名字`import java.util.Vector`
+
+包机制便于管理命名空间(name space)，使类成员的名字相互隔离起来。如类A中的方法f()与类B中的方法f()不冲突。
+
+### 库
+一个编辑单元(.java file)有且仅有一个同名的public类，非public类在该包之外被隐藏。
+
+编译一个java file, 里面所有的class都会得到一个.class file, 一系列的.class文件封装压缩到一起形成一个jar file.
+
+库也由一系列类文件构成，每个类文件有一个public类，所以每个文件都有一个组件，如果将这些组件都归纳在一起，就可以使用package
+
+
+package语句作为文件的第一个非注释语句。它指明该编译单元内的public类名位于该package的名字下面。
+
+例如，对于MyClass.java
+
+```java
+package mypackage;
+public class MyClass{
+//...
+}
+```
+
+若想使用MyClass, 有两种方法
+1. 指定完整名称
+
+```java
+mypackage.MyClass m = new mypackage.MyClass();
+```
+
+2. import激活mypackage中的名字
+
+```java
+import mypackage.*;
+//...
+MyClass m = new MyClass();
+```
+
+### 包名
+
+java解释器工作时：
+1. 找到环境变量CLASSPATH, CLASSPATH中包含一个或者多个目录，被作为寻找包名的根目录。解释器开始寻找包名并将.替换成/, 从而生成从CLASSPATH的根目录开始的路径名
+2. CLASSPATH的根目录和形成的路径名连接在一起，成为CLASSPATH内的入口。以后搜索.class文件时，就从这些地方开始查找。
+
+例如包`package com.blabla.util`包含两个文件
+
+```java
+package com.blabla.util;
+
+public class Vector{
+	public Vector(){
+		System.out.println("hello Vector");
+	}
+}
+
+---
+package com.blabla.util;
+
+public class List{
+	public List(){
+		System.out.println("hello List");
+	}
+}
+```
+这两个文件都位于com/blabla/util目录下
+
+此外若导入包括相同名字的两个库，在使用该名字时，也需要指定完整名称
+如`java.util.Vector v = new java.util.Vector();`
 
