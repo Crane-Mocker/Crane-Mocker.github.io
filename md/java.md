@@ -17,6 +17,12 @@
 	* [import和包机制](#import和包机制)
 	* [库](#库)
 	* [包名](#包名)
+* [Eclipse](#eclipse)
+	* [编码](#编码)
+	* [运行](#运行)
+	* [未找到主类](#未找到主类)
+	* [getting JRE system library unbound](#getting-jre-system-library-unbound)
+	* [Access denied for user ''@'localhost' to database](#access-denied-for-user-localhost-to-database)
 
 <!-- vim-markdown-toc -->
 
@@ -286,3 +292,60 @@ public class List{
 此外若导入包括相同名字的两个库，在使用该名字时，也需要指定完整名称
 如`java.util.Vector v = new java.util.Vector();`
 
+## Eclipse
+
+### 编码
+
+右键文件夹>properties>Resource>text file encoding
+选择Other, 直接键入即可(本人用的ubuntu,下拉选项没有GBK，但是直接键入GBK，apply亦可)
+
+
+### 运行
+
+找到有主类的file, run as application
+
+### 未找到主类
+
+参考这个，很详细的各种原因：
+https://blog.csdn.net/chenleixing/article/details/44816629
+
+比较实用的是:
+
+1. 找不到lib：右键Properties在Java Builder Path的Libraries的标签里面看是否有缺少的,重新引入即可
+2. 找不到xml: properties>builder里把.xml引入
+
+### getting JRE system library unbound
+
+Right click on project---> Build Path-->Configure build path
+Now there are 4 tabs Source, Projects, Libraries, Order and Export
+
+Go to
+Libraries tab -->  Click on Add Library (shown at the right side) -->
+select JRE System Library --> Next-->click Alternate JRE --> select
+Installed JRE--> Finish --> Apply--> OK.
+
+### Access denied for user ''@'localhost' to database
+
+1. 远程连接的问题
+
+Check if user is allowed for remote connection, run below sql query on your database to allow your user to connect from everywhere.
+
+Allow a user to connect from anywhere
+
+`GRANT ALL ON *.* to <user-name>@'<ip>' IDENTIFIED BY '<password>'`
+Sample for root user :-
+
+```sql
+GRANT ALL ON *.* to root@'%' IDENTIFIED BY 'root';
+// grant root user to connect from everywhere(%) , which has root password.
+```
+
+2. 损坏的.classpath和.project
+
+https://stackoverflow.com/questions/59899416/access-denied-for-user-localhost-using-password-no-in-eclipse-instead-o
+
+- Delete the project from Eclipse (not on the disk)
+- Close Eclipse
+- Go to Project folder and delete .classpath and .project files
+- Open eclipse, go to File > Open projects from File System and choose the project directory
+- Right click on the project > Run As > Run Configurations and set the right Main class
