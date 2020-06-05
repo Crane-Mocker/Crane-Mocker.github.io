@@ -24,6 +24,8 @@
   <!-- Custom styles for this template -->
   <link href="css/clean-blog.min.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+
 </head>
 
 <body>
@@ -53,16 +55,17 @@
   </nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/home-bg.png')">
+  <header class="masthead" style="background-image: url('img/about-bg.png')">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
           <div class="post-heading">
             <h1>SQL数据库</h1>
+	    <h2 class="subheading">SQL Database</h2>
             <span class="meta">Posted by
 				<a href="#">c0conut</a>
-              on Month Day, Year</span>
+              on June 5, 2020</span>
           </div>
         </div>
       </div>
@@ -73,57 +76,268 @@
   <article>
     <div class="container"> 
     
-
-
-<h1 id="sql数据库"><a name="sql数据库" href="#sql数据库"></a>SQL数据库</h1>
-<p class="toc" style="undefined"></p><h2 id="数据管理技术"><a name="数据管理技术" href="#数据管理技术"></a>数据管理技术</h2>
-<h3 id="发展阶段"><a name="发展阶段" href="#发展阶段"></a>发展阶段</h3>
-<ol>
-<li>人工管理阶段</li><li>文件系统阶段</li><li>电子表格阶段</li><li>数据库系统阶段</li></ol>
-<h3 id="数据库模型发展历史"><a name="数据库模型发展历史" href="#数据库模型发展历史"></a>数据库模型发展历史</h3>
-<ol>
-<li>层次模型：把数据组织成一棵根在上，叶在下的有向树</li><li>网状模型：把数据组织成无环有向图</li><li>关系模型：把数据组织成表间有冗余列的表</li><li>对象-关系模型：用对象的方法组织数据</li></ol>
-<h3 id="程序与数据的独立性"><a name="程序与数据的独立性" href="#程序与数据的独立性"></a>程序与数据的独立性</h3>
+<div class="stackedit">
+  <div class="stackedit__html"><h1 id="sql数据库">SQL数据库</h1>
+<!-- vim-markdown-toc GFM -->
 <ul>
-<li>逻辑独立性：应用程序与数据库的逻辑结构相互独立</li><li>物理独立性：应用程序与存储在磁盘上的数据库中的数据相互独立</li></ul>
-<pre><code class="mermaid">graph TB;
-    外模式1 --&gt; 模式;
-    外模式2 --&gt; 模式;
-    模式 --&gt; 内模式;
-    用户模式 --&gt; 逻辑模式;
-    逻辑模式 --&gt; 存储模式;
-</code></pre>
+<li><a href="#%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E6%8A%80%E6%9C%AF">数据管理技术</a>
 <ul>
-<li>外模式/模式:逻辑独立性</li><li>模式/内模式:物理独立性</li></ul>
-<h3 id="dbms"><a name="dbms" href="#dbms"></a>DBMS</h3>
+<li><a href="#%E5%8F%91%E5%B1%95%E9%98%B6%E6%AE%B5">发展阶段</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A8%A1%E5%9E%8B%E5%8F%91%E5%B1%95%E5%8E%86%E5%8F%B2">数据库模型发展历史</a></li>
+<li><a href="#%E7%A8%8B%E5%BA%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%9A%84%E7%8B%AC%E7%AB%8B%E6%80%A7">程序与数据的独立性</a></li>
+<li><a href="#dbms">DBMS</a></li>
+<li><a href="#dbs%E7%BB%93%E6%9E%84">DBS结构</a></li>
+<li><a href="#dbs%E7%BB%84%E6%88%90%E6%88%90%E5%88%86">DBS组成成分</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B">关系数据模型</a>
+<ul>
+<li><a href="#%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5">基本概念</a></li>
+<li><a href="#%E5%85%B3%E7%B3%BB%E6%A8%A1%E5%9E%8B%E8%AF%A6%E8%A7%A3">关系模型详解</a></li>
+<li><a href="#%E7%AC%9B%E5%8D%A1%E5%B0%94%E7%A7%AF">笛卡尔积</a></li>
+</ul>
+</li>
+<li><a href="#%E5%85%B3%E7%B3%BB%E7%9A%84%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F">关系的完整性约束</a>
+<ul>
+<li><a href="#%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F%E6%9D%A1%E4%BB%B6%E5%88%86%E7%B1%BB">完整性约束条件分类</a></li>
+<li><a href="#%E5%85%B3%E7%B3%BB%E7%9A%84%E6%80%A7%E8%B4%A8">关系的性质</a></li>
+<li><a href="#%E5%AE%8C%E6%95%B4%E6%80%A7%E7%BA%A6%E6%9D%9F%E8%A7%84%E5%88%99">完整性约束规则</a>
+<ul>
+<li><a href="#%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F%E8%A7%84%E5%88%99">第一范式规则</a></li>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E5%86%85%E5%AE%B9%E5%AD%98%E5%8F%96%E8%A7%84%E5%88%99">基于内容存取规则</a></li>
+<li><a href="#%E8%A1%8C%E5%94%AF%E4%B8%80%E6%80%A7%E8%A7%84%E5%88%99">行唯一性规则</a></li>
+<li><a href="#%E5%AE%9E%E4%BD%93%E8%A1%8C%E5%AE%8C%E6%95%B4%E6%80%A7%E8%A7%84%E5%88%99">实体(行)完整性规则</a></li>
+<li><a href="#%E5%8F%82%E7%85%A7%E5%AE%8C%E6%95%B4%E6%80%A7%E8%A7%84%E5%88%99">参照完整性规则</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#%E5%85%B3%E7%B3%BB%E4%BB%A3%E6%95%B0">关系代数</a>
+<ul>
+<li><a href="#%E9%9B%86%E5%90%88%E8%BF%90%E7%AE%97">集合运算</a></li>
+<li><a href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97">关系运算</a></li>
+</ul>
+</li>
+<li><a href="#sql%E8%AF%AD%E8%A8%80">SQL语言</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<h2 id="数据管理技术">数据管理技术</h2>
+<h3 id="发展阶段">发展阶段</h3>
+<ol>
+<li>人工管理阶段</li>
+<li>文件系统阶段</li>
+<li>电子表格阶段</li>
+<li>数据库系统阶段</li>
+</ol>
+<h3 id="数据库模型发展历史">数据库模型发展历史</h3>
+<ol>
+<li>层次模型：把数据组织成一棵根在上，叶在下的有向树</li>
+<li>网状模型：把数据组织成无环有向图</li>
+<li>关系模型：把数据组织成表间有冗余列的表</li>
+<li>对象-关系模型：用对象的方法组织数据</li>
+</ol>
+<h3 id="程序与数据的独立性">程序与数据的独立性</h3>
+<ul>
+<li>逻辑独立性：应用程序与数据库的逻辑结构相互独立</li>
+<li>物理独立性：应用程序与存储在磁盘上的数据库中的数据相互独立</li>
+</ul>
+<div class="mermaid"><svg xmlns="http://www.w3.org/2000/svg" id="mermaid-svg-mCSFy69eKsq3WULU" width="100%" style="max-width: 354.578125px;" viewBox="0 0 354.578125 254"><g transform="translate(-12, -12)"><g class="output"><g class="clusters"></g><g class="edgePaths"><g class="edgePath" style="opacity: 1;"><path class="path" d="M58.640625,66L58.640625,91L96.2734375,119.38399214338325" marker-end="url(#arrowhead52)" style="fill:none"></path><defs><marker id="arrowhead52" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M185.921875,66L185.921875,91L148.2890625,119.38399214338325" marker-end="url(#arrowhead53)" style="fill:none"></path><defs><marker id="arrowhead53" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M122.28125,162L122.28125,187L122.28125,212" marker-end="url(#arrowhead54)" style="fill:none"></path><defs><marker id="arrowhead54" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M316.5703125,66L316.5703125,91L316.5703125,116" marker-end="url(#arrowhead55)" style="fill:none"></path><defs><marker id="arrowhead55" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g><g class="edgePath" style="opacity: 1;"><path class="path" d="M316.5703125,162L316.5703125,187L316.5703125,212" marker-end="url(#arrowhead56)" style="fill:none"></path><defs><marker id="arrowhead56" viewBox="0 0 10 10" refX="9" refY="5" markerUnits="strokeWidth" markerWidth="8" markerHeight="6" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" class="arrowheadPath" style="stroke-width: 1; stroke-dasharray: 1, 0;"></path></marker></defs></g></g><g class="edgeLabels"><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g><g class="edgeLabel" transform="" style="opacity: 1;"><g transform="translate(0,0)" class="label"><foreignObject width="0" height="0"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;"><span class="edgeLabel"></span></div></foreignObject></g></g></g><g class="nodes"><g class="node" id="外模式1" transform="translate(58.640625,43)" style="opacity: 1;"><rect rx="0" ry="0" x="-38.640625" y="-23" width="77.28125" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-28.640625,-13)"><foreignObject width="57.28125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">外模式1</div></foreignObject></g></g></g><g class="node" id="模式" transform="translate(122.28125,139)" style="opacity: 1;"><rect rx="0" ry="0" x="-26.0078125" y="-23" width="52.015625" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-16.0078125,-13)"><foreignObject width="32.015625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">模式</div></foreignObject></g></g></g><g class="node" id="外模式2" transform="translate(185.921875,43)" style="opacity: 1;"><rect rx="0" ry="0" x="-38.640625" y="-23" width="77.28125" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-28.640625,-13)"><foreignObject width="57.28125" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">外模式2</div></foreignObject></g></g></g><g class="node" id="内模式" transform="translate(122.28125,235)" style="opacity: 1;"><rect rx="0" ry="0" x="-34.0078125" y="-23" width="68.015625" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-24.0078125,-13)"><foreignObject width="48.015625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">内模式</div></foreignObject></g></g></g><g class="node" id="用户模式" transform="translate(316.5703125,43)" style="opacity: 1;"><rect rx="0" ry="0" x="-42.0078125" y="-23" width="84.015625" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.0078125,-13)"><foreignObject width="64.015625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">用户模式</div></foreignObject></g></g></g><g class="node" id="逻辑模式" transform="translate(316.5703125,139)" style="opacity: 1;"><rect rx="0" ry="0" x="-42.0078125" y="-23" width="84.015625" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.0078125,-13)"><foreignObject width="64.015625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">逻辑模式</div></foreignObject></g></g></g><g class="node" id="存储模式" transform="translate(316.5703125,235)" style="opacity: 1;"><rect rx="0" ry="0" x="-42.0078125" y="-23" width="84.015625" height="46"></rect><g class="label" transform="translate(0,0)"><g transform="translate(-32.0078125,-13)"><foreignObject width="64.015625" height="26"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; white-space: nowrap;">存储模式</div></foreignObject></g></g></g></g></g></g></svg></div>
+<ul>
+<li>外模式/模式:逻辑独立性</li>
+<li>模式/内模式:物理独立性</li>
+</ul>
+<h3 id="dbms">DBMS</h3>
 <p>Database Management System, DBMS提供4方面数据控制功能：</p>
 <ol>
-<li>Security: 数据的安全性保护</li><li>Integrity: 数据的完整性检查</li><li>Concurrency: 并发控制</li><li>Recovery: 数据库恢复</li></ol>
-<h3 id="dbs结构"><a name="dbs结构" href="#dbs结构"></a>DBS结构</h3>
+<li>Security: 数据的安全性保护</li>
+<li>Integrity: 数据的完整性检查</li>
+<li>Concurrency: 并发控制</li>
+<li>Recovery: 数据库恢复</li>
+</ol>
+<h3 id="dbs结构">DBS结构</h3>
 <p>DBS(Database System)包括：</p>
 <ol>
-<li>DB(Database)</li><li>DBMS</li><li>AP(Applicatio Programs)</li></ol>
-<h3 id="dbs组成成分"><a name="dbs组成成分" href="#dbs组成成分"></a>DBS组成成分</h3>
+<li>DB(Database)</li>
+<li>DBMS</li>
+<li>AP(Applicatio Programs)</li>
+</ol>
+<h3 id="dbs组成成分">DBS组成成分</h3>
 <ol>
-<li>硬件：内存，外存，数据传输率</li><li>DB</li><li>软件：OS，DBMS，以DBMS为核心的应用开发工具，高级语言+编译系统，数据库应用系统</li><li>人：数据库管理员，应用程序员，最终用户(临时用户:<font color="grey">用SQL访问DBMS</font></br>初级用户:<font color="grey">用菜单访问DBMS</font>)</li></ol>
-<h2 id="关系数据模型"><a name="关系数据模型" href="#关系数据模型"></a>关系数据模型</h2>
-<h3 id="基本概念"><a name="基本概念" href="#基本概念"></a>基本概念</h3>
+<li>硬件：内存，外存，数据传输率</li>
+<li>DB</li>
+<li>软件：OS，DBMS，以DBMS为核心的应用开发工具，高级语言+编译系统，数据库应用系统</li>
+<li>人：数据库管理员，应用程序员，最终用户(临时用户:<font color="grey">用SQL访问DBMS</font>初级用户:<font color="grey">用菜单访问DBMS</font>)</li>
+</ol>
+<h2 id="关系数据模型">关系数据模型</h2>
+<h3 id="基本概念">基本概念</h3>
 <p>数据模型(Data Model)：是用来<strong>抽象,表示和处理</strong>现实世界中的数据和信息的工具。</p>
 <p>数据模型三要求：</p>
 <ul>
-<li>能比较真实地模拟现实世界</li><li>容易为人所理解(对用户)</li><li>便于在计算机上实现(对开发者)</li></ul>
-<hr class="page">
-<p>对比：<br>数据结构的三要素：</p>
+<li>能比较真实地模拟现实世界</li>
+<li>容易为人所理解(对用户)</li>
+<li>便于在计算机上实现(对开发者)</li>
+</ul>
+<hr>
+<p>对比：<br>
+数据结构的三要素：</p>
 <ul>
-<li>逻辑结构：对数据间关系的描述， 与数据的存储无关， 独立于计算机</li><li>运算：定义在数据的逻辑结构上， 具体实现在存储结构上的操作要求</li><li>存储结构：逻辑结构在计算机存储器里的实现， 依赖于计算机</li></ul>
-<hr class="page">
-<p>数据库的数据模型的三要素：</p>
+<li>逻辑结构：对数据间关系的描述， 与数据的存储无关， 独立于计算机</li>
+<li>运算：定义在数据的逻辑结构上， 具体实现在存储结构上的操作要求</li>
+<li>存储结构：逻辑结构在计算机存储器里的实现， 依赖于计算机</li>
+</ul>
+<hr>
+<p>数据库的数据模型的三要素(关系模型三要素)：</p>
 <ul>
-<li>数据结构</li><li>数据操作</li><li>数据完整性约束</li></ul>
-<p><img src="img/sql-database-pic1.png" alt="对比图"></p>
-
-
-
+<li>数据结构</li>
+<li>数据操作</li>
+<li>数据完整性约束</li>
+</ul>
+<p><img src="img/sql-database-pic0.png" alt="对比图"></p>
+<h3 id="关系模型详解">关系模型详解</h3>
+<p>关系数据库建立在关系模型上，关系模型的本质是若干个二维表。</p>
+<p><img src="img/sql-database-pic1.png" alt=""></p>
+<hr>
+<p><strong>数据库各部分术语</strong></p>
+<ul>
+<li>标题/关系模式(heading of a table)： 组成关系的属性名的集合</li>
+<li>数据库模式(database schema): 数据库的所有关系模式的集合</li>
+<li>关系的内容： 关系中的元组集合</li>
+<li>关系的基数(cardinality):关系中元组(行)个数</li>
+<li>关系的度(degree): 关系中的属性(列)个数</li>
+<li>域(domains)：属性的取值范围。DBS通过属性的数据类型支持域。<font color="grey">当定义一个表的时候，会为每个列指派一种数据类型（如字符型或者是整型），这些数据类型提供了一个广泛域。SQL-92标准引入了用户自定义域的概念。数据库管理系统将不会保存那些违背约束的数据信息。</font></li>
+</ul>
+<hr>
+<h3 id="笛卡尔积">笛卡尔积</h3>
+<p>有集合A，B <code>A = {0,1} B = {2,3,4}</code><br>
+A×B和B×A的结果是两个集合相乘的笛卡尔积</p>
+<pre><code>A×B = {（0，2），（1，2），（0，3），（1，3），（0，4），（1，4）}；
+B×A = {（2，0），（2，1），（3，0），（3，1），（4，0），（4，1）}；
+</code></pre>
+<ol>
+<li>笛卡尔积不满足交换率，既 A×B ≠ B×A</li>
+<li>两个集合笛卡尔积得到的新集合的元素个数是： A集合的元素个数 × B集合的元素个数</li>
+<li>AxB是有（0，2），BxA是有（2，0）</li>
+</ol>
+<h2 id="关系的完整性约束">关系的完整性约束</h2>
+<p>关系完整性约束： 关系模型中的一些规则，告诉我们在表结构中哪些变化是允许的，哪些检索操作是受限的。</p>
+<p>完整性约束条件： 加在数据库数据之上的语义约束条件。</p>
+<h3 id="完整性约束条件分类">完整性约束条件分类</h3>
+<p><img src="img/sql-database-pic2.png" alt=""></p>
+<h3 id="关系的性质">关系的性质</h3>
+<ol>
+<li>关系名唯一</li>
+<li>属性名唯一</li>
+<li>属性的顺序并不重要</li>
+<li>理论上来说， 元组的顺序不重要（但实际上，这个顺序将影响对元组的访问效率）</li>
+<li>单值属性：关系的分量仅包含一个原子（单一）值</li>
+<li>非结构属性：同一属性中的各个值都取自相同的域</li>
+<li>元组唯一：各个元组互不相同，不存在重复的元组</li>
+</ol>
+<h3 id="完整性约束规则">完整性约束规则</h3>
+<h4 id="第一范式规则">第一范式规则</h4>
+<p>在定义的表中,关系模型坚持<strong>不允许</strong>含有<strong>多值属性</strong>(有时称为重复字段)和含有<strong>内部结构</strong>(比如记录类型)的列</p>
+<h4 id="基于内容存取规则">基于内容存取规则</h4>
+<p>基于内容存取行。<br>
+数学上的合理性：行是没有次序的。</p>
+<h4 id="行唯一性规则">行唯一性规则</h4>
+<p>关系中任何两个元组(表中的行)的值在同一时刻不能是完全相同的</p>
+<h4 id="实体行完整性规则">实体(行)完整性规则</h4>
+<p>表T中的任意行在主键列的取值都不允许为空</p>
+<hr>
+<p><strong>基本概念</strong></p>
+<p>超键: 超键是能唯一区分任意两行数据的列或多个列</p>
+<p>键(key, candidate key):给定一个表T， 标题Head(T)=A1…An。 表T的一个键， 有时也称为候选键， 是具有以下两个特征的一组属性的集合K=Ai1…Aik:</p>
+<ol start="2">
+<li>
+<ol>
+<li>如果u,v是T中两个不同的元组， 则u[K]≠v[K];</li>
+</ol>
+</li>
+<li>没有K的真子集H具有特征1）</li>
+</ol>
+<p><font color="grey">键具有唯一标识性。键是<strong>最小</strong>超键。</font></p>
+<p>主键： 被数据库设计者选择出来作为表T的行的唯一性标识符的候选键</p>
+<p><font color="grey">键是客观的概念， 主键是主观的概念.</font></p>
+<p>空值(NULL Value): 未知的或者尚未定义的值</p>
+<hr>
+<h4 id="参照完整性规则">参照完整性规则</h4>
+<p>外键(Foreign key):设F是基本关系R的一个或一组属性，但不是R的键。如果F与基本关系S的键KS相对应，则称F是R的外键（Foreign Key），并称R为参照关系(Referencing Relation），S 为 被 参 照 关 系（Referenced Relation）。关系R和S不一定是不同的关系。<br>
+<img src="img/sql-database-pic3.png" alt=""></p>
+<p>若属性（或属性组）F是基本关系R的外键，它与基本关系S的键KS相对应（关系R和S不一定是不同的关系），则对于R中每个元组在F上的值必须为：</p>
+<ol>
+<li>或者取空值（F的每个属性值均为空值）</li>
+<li>或者等于S中某个元组的主键值。</li>
+</ol>
+<p>参照完整性规则用冗余属性描述了实体之间的关系，只允许外键这一种冗余属性的存在，其他尽量不允许。</p>
+<p>例如，学生关系数据库：</p>
+<pre><code>学生(学号，姓名，借书卡号，年龄，所在院系)
+课程(课程号，课程名，学分)
+选修(学号，课程号，成绩)
+</code></pre>
+<p>中三个<strong>关系</strong>之间存在<strong>属性</strong>间的引用, 选修关系引用了学生关系的主键"学号"和课程关系的主键"课程号"。<br>
+显然，选修关系中的"学号"值必须是学生关系中实际存在的"学号"。<br>
+选修关系中的"课程号"必须是课程关系中实际存在的"课程号"。<br>
+这就满足了参照完整性规则(2), 它说明, 选修关系中的某些属性(“学号”,“课程号”)需要参照学生关系及课程关系对应的属性内容取值。<br>
+所以, 选修关系被称为依赖表/参照关系, 学生关系和课程关系被称为目标表/被参照关系。</p>
+<h2 id="关系代数">关系代数</h2>
+<p>关系代数是一种抽象语言, 它通过对关系的运算来表达查询。关系代数以关系为运算对象，通过对关系进行"组合"或"分割", 得到所需的数据集合–一个新的关系。</p>
+<p>关系代数可分为:</p>
+<ol>
+<li>集合运算(并, 交, 差, 广义笛卡儿积) <font color="blue">以行为元素进行</font></li>
+<li>关系运算(投影, 选择, 连接, 除运算) <font color="blue">不仅涉及行, 而且涉及列</font></li>
+<li>扩充的关系运算(广义投影, 外连接, 半连接, 聚集 等)</li>
+</ol>
+<p>关系代数常用的运算符:<br>
+<img src="img/sql-database-pic4.png" alt=""></p>
+<h3 id="集合运算">集合运算</h3>
+<p>设:t为元组变量; R, S为同类的n元关系。<br>
+<font color="red">同类: 两个关系有相同的列数(元),且相应的属性值取自同一个域(数姓名可以不相同)</font></p>
+<ul>
+<li>并(Union): R∪ S={t|t∈ R ∨ t∈ S}</li>
+<li>差(Difference): R-S={t|t∈ R ∧ t∉ S}</li>
+<li>交(Intersection): R∩ S={t|t∈ R ∧ t∈ S}</li>
+<li>积(Cartesian Product, 广义笛卡尔积):<font color="blue">R为k1元关系, 有n1个元组。S为k2元关系, 有n2个元组。广义笛卡儿积的结果为k1+k2元新关系, 有n1×n2个元组。每个元组由R的一个元组(前k1列)与S的一个元组(后k2列)拼接而成。</font>R×S={tr ts|(tr∈ R)∧(ts∈ S)}</li>
+</ul>
+<p><img src="img/sql-database-pic5.png" alt=""></p>
+<h3 id="关系运算">关系运算</h3>
+<ul>
+<li>选择(Selection): <img src="img/sql-database-pic6.png" alt=""> <font color="blue">挑出满足条件F的元组。</font></li>
+<li>投影(Projection): <img src="img/sql-database-pic7.png" alt=""> <font color="blue">列上进行选择。R中取属性名表A中制定的列。</font></li>
+<li>连接(Join):<img src="img/sql-database-pic8.png" alt=""><font color="blue">从R×S中选取R在A属性组上的值与S在B属性组上满足θ关系的元组，构成一个新关系。</font><img src="img/sql-database-pic9.png" alt=""></li>
+<li>除(Division): <img src="img/sql-database-pic10.png" alt=""></li>
+</ul>
+<p><img src="img/sql-database-pic11.png" alt=""><br>
+<img src="img/sql-database-pic12.png" alt=""></p>
+<h2 id="sql语言">SQL语言</h2>
+<p>SQL语言格式约定：</p>
+<ul>
+<li>SQL是一种自由格式语言：它对每一行的字符数不作限定，也不要求一个SQL语句一定分成几行来写</li>
+<li>SQL的编译器不区分大小写；（字符常量除外）</li>
+<li>以分号结束语句</li>
+</ul>
+<p>如何增强SQL语句的可读性?</p>
+<ol>
+<li>用分行、 对齐和缩进方法</li>
+</ol>
+<ul>
+<li>分行：语句的每一个子句在新的一行开始书写</li>
+<li>对齐：每一子句与其它子句的开始处在同一列上</li>
+<li>缩进：如果子句由几个部分组成， 则它们应当出现在不同的行,并在子句开始处使用缩进方式表示这种关系</li>
+</ul>
+<ol start="2">
+<li>SQL的保留字使用大写</li>
+</ol>
+<p>用扩展的巴克斯范式(Backus Naur Form, BNF)定义SQL语句</p>
+<ol>
+<li>大写字母用于表示保留字</li>
+<li>小写字母用于表示用户自定义字</li>
+<li>竖线( | )用于表示从选项中进行选择</li>
+<li>大括号( { } )用于表示所需元素</li>
+<li>中括号( [ ] )用于表示可选择元素</li>
+<li>省略号( … )用于表示选择项可重复0到多次</li>
+</ol>
+</div>
+</div>
 
 	</div>
   </article>

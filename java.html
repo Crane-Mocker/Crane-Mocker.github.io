@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="c0conut">
+
+  <title>c0conut's Blog</title>
+
+  <link rel="icon" href="img/c0conut-small.ico" type="image/x-icon">
+  <link rel="shortcut ico" href="img/c0conut-small.ico" type="image/x-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">c0conut</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/about-bg.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>杂七杂八的java笔记</h1>
+            <h2 class="subheading">Java Notes</h2>
+            <span class="meta">Posted by
+				<a href="#">c0conut</a>
+              on June 5, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+  <article>
+    <div class="container"> 
+    
+
+<div class="stackedit">
+  <div class="stackedit__html"><h1 id="杂七杂八的java笔记">杂七杂八的java笔记</h1>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#reference">reference</a></li>
+<li><a href="#%E8%84%B1%E7%A6%BBide%E7%BC%96%E8%AF%91java">脱离IDE编译java</a>
+<ul>
+<li><a href="#%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95">工程目录</a></li>
+<li><a href="#%E7%BC%96%E8%AF%91">编译</a></li>
+</ul>
+</li>
+<li><a href="#--java-java-virtual-machine">- java: Java Virtual Machine</a>
+<ul>
+<li><a href="#%E8%BF%90%E8%A1%8Cclass%E6%96%87%E4%BB%B6">运行class文件</a></li>
+<li><a href="#%E6%89%93%E5%8C%85jar">打包jar</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8Cjar">运行jar</a></li>
+</ul>
+</li>
+<li><a href="#java-makefile">java makefile</a></li>
+<li><a href="#java%E4%B8%AD%E7%9A%84xml">java中的xml</a></li>
+<li><a href="#java%E5%8C%85">java包</a>
+<ul>
+<li><a href="#import%E5%92%8C%E5%8C%85%E6%9C%BA%E5%88%B6">import和包机制</a></li>
+<li><a href="#%E5%BA%93">库</a></li>
+<li><a href="#%E5%8C%85%E5%90%8D">包名</a></li>
+</ul>
+</li>
+<li><a href="#eclipse">Eclipse</a>
+<ul>
+<li><a href="#%E7%BC%96%E7%A0%81">编码</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8C">运行</a></li>
+<li><a href="#%E6%9C%AA%E6%89%BE%E5%88%B0%E4%B8%BB%E7%B1%BB">未找到主类</a></li>
+<li><a href="#getting-jre-system-library-unbound">getting JRE system library unbound</a></li>
+<li><a href="#access-denied-for-user-localhost-to-database">Access denied for user ‘’@‘localhost’ to database</a></li>
+</ul>
+</li>
+</ul>
+<!-- vim-markdown-toc -->
+<h2 id="reference">reference</h2>
+<blockquote>
+<p><a href="https://blog.csdn.net/lvshaorong/article/details/73881568">https://blog.csdn.net/lvshaorong/article/details/73881568</a><br>
+<a href="https://blog.csdn.net/yeqiuBOke/article/details/80897611">https://blog.csdn.net/yeqiuBOke/article/details/80897611</a><br>
+<a href="https://users.soe.ucsc.edu/~eaugusti/archive/102-winter16/misc/howToCompileAndRunFromCommandLine.html">https://users.soe.ucsc.edu/~eaugusti/archive/102-winter16/misc/howToCompileAndRunFromCommandLine.html</a><br>
+<a href="https://www.cnblogs.com/by-1075324834/p/5558035.html">https://www.cnblogs.com/by-1075324834/p/5558035.html</a><br>
+菜鸟教程<br>
+think in java 第四版</p>
+</blockquote>
+<h2 id="脱离ide编译java">脱离IDE编译java</h2>
+<h3 id="工程目录">工程目录</h3>
+<p><code>根目录/</code>下</p>
+<ul>
+<li><code>src/</code> 存放源代码</li>
+<li><code>classes/</code>存放编译好的class</li>
+</ul>
+<h3 id="编译">编译</h3>
+<p>简单地在同一path下编译：</p>
+<ul>
+<li>单个文件: <code>javac file.java</code></li>
+<li>多个文件: <code>javac YourSourceFile.java</code></li>
+<li>该dir中所有java files: <code>javac *.java</code></li>
+<li>使用compiler flags: <code>javac -Xlint:unchecked SourceFile.java</code> (多文件和通配符也可使用该参数)</li>
+</ul>
+<p>编译单个文件：<br>
+<code>javac -d classes src/xxx.java</code><br>
+<code>-d</code>参数后跟class文件的输出目录，如果没有-d参数会在当前目录下生成class文件，而且没有根据包名建立相应的目录</p>
+<p>如果主类中import了工具类，需要同时编译，比如<br>
+<code>javac -d classes src/*.java</code></p>
+<hr>
+<ul>
+<li>javac: Java compiler</li>
+<li>java: Java Virtual Machine</li>
+</ul>
+<hr>
+<p>Linux下为UTF-8编码，javac编译gbk编码的java文件时，容易出现“错误: 编码UTF8的不可映射字符”</p>
+<p>解决方法是添加encoding 参数：<code>javac -encoding gbk WordCount.java</code></p>
+<h3 id="运行class文件">运行class文件</h3>
+<p><code>java -classpath classes test.ant.HelloWorld</code><br>
+-classpath参数规定class文件的搜索范围，并指明程序主入口</p>
+<p>不使用: -classpath<br>
+<code>java ClassName</code><br>
+the file name specified must be a .class file that contains a main method</p>
+<p>运行类时，不用加.class。<br>
+比如有一个类Hello.class，运行命令是<code>java Hello</code>而不是<code>java Hello.class</code> 。运行机制中是寻找类，而不是像编译的时候那样找到某个文件。</p>
+<h3 id="打包jar">打包jar</h3>
+<p><code>cd classes</code><br>
+使jar包打出来之后最外层文件夹是属于包名的，不然会报错找不到类<br>
+<code>jar -cvf xxx.jar ./*</code></p>
+<p>打开这个jar,除了<code>META-INF</code>之外的木以要是属于包名的目录</p>
+<h3 id="运行jar">运行jar</h3>
+<p>java -jar xxx.jar</p>
+<h2 id="java-makefile">java makefile</h2>
+<p>这是来自https://www.cnblogs.com/jiqingwu/archive/2012/06/13/java_makefile.html的一份通用makefile</p>
+<pre class=" language-bash"><code class="prism  language-bash">    <span class="token comment"># A general java project makefile</span>
+     <span class="token comment"># Author: Wu Jiqing (jiqingwu@gmail.com)</span>
+     <span class="token comment"># create: 2012-06-12</span>
+     <span class="token comment"># update: 2012-06-13</span>
+     <span class="token comment"># version: 0.7</span>
+    
+     <span class="token comment"># 设置你要生成的jar包的文件名</span>
+     <span class="token comment"># Set the file name of your jar package:</span>
+    JAR_PKG <span class="token operator">=</span> a.jar
+     <span class="token comment"># 设置你的项目的入口点</span>
+     <span class="token comment"># Set your entry point of your java app:</span>
+    ENTRY_POINT <span class="token operator">=</span> test.A
+     <span class="token comment"># 是否需要res目录，如果你的程序有图片、文档等，</span>
+     <span class="token comment"># 最好放入res目录中。</span>
+     <span class="token comment"># yes: 需要；no：不需要</span>
+    RES_DIR <span class="token operator">=</span> <span class="token function">yes</span>
+     <span class="token comment"># 设置你项目包含的源文件</span>
+     <span class="token comment"># 如果你使用了package，请自己在src下建立相应的目录层次，</span>
+     <span class="token comment"># 并将源文件放在对应的目录中。</span>
+     <span class="token comment"># 如你要生成的一个类是 com.game.A，</span>
+     <span class="token comment"># 那么你的源文件应该是 com/game/A.java。</span>
+     <span class="token comment"># 多个类之间用空格间隔，如果一行太长，用'\'换行，</span>
+     <span class="token comment"># 建议一行一个。</span>
+     <span class="token comment"># 另外注意顺序，如果class A 引用 class B，那么B.java应该放在A.java前。</span>
+    SOURCE_FILES <span class="token operator">=</span> \
+    test/B.java \
+    test/A.java
+    
+     <span class="token comment"># 设置你的java编译器</span>
+     <span class="token comment"># Set your java compiler here:</span>
+    JAVAC <span class="token operator">=</span> javac
+     <span class="token comment"># 设置你的编译选项</span>
+    JFLAGS <span class="token operator">=</span> -encoding UTF-8
+    
+     <span class="token comment"># 用法：</span>
+     <span class="token comment"># make new: 在你的工程目录下生成src, bin, res子目录。</span>
+     <span class="token comment"># 如果你定义的类包含在某个包里：请自己在src下建立相应的目录层次。</span>
+     <span class="token comment"># 最终的目录结构如下：</span>
+     <span class="token comment"># ├── a.jar</span>
+     <span class="token comment"># ├── bin</span>
+     <span class="token comment"># │     └── test</span>
+     <span class="token comment"># │             ├── A.class</span>
+     <span class="token comment"># │             └── B.class</span>
+     <span class="token comment"># ├── makefile</span>
+     <span class="token comment"># ├── res</span>
+     <span class="token comment"># │     └── doc</span>
+     <span class="token comment"># │            └── readme.txt</span>
+     <span class="token comment"># └── src</span>
+     <span class="token comment">#        └── test</span>
+     <span class="token comment">#                ├── A.java</span>
+     <span class="token comment">#                └── B.java</span>
+    
+     <span class="token comment"># make build: 编译，在bin目录下生成 java classes。</span>
+     <span class="token comment"># make clean: 清理编译结果，以便重新编译</span>
+     <span class="token comment"># make rebuild: 清理编译结果，重新编译。</span>
+     <span class="token comment"># make run: make 之后，可以通过make run查看运行结果。</span>
+     <span class="token comment"># make jar: 生成可执行的jar包。</span>
+    
+     <span class="token comment">#############下面的内容建议不要修改####################</span>
+    
+    vpath %.class bin
+    vpath %.java src
+    
+     <span class="token comment"># show help message by default</span>
+    Default:
+        @echo <span class="token string">"make new: new project, create src, bin, res dirs."</span>
+        @echo <span class="token string">"make build: build project."</span>
+        @echo <span class="token string">"make clean: clear classes generated."</span>
+        @echo <span class="token string">"make rebuild: rebuild project."</span>
+        @echo <span class="token string">"make run: run your app."</span>
+        @echo <span class="token string">"make jar: package your project into a executable jar."</span>
+    
+    build: <span class="token variable"><span class="token variable">$(</span>SOURCE_FILES:.java<span class="token operator">=</span>.class<span class="token variable">)</span></span>
+    
+     <span class="token comment"># pattern rule</span>
+     <span class="token comment"># 不能处理两个类互相引用的情况，尽量避免</span>
+    %.class: %.java
+        <span class="token variable"><span class="token variable">$(</span>JAVAC<span class="token variable">)</span></span> -cp bin -d bin <span class="token variable"><span class="token variable">$(</span>JFLAGS<span class="token variable">)</span></span> $<span class="token operator">&lt;</span>
+    
+    rebuild: clean build
+    
+    .PHONY: new clean run jar
+    
+    new:
+    ifeq <span class="token punctuation">(</span><span class="token variable"><span class="token variable">$(</span>RES_DIR<span class="token variable">)</span></span>,yes<span class="token punctuation">)</span>
+        <span class="token function">mkdir</span> -pv src bin res
+    <span class="token keyword">else</span>
+        <span class="token function">mkdir</span> -pv src bin
+    endif
+    
+    clean:
+        <span class="token function">rm</span> -frv bin/*
+    
+    run:
+        java -cp bin <span class="token variable"><span class="token variable">$(</span>ENTRY_POINT<span class="token variable">)</span></span>
+    
+    jar:
+    ifeq <span class="token punctuation">(</span><span class="token variable"><span class="token variable">$(</span>RES_DIR<span class="token variable">)</span></span>,yes<span class="token punctuation">)</span>
+        jar cvfe <span class="token variable"><span class="token variable">$(</span>JAR_PKG<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>ENTRY_POINT<span class="token variable">)</span></span>  -C bin <span class="token keyword">.</span> res
+    <span class="token keyword">else</span>
+        jar cvfe <span class="token variable"><span class="token variable">$(</span>JAR_PKG<span class="token variable">)</span></span> <span class="token variable"><span class="token variable">$(</span>ENTRY_POINT<span class="token variable">)</span></span> -C bin <span class="token keyword">.</span>
+    endif
+</code></pre>
+<p>make new: 新建工程，在当前目录下生成src, bin, res（如果 RES_DIR = yes）子目录，类似Eclipse项目的目录层次。java源文件放 在src目录下，生成的class放在bin目录下。<br>
+make build: 编译工程。<br>
+make clean: 清除生成的class，以便重新编译。<br>
+make rebuild: 重新编译工程，相当于make clean; make build。<br>
+make run: 运行编译生成的应用。<br>
+make jar: 生成可执行的jar包。<br>
+make: 显示帮助信息。</p>
+<h2 id="java中的xml">java中的xml</h2>
+<ol>
+<li>xml作为数据储存(很少)</li>
+<li>存放配置信息</li>
+</ol>
+<p>IDEA的maven项目中，默认源代码目录下（src/main/java目录）的xml等资源文件并不会在编译的时候一块打包进classes文件夹，而是直接舍弃掉。如果使用的是Eclipse，Eclipse的src目录下的xml等资源文件在编译的时候会自动打包进输出到classes文件夹。</p>
+<h2 id="java包">java包</h2>
+<h3 id="import和包机制">import和包机制</h3>
+<p>Java中的一个包就是一个类库单元,<font color="red">用import导入一个完整的库时，就会获得包， 例如<code>import java.util.*</code></font>  , 包内包含有一组类，它们在单一的名称空间之下被组织在了一起。这个名称空间就是包名。</p>
+<p>单独导入一个类，如位于java.util(utility库)中的Vector，可以在import语句中指定类的名字<code>import java.util.Vector</code></p>
+<p>包机制便于管理命名空间(name space)，使类成员的名字相互隔离起来。如类A中的方法f()与类B中的方法f()不冲突。</p>
+<h3 id="库">库</h3>
+<p>一个编辑单元(.java file)有且仅有一个同名的public类，非public类在该包之外被隐藏。</p>
+<p>编译一个java file, 里面所有的class都会得到一个.class file, 一系列的.class文件封装压缩到一起形成一个jar file.</p>
+<p>库也由一系列类文件构成，每个类文件有一个public类，所以每个文件都有一个组件，如果将这些组件都归纳在一起，就可以使用package</p>
+<p>package语句作为文件的第一个非注释语句。它指明该编译单元内的public类名位于该package的名字下面。</p>
+<p>例如，对于MyClass.java</p>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">package</span> mypackage<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyClass</span><span class="token punctuation">{</span>
+<span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>若想使用MyClass, 有两种方法</p>
+<ol>
+<li>指定完整名称</li>
+</ol>
+<pre class=" language-java"><code class="prism  language-java">mypackage<span class="token punctuation">.</span>MyClass m <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">mypackage<span class="token punctuation">.</span>MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<ol start="2">
+<li>import激活mypackage中的名字</li>
+</ol>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">import</span> mypackage<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token comment">//...</span>
+MyClass m <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="包名">包名</h3>
+<p>java解释器工作时：</p>
+<ol>
+<li>找到环境变量CLASSPATH, CLASSPATH中包含一个或者多个目录，被作为寻找包名的根目录。解释器开始寻找包名并将.替换成/, 从而生成从CLASSPATH的根目录开始的路径名</li>
+<li>CLASSPATH的根目录和形成的路径名连接在一起，成为CLASSPATH内的入口。以后搜索.class文件时，就从这些地方开始查找。</li>
+</ol>
+<p>例如包<code>package com.blabla.util</code>包含两个文件</p>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>blabla<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Vector</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token function">Vector</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hello Vector"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">--</span><span class="token operator">-</span>
+<span class="token keyword">package</span> com<span class="token punctuation">.</span>blabla<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">List</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token function">List</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hello List"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这两个文件都位于com/blabla/util目录下</p>
+<p>此外若导入包括相同名字的两个库，在使用该名字时，也需要指定完整名称<br>
+如<code>java.util.Vector v = new java.util.Vector();</code></p>
+<h2 id="eclipse">Eclipse</h2>
+<h3 id="编码">编码</h3>
+<p>右键文件夹&gt;properties&gt;Resource&gt;text file encoding<br>
+选择Other, 直接键入即可(本人用的ubuntu,下拉选项没有GBK，但是直接键入GBK，apply亦可)</p>
+<h3 id="运行">运行</h3>
+<p>找到有主类的file, run as application</p>
+<h3 id="未找到主类">未找到主类</h3>
+<p>参考这个，很详细的各种原因：<br>
+<a href="https://blog.csdn.net/chenleixing/article/details/44816629">https://blog.csdn.net/chenleixing/article/details/44816629</a></p>
+<p>比较实用的是:</p>
+<ol>
+<li>找不到lib：右键Properties在Java Builder Path的Libraries的标签里面看是否有缺少的,重新引入即可</li>
+<li>找不到xml: properties&gt;builder里把.xml引入</li>
+</ol>
+<h3 id="getting-jre-system-library-unbound">getting JRE system library unbound</h3>
+<p>Right click on project—&gt; Build Path–&gt;Configure build path<br>
+Now there are 4 tabs Source, Projects, Libraries, Order and Export</p>
+<p>Go to<br>
+Libraries tab --&gt;  Click on Add Library (shown at the right side) --&gt;<br>
+select JRE System Library --&gt; Next–&gt;click Alternate JRE --&gt; select<br>
+Installed JRE–&gt; Finish --&gt; Apply–&gt; OK.</p>
+<h3 id="access-denied-for-user-localhost-to-database">Access denied for user ‘’@‘localhost’ to database</h3>
+<ol>
+<li>远程连接的问题</li>
+</ol>
+<p>Check if user is allowed for remote connection, run below sql query on your database to allow your user to connect from everywhere.</p>
+<p>Allow a user to connect from anywhere</p>
+<p><code>GRANT ALL ON *.* to &lt;user-name&gt;@'&lt;ip&gt;' IDENTIFIED BY '&lt;password&gt;'</code><br>
+Sample for root user :-</p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">to</span> root@'<span class="token operator">%</span><span class="token string">' IDENTIFIED BY '</span>root'<span class="token punctuation">;</span>
+<span class="token comment">// grant root user to connect from everywhere(%) , which has root password.</span>
+</code></pre>
+<ol start="2">
+<li>损坏的.classpath和.project</li>
+</ol>
+<p><a href="https://stackoverflow.com/questions/59899416/access-denied-for-user-localhost-using-password-no-in-eclipse-instead-o">https://stackoverflow.com/questions/59899416/access-denied-for-user-localhost-using-password-no-in-eclipse-instead-o</a></p>
+<ul>
+<li>Delete the project from Eclipse (not on the disk)</li>
+<li>Close Eclipse</li>
+<li>Go to Project folder and delete .classpath and .project files</li>
+<li>Open eclipse, go to File &gt; Open projects from File System and choose the project directory</li>
+<li>Right click on the project &gt; Run As &gt; Run Configurations and set the right Main class# 杂七杂八的java笔记</li>
+</ul>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#reference">reference</a></li>
+<li><a href="#%E8%84%B1%E7%A6%BBide%E7%BC%96%E8%AF%91java">脱离IDE编译java</a>
+<ul>
+<li><a href="#%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95">工程目录</a></li>
+<li><a href="#%E7%BC%96%E8%AF%91">编译</a></li>
+</ul>
+</li>
+<li><a href="#--java-java-virtual-machine">- java: Java Virtual Machine</a>
+<ul>
+<li><a href="#%E8%BF%90%E8%A1%8Cclass%E6%96%87%E4%BB%B6">运行class文件</a></li>
+<li><a href="#%E6%89%93%E5%8C%85jar">打包jar</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8Cjar">运行jar</a></li>
+</ul>
+</li>
+<li><a href="#java-makefile">java makefile</a></li>
+<li><a href="#java%E4%B8%AD%E7%9A%84xml">java中的xml</a></li>
+<li><a href="#java%E5%8C%85">java包</a>
+<ul>
+<li><a href="#import%E5%92%8C%E5%8C%85%E6%9C%BA%E5%88%B6">import和包机制</a></li>
+<li><a href="#%E5%BA%93">库</a></li>
+<li><a href="#%E5%8C%85%E5%90%8D">包名</a></li>
+</ul>
+</li>
+<li><a href="#eclipse">Eclipse</a>
+<ul>
+<li><a href="#%E7%BC%96%E7%A0%81">编码</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8C">运行</a></li>
+<li><a href="#%E6%9C%AA%E6%89%BE%E5%88%B0%E4%B8%BB%E7%B1%BB">未找到主类</a></li>
+<li><a href="#getting-jre-system-library-unbound">getting JRE system library unbound</a></li>
+<li><a href="#access-denied-for-user-localhost-to-database">Access denied for user ‘’@‘localhost’ to database</a></li>
+</ul>
+</li>
+</ul>
+<!-- vim-markdown-toc -->
+<h2 id="reference-1">reference</h2>
+<blockquote>
+<p><a href="https://blog.csdn.net/lvshaorong/article/details/73881568">https://blog.csdn.net/lvshaorong/article/details/73881568</a><br>
+<a href="https://blog.csdn.net/yeqiuBOke/article/details/80897611">https://blog.csdn.net/yeqiuBOke/article/details/80897611</a><br>
+<a href="https://users.soe.ucsc.edu/~eaugusti/archive/102-winter16/misc/howToCompileAndRunFromCommandLine.html">https://users.soe.ucsc.edu/~eaugusti/archive/102-winter16/misc/howToCompileAndRunFromCommandLine.html</a><br>
+<a href="https://www.cnblogs.com/by-1075324834/p/5558035.html">https://www.cnblogs.com/by-1075324834/p/5558035.html</a><br>
+菜鸟教程<br>
+think in java 第四版</p>
+</blockquote>
+<h2 id="脱离ide编译java-1">脱离IDE编译java</h2>
+<h3 id="工程目录-1">工程目录</h3>
+<p><code>根目录/</code>下</p>
+<ul>
+<li><code>src/</code> 存放源代码</li>
+<li><code>classes/</code>存放编译好的class</li>
+</ul>
+<h3 id="编译-1">编译</h3>
+<p>简单地在同一path下编译：</p>
+<ul>
+<li>单个文件: <code>javac file.java</code></li>
+<li>多个文件: <code>javac YourSourceFile.java</code></li>
+<li>该dir中所有java files: <code>javac *.java</code></li>
+<li>使用compiler flags: <code>javac -Xlint:unchecked SourceFile.java</code> (多文件和通配符也可使用该参数)</li>
+</ul>
+<p>编译单个文件：<br>
+<code>javac -d classes src/xxx.java</code><br>
+<code>-d</code>参数后跟class文件的输出目录，如果没有-d参数会在当前目录下生成class文件，而且没有根据包名建立相应的目录</p>
+<p>如果主类中import了工具类，需要同时编译，比如<br>
+<code>javac -d classes src/*.java</code></p>
+<hr>
+<ul>
+<li>javac: Java compiler</li>
+<li>java: Java Virtual Machine</li>
+</ul>
+<hr>
+<p>Linux下为UTF-8编码，javac编译gbk编码的java文件时，容易出现“错误: 编码UTF8的不可映射字符”</p>
+<p>解决方法是添加encoding 参数：<code>javac -encoding gbk WordCount.java</code></p>
+<h3 id="运行class文件-1">运行class文件</h3>
+<p><code>java -classpath classes test.ant.HelloWorld</code><br>
+-classpath参数规定class文件的搜索范围，并指明程序主入口</p>
+<p>不使用: -classpath<br>
+<code>java ClassName</code><br>
+the file name specified must be a .class file that contains a main method</p>
+<p>运行类时，不用加.class。<br>
+比如有一个类Hello.class，运行命令是<code>java Hello</code>而不是<code>java Hello.class</code> 。运行机制中是寻找类，而不是像编译的时候那样找到某个文件。</p>
+<h3 id="打包jar-1">打包jar</h3>
+<p><code>cd classes</code><br>
+使jar包打出来之后最外层文件夹是属于包名的，不然会报错找不到类<br>
+<code>jar -cvf xxx.jar ./*</code></p>
+<p>打开这个jar,除了<code>META-INF</code>之外的木以要是属于包名的目录</p>
+<h3 id="运行jar-1">运行jar</h3>
+<p>java -jar xxx.jar</p>
+<h2 id="java-makefile-1">java makefile</h2>
+<p>这是来自https://www.cnblogs.com/jiqingwu/archive/2012/06/13/java_makefile.html的一份通用makefile</p>
+<p>‘’'bash</p>
+<h1 id="a-general-java-project-makefile">A general java project makefile</h1>
+<h1 id="author-wu-jiqing-jiqingwugmail.com">Author: Wu Jiqing (<a href="mailto:jiqingwu@gmail.com">jiqingwu@gmail.com</a>)</h1>
+<h1 id="create-2012-06-12">create: 2012-06-12</h1>
+<h1 id="update-2012-06-13">update: 2012-06-13</h1>
+<h1 id="version-0.7">version: 0.7</h1>
+<h1 id="设置你要生成的jar包的文件名">设置你要生成的jar包的文件名</h1>
+<h1 id="set-the-file-name-of-your-jar-package">Set the file name of your jar package:</h1>
+<p>JAR_PKG = a.jar</p>
+<h1 id="设置你的项目的入口点">设置你的项目的入口点</h1>
+<h1 id="set-your-entry-point-of-your-java-app">Set your entry point of your java app:</h1>
+<p>ENTRY_POINT = test.A</p>
+<h1 id="是否需要res目录，如果你的程序有图片、文档等，">是否需要res目录，如果你的程序有图片、文档等，</h1>
+<h1 id="最好放入res目录中。">最好放入res目录中。</h1>
+<h1 id="yes-需要；no：不需要">yes: 需要；no：不需要</h1>
+<p>RES_DIR = yes</p>
+<h1 id="设置你项目包含的源文件">设置你项目包含的源文件</h1>
+<h1 id="如果你使用了package，请自己在src下建立相应的目录层次，">如果你使用了package，请自己在src下建立相应的目录层次，</h1>
+<h1 id="并将源文件放在对应的目录中。">并将源文件放在对应的目录中。</h1>
+<h1 id="如你要生成的一个类是-com.game.a，">如你要生成的一个类是 com.game.A，</h1>
+<h1 id="那么你的源文件应该是-comgamea.java。">那么你的源文件应该是 com/game/A.java。</h1>
+<h1 id="多个类之间用空格间隔，如果一行太长，用换行，">多个类之间用空格间隔，如果一行太长，用’'换行，</h1>
+<h1 id="建议一行一个。">建议一行一个。</h1>
+<h1 id="另外注意顺序，如果class-a-引用-class-b，那么b.java应该放在a.java前。">另外注意顺序，如果class A 引用 class B，那么B.java应该放在A.java前。</h1>
+<p>SOURCE_FILES = <br>
+test/B.java <br>
+test/A.java</p>
+<h1 id="设置你的java编译器">设置你的java编译器</h1>
+<h1 id="set-your-java-compiler-here">Set your java compiler here:</h1>
+<p>JAVAC = javac</p>
+<h1 id="设置你的编译选项">设置你的编译选项</h1>
+<p>JFLAGS = -encoding UTF-8</p>
+<h1 id="用法：">用法：</h1>
+<h1 id="make-new-在你的工程目录下生成src-bin-res子目录。">make new: 在你的工程目录下生成src, bin, res子目录。</h1>
+<h1 id="如果你定义的类包含在某个包里：请自己在src下建立相应的目录层次。">如果你定义的类包含在某个包里：请自己在src下建立相应的目录层次。</h1>
+<h1 id="最终的目录结构如下：">最终的目录结构如下：</h1>
+<h1 id="├──-a.jar">├── a.jar</h1>
+<h1 id="├──-bin">├── bin</h1>
+<h1 id="│-----└──-test">│     └── test</h1>
+<h1 id="│-------------├──-a.class">│             ├── A.class</h1>
+<h1 id="│-------------└──-b.class">│             └── B.class</h1>
+<h1 id="├──-makefile">├── makefile</h1>
+<h1 id="├──-res">├── res</h1>
+<h1 id="│-----└──-doc">│     └── doc</h1>
+<h1 id="│------------└──-readme.txt">│            └── readme.txt</h1>
+<h1 id="└──-src">└── src</h1>
+<h1 id="└──-test">└── test</h1>
+<h1 id="├──-a.java">├── A.java</h1>
+<h1 id="└──-b.java">└── B.java</h1>
+<h1 id="make-build-编译，在bin目录下生成-java-classes。">make build: 编译，在bin目录下生成 java classes。</h1>
+<h1 id="make-clean-清理编译结果，以便重新编译">make clean: 清理编译结果，以便重新编译</h1>
+<h1 id="make-rebuild-清理编译结果，重新编译。">make rebuild: 清理编译结果，重新编译。</h1>
+<h1 id="make-run-make-之后，可以通过make-run查看运行结果。">make run: make 之后，可以通过make run查看运行结果。</h1>
+<h1 id="make-jar-生成可执行的jar包。">make jar: 生成可执行的jar包。</h1>
+<p>#############下面的内容建议不要修改####################</p>
+<p>vpath %.class bin<br>
+vpath %.java src</p>
+<h1 id="show-help-message-by-default">show help message by default</h1>
+<p>Default:<br>
+@echo “make new: new project, create src, bin, res dirs.”<br>
+@echo “make build: build project.”<br>
+@echo “make clean: clear classes generated.”<br>
+@echo “make rebuild: rebuild project.”<br>
+@echo “make run: run your app.”<br>
+@echo “make jar: package your project into a executable jar.”</p>
+<p>build: $(SOURCE_FILES:.java=.class)</p>
+<h1 id="pattern-rule">pattern rule</h1>
+<h1 id="不能处理两个类互相引用的情况，尽量避免">不能处理两个类互相引用的情况，尽量避免</h1>
+<p>%.class: %.java<br>
+$(JAVAC) -cp bin -d bin $(JFLAGS) $&lt;</p>
+<p>rebuild: clean build</p>
+<p>.PHONY: new clean run jar</p>
+<p>new:<br>
+ifeq ($(RES_DIR),yes)<br>
+mkdir -pv src bin res<br>
+else<br>
+mkdir -pv src bin<br>
+endif</p>
+<p>clean:<br>
+rm -frv bin/*</p>
+<p>run:<br>
+java -cp bin $(ENTRY_POINT)</p>
+<p>jar:<br>
+ifeq ($(RES_DIR),yes)<br>
+jar cvfe $(JAR_PKG) $(ENTRY_POINT)  -C bin . res<br>
+else<br>
+jar cvfe $(JAR_PKG) $(ENTRY_POINT) -C bin .<br>
+endif<br>
+‘’’</p>
+<p>make new: 新建工程，在当前目录下生成src, bin, res（如果 RES_DIR = yes）子目录，类似Eclipse项目的目录层次。java源文件放 在src目录下，生成的class放在bin目录下。<br>
+make build: 编译工程。<br>
+make clean: 清除生成的class，以便重新编译。<br>
+make rebuild: 重新编译工程，相当于make clean; make build。<br>
+make run: 运行编译生成的应用。<br>
+make jar: 生成可执行的jar包。<br>
+make: 显示帮助信息。</p>
+<h2 id="java中的xml-1">java中的xml</h2>
+<ol>
+<li>xml作为数据储存(很少)</li>
+<li>存放配置信息</li>
+</ol>
+<p>IDEA的maven项目中，默认源代码目录下（src/main/java目录）的xml等资源文件并不会在编译的时候一块打包进classes文件夹，而是直接舍弃掉。如果使用的是Eclipse，Eclipse的src目录下的xml等资源文件在编译的时候会自动打包进输出到classes文件夹。</p>
+<h2 id="java包-1">java包</h2>
+<h3 id="import和包机制-1">import和包机制</h3>
+<p>Java中的一个包就是一个类库单元,<font color="red">用import导入一个完整的库时，就会获得包， 例如<code>import java.util.*</code></font>  , 包内包含有一组类，它们在单一的名称空间之下被组织在了一起。这个名称空间就是包名。</p>
+<p>单独导入一个类，如位于java.util(utility库)中的Vector，可以在import语句中指定类的名字<code>import java.util.Vector</code></p>
+<p>包机制便于管理命名空间(name space)，使类成员的名字相互隔离起来。如类A中的方法f()与类B中的方法f()不冲突。</p>
+<h3 id="库-1">库</h3>
+<p>一个编辑单元(.java file)有且仅有一个同名的public类，非public类在该包之外被隐藏。</p>
+<p>编译一个java file, 里面所有的class都会得到一个.class file, 一系列的.class文件封装压缩到一起形成一个jar file.</p>
+<p>库也由一系列类文件构成，每个类文件有一个public类，所以每个文件都有一个组件，如果将这些组件都归纳在一起，就可以使用package</p>
+<p>package语句作为文件的第一个非注释语句。它指明该编译单元内的public类名位于该package的名字下面。</p>
+<p>例如，对于MyClass.java</p>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">package</span> mypackage<span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyClass</span><span class="token punctuation">{</span>
+<span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>若想使用MyClass, 有两种方法</p>
+<ol>
+<li>指定完整名称</li>
+</ol>
+<pre class=" language-java"><code class="prism  language-java">mypackage<span class="token punctuation">.</span>MyClass m <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">mypackage<span class="token punctuation">.</span>MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<ol start="2">
+<li>import激活mypackage中的名字</li>
+</ol>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">import</span> mypackage<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token comment">//...</span>
+MyClass m <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyClass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<h3 id="包名-1">包名</h3>
+<p>java解释器工作时：</p>
+<ol>
+<li>找到环境变量CLASSPATH, CLASSPATH中包含一个或者多个目录，被作为寻找包名的根目录。解释器开始寻找包名并将.替换成/, 从而生成从CLASSPATH的根目录开始的路径名</li>
+<li>CLASSPATH的根目录和形成的路径名连接在一起，成为CLASSPATH内的入口。以后搜索.class文件时，就从这些地方开始查找。</li>
+</ol>
+<p>例如包<code>package com.blabla.util</code>包含两个文件</p>
+<pre class=" language-java"><code class="prism  language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>blabla<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Vector</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token function">Vector</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hello Vector"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token operator">--</span><span class="token operator">-</span>
+<span class="token keyword">package</span> com<span class="token punctuation">.</span>blabla<span class="token punctuation">.</span>util<span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">List</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token function">List</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+		System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"hello List"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这两个文件都位于com/blabla/util目录下</p>
+<p>此外若导入包括相同名字的两个库，在使用该名字时，也需要指定完整名称<br>
+如<code>java.util.Vector v = new java.util.Vector();</code></p>
+<h2 id="eclipse-1">Eclipse</h2>
+<h3 id="编码-1">编码</h3>
+<p>右键文件夹&gt;properties&gt;Resource&gt;text file encoding<br>
+选择Other, 直接键入即可(本人用的ubuntu,下拉选项没有GBK，但是直接键入GBK，apply亦可)</p>
+<h3 id="运行-1">运行</h3>
+<p>找到有主类的file, run as application</p>
+<h3 id="未找到主类-1">未找到主类</h3>
+<p>参考这个，很详细的各种原因：<br>
+<a href="https://blog.csdn.net/chenleixing/article/details/44816629">https://blog.csdn.net/chenleixing/article/details/44816629</a></p>
+<p>比较实用的是:</p>
+<ol>
+<li>找不到lib：右键Properties在Java Builder Path的Libraries的标签里面看是否有缺少的,重新引入即可</li>
+<li>找不到xml: properties&gt;builder里把.xml引入</li>
+</ol>
+<h3 id="getting-jre-system-library-unbound-1">getting JRE system library unbound</h3>
+<p>Right click on project—&gt; Build Path–&gt;Configure build path<br>
+Now there are 4 tabs Source, Projects, Libraries, Order and Export</p>
+<p>Go to<br>
+Libraries tab --&gt;  Click on Add Library (shown at the right side) --&gt;<br>
+select JRE System Library --&gt; Next–&gt;click Alternate JRE --&gt; select<br>
+Installed JRE–&gt; Finish --&gt; Apply–&gt; OK.</p>
+<h3 id="access-denied-for-user-localhost-to-database-1">Access denied for user ‘’@‘localhost’ to database</h3>
+<ol>
+<li>远程连接的问题</li>
+</ol>
+<p>Check if user is allowed for remote connection, run below sql query on your database to allow your user to connect from everywhere.</p>
+<p>Allow a user to connect from anywhere</p>
+<p><code>GRANT ALL ON *.* to &lt;user-name&gt;@'&lt;ip&gt;' IDENTIFIED BY '&lt;password&gt;'</code><br>
+Sample for root user :-</p>
+<pre class=" language-sql"><code class="prism  language-sql"><span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">ON</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">to</span> root@'<span class="token operator">%</span><span class="token string">' IDENTIFIED BY '</span>root'<span class="token punctuation">;</span>
+<span class="token comment">// grant root user to connect from everywhere(%) , which has root password.</span>
+</code></pre>
+<ol start="2">
+<li>损坏的.classpath和.project</li>
+</ol>
+<p><a href="https://stackoverflow.com/questions/59899416/access-denied-for-user-localhost-using-password-no-in-eclipse-instead-o">https://stackoverflow.com/questions/59899416/access-denied-for-user-localhost-using-password-no-in-eclipse-instead-o</a></p>
+<ul>
+<li>Delete the project from Eclipse (not on the disk)</li>
+<li>Close Eclipse</li>
+<li>Go to Project folder and delete .classpath and .project files</li>
+<li>Open eclipse, go to File &gt; Open projects from File System and choose the project directory</li>
+<li>Right click on the project &gt; Run As &gt; Run Configurations and set the right Main class</li>
+</ul>
+</div>
+</div>
+
+
+
+	</div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/share">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crane-mocker.github.io/post.html">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/Crane-Mocker">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Cogito ergo sum.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

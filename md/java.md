@@ -98,7 +98,7 @@ java -jar xxx.jar
 
 这是来自https://www.cnblogs.com/jiqingwu/archive/2012/06/13/java_makefile.html的一份通用makefile
 
-'''bash
+```bash
  # A general java project makefile
  # Author: Wu Jiqing (jiqingwu@gmail.com)
  # create: 2012-06-12
@@ -201,7 +201,7 @@ ifeq ($(RES_DIR),yes)
 else
     jar cvfe $(JAR_PKG) $(ENTRY_POINT) -C bin .
 endif
-'''
+```
 
 make new: 新建工程，在当前目录下生成src, bin, res（如果 RES_DIR = yes）子目录，类似Eclipse项目的目录层次。java源文件放 在src目录下，生成的class放在bin目录下。
 make build: 编译工程。
