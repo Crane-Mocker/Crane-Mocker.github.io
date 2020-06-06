@@ -23,6 +23,7 @@
 	* [未找到主类](#未找到主类)
 	* [getting JRE system library unbound](#getting-jre-system-library-unbound)
 	* [Access denied for user ''@'localhost' to database](#access-denied-for-user-localhost-to-database)
+* [Java和MySQL](#java和mysql)
 
 <!-- vim-markdown-toc -->
 
@@ -349,3 +350,24 @@ https://stackoverflow.com/questions/59899416/access-denied-for-user-localhost-us
 - Go to Project folder and delete .classpath and .project files
 - Open eclipse, go to File > Open projects from File System and choose the project directory
 - Right click on the project > Run As > Run Configurations and set the right Main class
+
+## Java和MySQL
+
+首先mysql-connecter/J对于mysql5.x和mysql8.x和Maria DB使用的是不一样的，需要按需下载不同的mysql-connecter/J
+然后java build path中add external JARs,添加这个connecter
+
+对于mysql5,驱动是com.mysql.jdbc.Driver
+
+```java
+Class.forName("com.mysql.jdbc.Driver");
+conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_demo","root","password");
+```
+
+mysql8.0是不需要建立ssl连接的，需要显示关闭
+驱动com.mysql.cj.jdbc.Driver
+
+```java
+Class.forName("com.mysql.cj.jdbc.Driver");
+conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_demo?useSSL=false&serverTimezone=UTC","root","password");
+
+```
