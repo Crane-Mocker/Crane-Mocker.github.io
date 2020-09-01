@@ -7,6 +7,7 @@
 * [Acknowledgements](#acknowledgements)
 * [Basic concepts](#basic-concepts)
 * [Centralized systems and distributed systems](#centralized-systems-and-distributed-systems)
+* [Network address and naming](#network-address-and-naming)
 
 <!-- vim-markdown-toc -->
 
@@ -79,3 +80,5 @@ Application gateway: A system that translates data from one application into a f
 
 **Centralized systems** tend to work well with small-scaled network. But they are susceptible(易受影响的) to dramatic failures. The reason is simple: if a single node provides an indispensable(不可缺少的) service, effecting this node means effecting the entire network. 
 And everytime a node changes, it must be communicated to the centralized name and adress servers. Any single system has to handle millions of concurrent requests. So the centralized systems tend to generate a lot of traffic, they use a significant protion of available bandwidth to carry requests for up-to-date information, and all the extra network traffic they generate tends to slow down all the network performance. By the way, requests and responses to and from remote nodes must travel long distances to get to the centralized server, which means as the number of nodes increases the proportion of time(时间占比) that the centralized system is out of sync with the actual internet also increases.
+
+## Network address and naming

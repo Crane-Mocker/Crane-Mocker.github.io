@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="c0conut">
+
+  <title>c0conut's Blog</title>
+
+  <link rel="icon" href="img/c0conut-small.ico" type="image/x-icon">
+  <link rel="shortcut ico" href="img/c0conut-small.ico" type="image/x-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Custom fonts for this template -->
+  <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+  <!-- Custom styles for this template -->
+  <link href="../css/clean-blog.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">c0conut</a>
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact.html">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <header class="masthead" style="background-image: url('img/about-bg.png')">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <div class="post-heading">
+            <h1>C++篇</h1>
+            <h2 class="subheading">质朴无华的编程笔记</h2>
+            <span class="meta">Posted by
+				<a href="#">c0conut</a>
+              on Sept 1, 2020</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Post Content -->
+<div class="stackedit">
+  <div class="stackedit__html"><h1 id="质朴无华的编程笔记--c篇">质朴无华的编程笔记–C++篇</h1>
+<!-- vim-markdown-toc GFM -->
+<ul>
+<li><a href="#c%E4%B8%8Ec">C与C++</a></li>
+<li><a href="#%E5%AE%83%E4%BB%AC%E5%85%B7%E6%9C%89%E7%9B%B8%E5%90%8C%E7%9A%84%E6%84%8F%E4%B9%89%E9%83%BD%E8%A1%A8%E7%A4%BA%E8%BF%94%E5%9B%9E%E5%80%BC%E4%B8%BAint%E7%9A%84%E6%97%A0%E5%8F%82%E5%87%BD%E6%95%B0">它们具有相同的意义，都表示返回值为int的无参函数。</a></li>
+<li><a href="#const%E5%85%B3%E9%94%AE%E5%AD%97">const关键字</a></li>
+<li><a href="#%E5%8F%AA%E6%9C%89%E6%9E%9A%E4%B8%BE">只有<strong>枚举</strong></a></li>
+<li><a href="#bool">bool</a></li>
+<li><a href="#%E5%BC%95%E7%94%A8%E7%9A%84%E6%9C%AC%E8%B4%A8">引用的本质</a></li>
+</ul>
+<!-- vim-markdown-toc -->
+<h2 id="c与c">C与C++</h2>
+<ol>
+<li>C++继承了C的所有特性</li>
+<li>C++对类型加强，对类型的检查严格</li>
+</ol>
+<p>2-0 C++中<strong>struct</strong>关键字加强了。<br>
+C语言中struct定义了一组变量的集合,而不是一种新的类型。</p>
+<pre class=" language-c"><code class="prism  language-c"><span class="token keyword">typedef</span> <span class="token keyword">struct</span> _tag_student Student<span class="token punctuation">;</span><span class="token comment">//将这个集合定义成类型</span>
+<span class="token keyword">struct</span> _tag_student<span class="token punctuation">{</span> <span class="token comment">//这是个集合，不是类型</span>
+	<span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> age<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>C++中struct 用于定义一个全新的类型</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">struct</span> Student<span class="token punctuation">{</span>
+	<span class="token keyword">char</span><span class="token operator">*</span> name<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> age<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>2-1 C++对类型的检查严格<br>
+C++中所有的标识符必须显式声明类型。C中的默认类型(函数在定义时没有给出类型，默认int)在C++中不合法。</p>
+<hr>
+<p>C和C++中int func()与int func(void)的区别？</p>
+<p>C：<br>
+int func()表示返回值为int, 接受任意参数的函数。<br>
+int func(void)表示返回值为int的无参函数。</p>
+<h2 id="cpp：它们具有相同的意义，都表示返回值为int的无参函数。">CPP：<br>
+它们具有相同的意义，都表示返回值为int的无参函数。</h2>
+<ol start="3">
+<li>
+<p>C++支持面向对象</p>
+</li>
+<li>
+<p>C++所有的变量可以在需要使用时定义，C的变量在作用域开始的位置定义</p>
+</li>
+</ol>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">int</span> c <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+	<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> <span class="token number">3</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
+	<span class="token punctuation">{</span>
+		c <span class="token operator">+</span><span class="token operator">=</span> i <span class="token operator">*</span> j<span class="token punctuation">;</span><span class="token comment">// i, j的作用域仅限for循环</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>对于一些老版本的C语言编译器（某个不知名的老版本gcc），这么写会报错。<br>
+但是对于现在的C语言编译器，如gcc 7.5.0, dev-c++，这么写也可以。</p>
+<ol start="5">
+<li>对于<strong>register</strong>关键字：请求编译器将局部变量存储于寄存器中<br>
+C++依旧支持register, 但编译器优化方式不同，C++语言可以取得register变量的地址，C不可以。<br>
+早期C语言编译器不会对代码进行优化，register是很好的补充。<br>
+早期C++编译器发现程序需要取register变量的地址时，register对变量的声明变得无效。</li>
+</ol>
+<p>例如</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">register</span> <span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%p\n"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>a<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//此处取register变量a的地址</span>
+<span class="token comment">//地址是对memory而不是对register的，所以此处register无效</span>
+</code></pre>
+<p>当然，对于现代的C/C++编译器，编译器自己可以进行优化，所以register很少被使用到了。</p>
+<ol start="6">
+<li>C语言中，重复定义多个同名的全局变量是合法的。<br>
+C++中拒绝这种二义性的做法，不允许定义多个同名的全局变量。</li>
+</ol>
+<h2 id="const关键字">const关键字</h2>
+<hr>
+<p>C语言中的const</p>
+<ol>
+<li>const修饰的变量是只读的，本质上还是<strong>变量</strong>，会分配存储空间</li>
+<li>const修饰的局部变量在栈上分配空间（如果这时候通过指针，还是可以修改它的值）, 修饰的全局变量在只读存储区分配空间（如果修改它的值，程序很可能崩溃）</li>
+<li>const只在编译期有用，在运行期无用</li>
+</ol>
+<h2 id="在c语言如何定义真正意义上的常量呢？只有枚举">在C语言如何定义真正意义上的常量呢？<br>
+只有<strong>枚举</strong></h2>
+<p>对于C++：</p>
+<p>在编译过程中当碰见const声明的时候，向符号表中放入常量。编译过程中，若发现使用常量，则直接以符号表中的值进行替换。</p>
+<p>为了兼容C, 在以下两种情况下给对应的常量分配存储空间</p>
+<ol>
+<li>对const常量使用了extern（是全局变量，且需要在其他文件中使用）</li>
+<li>对const常量使用了**&amp;**操作符<br>
+虽然C++编译器可能为const常量分配空间，但不会使用其存储空间中的值。</li>
+</ol>
+<p>C++中的const常量类似于宏定义<br>
+它们的不同在于:<br>
+const常量是由编译器处理，编译器对const常量进行类型检查和作用域检查。宏定义由预处理器处理，是单纯的文本替换。</p>
+<p>举个例子:</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span> A <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> B <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> arr<span class="token punctuation">[</span>A<span class="token operator">+</span>B<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>在C中这是有问题的，A，B是变量。这里数组的大小是两个变量相加得到的，要道运行的时候才会知道，所以编译器会报错。<br>
+在C++中编译则可以通过，因为编译到<code>arr[A + B]</code>时，A,B直接从符号表中取值，所以编译器知道arr[]的大小，是3。</p>
+<p>再说说宏</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">void</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token macro property">#<span class="token directive keyword">define</span> a 1</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d"</span><span class="token punctuation">,</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>这是可以编译通过的(g++)，虽然a是f1()中的宏。因为宏是被预处理器处理的，直接进行文本替换，在编译器编译到<code>printf("%d", a)</code>时，实际上是<code>printf("%d", 1)</code></p>
+<p>这里不难发现(g++)，宏是没有作用域概念的。而const常量有作用域，在一个函数中定义的const常量作用域只在该函数中。</p>
+<h2 id="bool">bool</h2>
+<ul>
+<li>C++在C的基本类型系统上增加了boo;</li>
+<li>bool可取true(编译器内部用1表示)或false(编译器内部用0表示), 理论上只占用一个byte。C++编译器会把非0值转换成true, 0值转换成false</li>
+</ul>
+<p>例子，下列cpp代码：</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">bool</span> b <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">//0, false</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"b = %d\n"</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//0</span>
+b<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">//1, true</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"b = %d\n"</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+b <span class="token operator">=</span> b <span class="token operator">-</span> <span class="token number">3</span><span class="token punctuation">;</span> <span class="token comment">//-2, true</span>
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"b = %d\n"</span><span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+</code></pre>
+<p>C中，三目运算符返回的是变量值，不能作为左值<br>
+C++中，三目运算符直接返回变量<strong>引用</strong>，既可以当左值，又可以做右值。但如果三目运算符可能返回的值中如果有一个是常量值，返回的是值，不能作为左值使用。</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> b <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">(</span>a <span class="token operator">&lt;</span> b <span class="token operator">?</span> a <span class="token operator">:</span> b<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token comment">//在c中，这是错的，因为三目运算符?:不能当左值</span>
+<span class="token comment">//在cpp中，a&lt;b为true, 所以返回a, 这个语句相当于 a = 3</span>
+
+<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"a = %d, b = %d\n"</span><span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//a=3, b=2</span>
+</code></pre>
+<h2 id="引用的本质">引用的本质</h2>
+<hr>
+<p><strong>变量</strong><br>
+变量是一段实际连续存储空间的别名。程序中通过变量来申请并命名存储空间。通过变量的名字可以使用存储空间。</p>
+<p><strong>引用</strong><br>
+一段连续的存储空间不一定只有一个别名，引用可以看作一个已定义变量的别名。<br>
+语法: <code>Type&amp; name = var;</code></p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span><span class="token operator">&amp;</span> b <span class="token operator">=</span> a<span class="token punctuation">;</span> <span class="token comment">//b为a的别名, 引用在定义时要初始化</span>
+
+b <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">//操作b就是操作a</span>
+</code></pre>
+<hr>
+<p>引用作为变量别名而存在， 在一些场合可以代替指针。引用相对于指针来说具有更好的可读性和实用性。</p>
+<p>对比swap函数的实现</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">&amp;</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">&amp;</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token comment">//函数中的引用参数不需要初始化，初始化在函数调用时完成</span>
+	<span class="token comment">//a,b为引用，所以调用时是swap(a, b);</span>
+	<span class="token keyword">int</span> tmp <span class="token operator">=</span> a<span class="token punctuation">;</span>
+	a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+	b <span class="token operator">=</span> t<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">swap</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">*</span> b<span class="token punctuation">)</span><span class="token punctuation">{</span> <span class="token comment">//调用时是swap(&amp;a, &amp;b);</span>
+	<span class="token comment">//传入a, b的地址</span>
+	<span class="token keyword">int</span> t <span class="token operator">=</span> <span class="token operator">*</span>a<span class="token punctuation">;</span>
+	<span class="token operator">*</span>a <span class="token operator">=</span> <span class="token operator">*</span>b<span class="token punctuation">;</span>
+	<span class="token operator">*</span>b <span class="token operator">=</span> t<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p><strong>const引用</strong><br>
+语法: <code>const Type&amp; name = var;</code> , 让变量拥有只读属性</p>
+<p>例子:</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">int</span> a <span class="token operator">=</span> <span class="token number">4</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span><span class="token operator">&amp;</span> b <span class="token operator">=</span> a<span class="token punctuation">;</span> <span class="token comment">//引用，代表b是变量a的别名</span>
+<span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>b<span class="token punctuation">;</span> <span class="token comment">//指针p指向a的地址</span>
+
+b <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">//Error, b有const修饰, （a,b是）只读变量</span>
+<span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">//正确，还是可以用指针修改变量a的值</span>
+</code></pre>
+<p>当使用常量对const引用进行初始化时，C++编译器会为常量值分配空间，并将引用名作为这段空间的别名。</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">const</span> <span class="token keyword">int</span><span class="token operator">&amp;</span> b <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">//ok</span>
+<span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>b<span class="token punctuation">;</span>
+b <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">//Error</span>
+<span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">// ok</span>
+</code></pre>
+<p>引用是另一个变量的别名，那么引用本身有存储空间吗？有<br>
+（指针是一个变量，保存着内存地址，具有存储空间）</p>
+<pre class=" language-cpp"><code class="prism  language-cpp"><span class="token keyword">struct</span> TRef<span class="token punctuation">{</span>
+	<span class="token keyword">char</span><span class="token operator">&amp;</span> r<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+	<span class="token keyword">char</span> c <span class="token operator">=</span> <span class="token string">'c'</span><span class="token punctuation">;</span>
+	<span class="token keyword">char</span><span class="token operator">&amp;</span> rc <span class="token operator">=</span> c<span class="token punctuation">;</span>
+	TRef ref <span class="token operator">=</span> <span class="token punctuation">{</span>c<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token operator">&amp;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//1</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>rc<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//sizeof(c) =&gt; 1</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>TRef<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//4, 指针也是占用4 bytes</span>
+	<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//sizof(c) =&gt; 1</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>实际上，引用在C++中的内部实现是一个指针常量，所以引用所占用的空间大小与指针相同。<br>
+因为引用只是一个别名，C++为了实用性而隐藏了引用的存储空间。</p>
+<pre class=" language-cpp"><code class="prism  language-cpp">Type<span class="token operator">&amp;</span> name<span class="token punctuation">;</span> <span class="token comment">//&lt;=&gt; Type* const name;</span>
+</code></pre>
+</div>
+</div>
+
+
+<!-- Post content here -->
+
+	</div>
+  </article>
+
+  <hr>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-10 mx-auto">
+          <ul class="list-inline text-center">
+            <li class="list-inline-item">
+              <a href="https://twitter.com/share">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.facebook.com/sharer/sharer.php?u=https://crane-mocker.github.io/tech/cpp.html">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://github.com/Crane-Mocker">
+                <span class="fa-stack fa-lg">
+                  <i class="fas fa-circle fa-stack-2x"></i>
+                  <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                </span>
+              </a>
+            </li>
+          </ul>
+          <p class="copyright text-muted">Cogito ergo sum.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="../vendor/jquery/jquery.min.js"></script>
+  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom scripts for this template -->
+  <script src="../js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
