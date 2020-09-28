@@ -76,6 +76,10 @@
     <div class="container"> 
 
 
+<!DOCTYPE html>
+<html>
+
+
 <div class="stackedit">
   <div class="stackedit__html"><h1 id="ubuntu-琐事">Ubuntu 琐事</h1>
 <!-- vim-markdown-toc GFM -->
@@ -137,7 +141,6 @@
 <li><a href="#lua%E5%8C%85%E7%AE%A1%E7%90%86luarocks">Lua包管理，luarocks</a></li>
 <li><a href="#burpsuite%E6%8A%93https%E5%8C%85">burpsuite抓https包</a></li>
 <li><a href="#ubuntu%E6%92%AD%E6%94%BEmp4">ubuntu播放mp4</a></li>
-<li><a href="#ubuntu%E4%B8%8B%E7%9A%84markdown%E7%BC%96%E8%BE%91%E5%99%A8%E5%92%8Cmarkdown-toc">Ubuntu下的Markdown编辑器和markdown-toc</a></li>
 <li><a href="#vbox%E4%B8%AD%E8%99%9A%E6%8B%9F%E6%9C%BA%E4%BD%BF%E7%94%A8%E5%AE%BF%E4%B8%BB%E6%9C%BA%E4%BB%A3%E7%90%86">vbox中虚拟机使用宿主机代理</a></li>
 <li><a href="#ubuntu%E5%AE%89%E8%A3%85jdk18%E5%8F%8A%E5%A4%9Ajdk%E7%AE%A1%E7%90%86">Ubuntu安装jdk1.8及多jdk管理</a>
 <ul>
@@ -156,6 +159,13 @@
 <li><a href="#corrupted-virtualbox-installation">Corrupted VirtualBox installation</a></li>
 </ul>
 </li>
+<li><a href="#vim">vim</a>
+<ul>
+<li><a href="#ubuntu%E4%B8%8B%E7%9A%84markdown%E7%BC%96%E8%BE%91%E5%99%A8%E5%92%8Cmarkdown-toc">Ubuntu下的Markdown编辑器和markdown-toc</a></li>
+<li><a href="#spacevim%E5%A4%A7%E5%9D%91">Spacevim大坑</a></li>
+</ul>
+</li>
+<li><a href="#mega%E4%B8%8B%E8%BD%BD%E5%8D%A0%E7%9B%98%E5%A4%AA%E5%A4%9A">mega下载占盘太多</a></li>
 </ul>
 <!-- vim-markdown-toc -->
 <h2 id="ubuntu系统盘瘦身">Ubuntu系统盘瘦身</h2>
@@ -576,40 +586,6 @@ Im was using a beta version pro 1.6, i installed the 1.7 free version and now i 
 <pre class=" language-bash"><code class="prism  language-bash"><span class="token function">sudo</span> apt <span class="token function">install</span> libdvdnav4 libdvdread4 gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly libdvd-pkg
 <span class="token function">sudo</span> apt <span class="token function">install</span> ubuntu-restricted-extras
 </code></pre>
-<h2 id="ubuntu下的markdown编辑器和markdown-toc">Ubuntu下的Markdown编辑器和markdown-toc</h2>
-<p>之前，在我还用atom的时候，安了markdown的插件就没再管过，但是atom太慢了。后来我写代码主要是用vim了,就想着再装一个markdown editor.</p>
-<p>首先我用了韩国的haroopad,支持中文版和<code>[TOC]</code>,可以export到html和pdf,但是对中文字体的支持不好，那个字体看得难受。并且有只能显示一个mermaid Graph的bug。</p>
-<p>后来用了remarkable, 真是清爽。又轻量,界面又舒服，添加<a href="https://github.com/jonschlinkert/markdown-toc">markdown-toc</a> 即可使用<code>[TOC]</code>，唯一美中不足的是，每次更新目录都要re-run markdown-toc<br>
-在项目内安装markdown-toc <code>npm install --save markdown-toc</code><br>
-每次运行 <code>npx markdown-toc README.md</code><br>
-但是问题是，没办法直接像haroopad那样直接复制有style的html(虽然写了这个功能，但复制的结果就是markdown格式的QAQ)</p>
-<p>所以最后还是vim吧，vim插件们不香么。</p>
-<ol>
-<li>首先，添加实时预览 在<code>.vimrc</code>中添加plugin.(我用的包管理是vundle)</li>
-</ol>
-<pre><code>Plugin 'iamcco/mathjax-support-for-mkdp'
-Plugin 'iamcco/markdown-preview.vim'
-</code></pre>
-<p>然后在<code>.vimrc</code>的末尾添加预览的快捷键映射</p>
-<pre><code>nmap &lt;silent&gt; &lt;F8&gt; &lt;Plug&gt;MarkdownPreview        " for normal mode
-imap &lt;silent&gt; &lt;F8&gt; &lt;Plug&gt;MarkdownPreview        " for insert mode
-nmap &lt;silent&gt; &lt;F9&gt; &lt;Plug&gt;StopMarkdownPreview    " for normal mode
-imap &lt;silent&gt; &lt;F9&gt; &lt;Plug&gt;StopMarkdownPreview    " for insert mode
-</code></pre>
-<p>然后安装plugin们。</p>
-<p>意思是说，在普通模式下（n）和插入模式下（i），按下F8键就可以实时预览，按下F9键就可以停止预览。(用浏览器预览，很Nice)<br>
-还挺好看的，不过也不支持[TOC]</p>
-<ol start="2">
-<li>接下来就添加生成TOC的plugin<br>
-<a href="https://github.com/mzlogin/vim-markdown-toc">vim-markdown-toc</a>的详细说明</li>
-</ol>
-<p>在<code>.vimrc</code>中添加<code>Plugin 'mzlogin/vim-markdown-toc'</code>,然后install</p>
-<p>用法：把光标移动到想放的位置，然后键入</p>
-<pre><code>:GenTocGFM
-:GenTocRedcarpet
-:GenTocMarked
-:GenTocGitLab
-</code></pre>
 <h2 id="vbox中虚拟机使用宿主机代理">vbox中虚拟机使用宿主机代理</h2>
 <p>参考：<br>
 <a href="https://www.cnblogs.com/sakam0to/p/10627524.html">https://www.cnblogs.com/sakam0to/p/10627524.html</a><br>
@@ -694,6 +670,84 @@ Thus it creates a new virtual machine with the attached file.</p>
 This occurs when trying to <em>attach the disk from the USB drive</em>. This is because the USB drive requires admin rights. So our Support Engineers run the application as an administrator and import Appliance in VirtualBox.</p>
 <h3 id="corrupted-virtualbox-installation">Corrupted VirtualBox installation</h3>
 <p>The corrupted VirtualBox installation will also fail to import appliance. During corrupted VirtualBox, the only option is to re-install the whole VirtualBox. So our Support Engineers re-install the VirtualBox once again and import the appliance.</p>
+<h2 id="vim">vim</h2>
+<h3 id="ubuntu下的markdown编辑器和markdown-toc">Ubuntu下的Markdown编辑器和markdown-toc</h3>
+<p>之前，在我还用atom的时候，安了markdown的插件就没再管过，但是atom太慢了。后来我写代码主要是用vim了,就想着再装一个markdown editor.</p>
+<p>首先我用了韩国的haroopad,支持中文版和<code>[TOC]</code>,可以export到html和pdf,但是对中文字体的支持不好，那个字体看得难受。并且有只能显示一个mermaid Graph的bug。</p>
+<p>后来用了remarkable, 真是清爽。又轻量,界面又舒服，添加<a href="https://github.com/jonschlinkert/markdown-toc">markdown-toc</a> 即可使用<code>[TOC]</code>，唯一美中不足的是，每次更新目录都要re-run markdown-toc<br>
+在项目内安装markdown-toc <code>npm install --save markdown-toc</code><br>
+每次运行 <code>npx markdown-toc README.md</code><br>
+但是问题是，没办法直接像haroopad那样直接复制有style的html(虽然写了这个功能，但复制的结果就是markdown格式的QAQ)</p>
+<p>所以最后还是vim吧，vim插件们不香么。</p>
+<ol>
+<li>首先，添加实时预览 在<code>.vimrc</code>中添加plugin.(我用的包管理是vundle)</li>
+</ol>
+<pre><code>Plugin 'iamcco/mathjax-support-for-mkdp'
+Plugin 'iamcco/markdown-preview.vim'
+</code></pre>
+<p>然后在<code>.vimrc</code>的末尾添加预览的快捷键映射</p>
+<pre><code>nmap &lt;silent&gt; &lt;F8&gt; &lt;Plug&gt;MarkdownPreview        " for normal mode
+imap &lt;silent&gt; &lt;F8&gt; &lt;Plug&gt;MarkdownPreview        " for insert mode
+nmap &lt;silent&gt; &lt;F9&gt; &lt;Plug&gt;StopMarkdownPreview    " for normal mode
+imap &lt;silent&gt; &lt;F9&gt; &lt;Plug&gt;StopMarkdownPreview    " for insert mode
+</code></pre>
+<p>然后安装plugin们。</p>
+<p>意思是说，在普通模式下（n）和插入模式下（i），按下F8键就可以实时预览，按下F9键就可以停止预览。(用浏览器预览，很Nice)<br>
+还挺好看的，不过也不支持[TOC]</p>
+<ol start="2">
+<li>接下来就添加生成TOC的plugin<br>
+<a href="https://github.com/mzlogin/vim-markdown-toc">vim-markdown-toc</a>的详细说明</li>
+</ol>
+<p>在<code>.vimrc</code>中添加<code>Plugin 'mzlogin/vim-markdown-toc'</code>,然后install</p>
+<p>用法：把光标移动到想放的位置，然后键入</p>
+<pre><code>:GenTocGFM
+:GenTocRedcarpet
+:GenTocMarked
+:GenTocGitLab
+</code></pre>
+<h3 id="spacevim大坑">Spacevim大坑</h3>
+<p>搞java开发看人安利了spacevim，就以为那是个plugin,安了。哪想到 <code>.vim-&gt;.Spacevim</code> orz<br>
+好吧，幸好安装时有backup, <code>curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall</code>之后就开始恢复vim<br>
+首先根据备份把.vim/和.vimrc恢复到~/</p>
+<hr>
+<p>我遇到一个小问题，之前我把这些<code>*_back</code>都mv到了我自己作备份用的文件夹，在未卸载spacevim时执行<code>cp .vimrc_back ~/.vimrc</code>之后，在~/还是找不到.vimrc<br>
+然后我在他们官网找到了答案</p>
+<blockquote>
+<p>Can I try SpaceVim without overwriting my vimrc?<br>
+The SpaceVim install script will move your ~/.vimrc to ~/.vimrc_back. If you want to have a try SpaceVim without overwriting your own Vim configuration you can:</p>
+<p>Clone SpaceVim manually.</p>
+<p>git clone <a href="https://github.com/SpaceVim/SpaceVim.git">https://github.com/SpaceVim/SpaceVim.git</a> ~/.SpaceVim<br>
+Then, start Vim via vim -u ~/.SpaceVim/vimrc. You can also put this alias into your bashrc.</p>
+<p>alias svim=‘vim -u ~/.SpaceVim/vimrc’</p>
+</blockquote>
+<p>啊我的心好痛<br>
+这件事告诉我一个道理：用专门的dir作备份，恢复时用cp不用mv</p>
+<hr>
+<p>恢复完了就是无尽的报错</p>
+<pre><code>处理 function down_quote_syntax#enable_quote_syntax[7]..markdown_quote_synta
+x#include_other_syntax 时发生错误:
+第    9 行:
+E484: 无法打开文件 syntax/coffee.vim
+E484: 无法打开文件 syntax/mustache.vim
+</code></pre>
+<p>你品，你细品，这些个东西还损坏了，重新install吧。</p>
+<p>总结一句，spacevim比较适合vim小白，它更像是个配置好的ide而不是你独一无二的vim.对于一个vimer来说，所有的.vimrc都是经过了时间和不断的使用找出来的最适合自己的配置。与其你去熟悉去适应某个ide的用法，不如使editor去适应你。这大概也是大家喜欢vim的原因吧。</p>
+<h2 id="mega下载占盘太多">mega下载占盘太多</h2>
+<p>2020/09/27</p>
+<p>今天下一个2G的大文件，突然发现/只剩200M了。我立刻意识到这是因为下载的缘故，此时去下载历史里看，没有出现这个文件。find去<code>/</code>找<code>.mega</code>也没有找到。<br>
+所以这个下了一半的file哪儿去了？</p>
+<p>要回答这个问题，要先知道mega是怎么下载的。<a href="https://webapps.stackexchange.com/questions/41068/how-exactly-does-megas-download-work#:~:text=When%20you%20download%20a%20file,normal%20download%20process%20is%20started">https://webapps.stackexchange.com/questions/41068/how-exactly-does-megas-download-work#:~:text=When you download a file,normal download process is started</a>.</p>
+<blockquote>
+<p>When you download a file from the MEGA service, you are shown a pretty download progress bar within the browser. Once this progress bar reaches 100%, your browser then begins to download the file. That is, only once the graphical download is complete, your browser’s normal download process is started.&gt; It uses the fileSystem API, which basically writes the file to a sandboxed section of your local file system:<br>
+AppData\Local\Google\Chrome\User Data\Default\File System\ (显然，这是win)<br>
+It is “Resumable” downloads, but not being able to choose your download folder isn’t ideal.</p>
+</blockquote>
+<p>我然后去查了<code>~/.cache/google-chrome</code>,也看到什么，索性<code>rm -R Default/</code>。</p>
+<p>在<code>/</code>下<code>find . -type f -size +800M</code>找到了<br>
+<code>~/.config/google-chrome/Default/File System/320/p/00/00000000</code>，终于我看到了那个1013M的file。<br>
+以及很罪恶的是，除了320还有别的,怪不得mega可以一直知道我下了多少，然后接着下，不像其他的要从头下。<br>
+<code>rm -R 3*</code><br>
+舒服了～</p>
 </div>
 </div>
 

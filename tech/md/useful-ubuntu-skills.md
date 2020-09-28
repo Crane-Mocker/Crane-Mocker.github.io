@@ -57,6 +57,7 @@
 * [vim](#vim)
 	* [Ubuntu下的Markdown编辑器和markdown-toc](#ubuntu下的markdown编辑器和markdown-toc)
 	* [Spacevim大坑](#spacevim大坑)
+* [mega下载占盘太多](#mega下载占盘太多)
 
 <!-- vim-markdown-toc -->
 
@@ -777,3 +778,24 @@ E484: 无法打开文件 syntax/mustache.vim
 你品，你细品，这些个东西还损坏了，重新install吧。
 
 总结一句，spacevim比较适合vim小白，它更像是个配置好的ide而不是你独一无二的vim.对于一个vimer来说，所有的.vimrc都是经过了时间和不断的使用找出来的最适合自己的配置。与其你去熟悉去适应某个ide的用法，不如使editor去适应你。这大概也是大家喜欢vim的原因吧。
+
+## mega下载占盘太多
+
+2020/09/27
+
+今天下一个2G的大文件，突然发现/只剩200M了。我立刻意识到这是因为下载的缘故，此时去下载历史里看，没有出现这个文件。find去`/`找`.mega`也没有找到。
+所以这个下了一半的file哪儿去了？
+
+要回答这个问题，要先知道mega是怎么下载的。https://webapps.stackexchange.com/questions/41068/how-exactly-does-megas-download-work#:~:text=When%20you%20download%20a%20file,normal%20download%20process%20is%20started.
+
+> When you download a file from the MEGA service, you are shown a pretty download progress bar within the browser. Once this progress bar reaches 100%, your browser then begins to download the file. That is, only once the graphical download is complete, your browser's normal download process is started.> It uses the fileSystem API, which basically writes the file to a sandboxed section of your local file system:
+> AppData\Local\Google\Chrome\User Data\Default\File System\ (显然，这是win)
+> It is "Resumable" downloads, but not being able to choose your download folder isn't ideal. 
+
+我然后去查了`~/.cache/google-chrome`,也看到什么，索性`rm -R Default/`。
+
+在`/`下`find . -type f -size +800M`找到了
+`~/.config/google-chrome/Default/File System/320/p/00/00000000`，终于我看到了那个1013M的file。
+以及很罪恶的是，除了320还有别的,怪不得mega可以一直知道我下了多少，然后接着下，不像其他的要从头下。
+`rm -R 3*`
+舒服了～
