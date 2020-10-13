@@ -279,7 +279,7 @@ $ sudo apt-get update --fix-missing
 
 ### GPG 错误
 
-使用 `add-apt-repository`相当于是在source.list中添加了相关的源，并且会自动添加相应的signing key。若是直接在`source.list`中添加，则需要手动添加signing key.
+使用 `add-apt-repository`相当于是在source.list中添加了相关的源，并且会自动添加相应的key。若是直接在`source.list`中添加，则需要手动添加key.(也就是ppa源的网站上可以看到的fingerprint)
 
 `sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys THE_KEY`
 
