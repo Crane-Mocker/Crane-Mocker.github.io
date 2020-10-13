@@ -75,11 +75,6 @@
   <article>
     <div class="container"> 
 
-
-<!DOCTYPE html>
-<html>
-
-
 <div class="stackedit">
   <div class="stackedit__html"><h1 id="ubuntu-琐事">Ubuntu 琐事</h1>
 <!-- vim-markdown-toc GFM -->
@@ -106,6 +101,7 @@
 <ul>
 <li><a href="#%E6%94%B9%E5%9B%BD%E5%86%85%E6%BA%90">改国内源</a></li>
 <li><a href="#hash-sum-mismatch">Hash Sum mismatch</a></li>
+<li><a href="#gpg-%E9%94%99%E8%AF%AF">GPG 错误</a></li>
 </ul>
 </li>
 <li><a href="#ubuntu%E4%BA%AE%E5%BA%A6%E9%97%AE%E9%A2%981604">Ubuntu亮度问题（16.04）</a></li>
@@ -347,6 +343,9 @@ sudo mkdir /var/lib/dpkg/info //再新建一个新的info文件夹
 <pre><code>$ sudo apt-get clean  
 $ sudo apt-get update --fix-missing 
 </code></pre>
+<h3 id="gpg-错误">GPG 错误</h3>
+<p>使用 <code>add-apt-repository</code>相当于是在source.list中添加了相关的源，并且会自动添加相应的key。若是直接在<code>source.list</code>中添加，则需要手动添加key.(也就是ppa源的网站上可以看到的fingerprint)</p>
+<p><code>sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys THE_KEY</code></p>
 <h2 id="ubuntu亮度问题（16.04）">Ubuntu亮度问题（16.04）</h2>
 <p>之前的brightness-controller在把py<br>
 1.<code>sudo apt-get install laptop-mode-tools</code><br>
@@ -748,9 +747,13 @@ It is “Resumable” downloads, but not being able to choose your download fold
 以及很罪恶的是，除了320还有别的,怪不得mega可以一直知道我下了多少，然后接着下，不像其他的要从头下。<br>
 <code>rm -R 3*</code><br>
 舒服了～</p>
+<p>9-29上午，收到了mega support的邮件</p>
+<blockquote>
+<p>It’s stored in your browser’s temporary storage.<br>
+You can simply clear your browser cache for <a href="https://mega.nz">https://mega.nz</a> by navigating to chrome://settings/content/siteDetails?site=https%3A%2F%<a href="http://2Fmega.nz">2Fmega.nz</a>%2F and clicking “Clear data”</p>
+</blockquote>
 </div>
 </div>
-
 
     </div>
   </article>
