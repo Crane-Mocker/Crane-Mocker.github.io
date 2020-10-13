@@ -21,6 +21,7 @@
 * [Ubuntu源](#ubuntu源)
 	* [改国内源](#改国内源)
 	* [Hash Sum mismatch](#hash-sum-mismatch)
+	* [GPG 错误](#gpg-错误)
 * [Ubuntu亮度问题（16.04）](#ubuntu亮度问题1604)
 * [.crx插件的安装](#crx插件的安装)
 * [挂载硬盘的暗坑踩坑记录及正确姿势](#挂载硬盘的暗坑踩坑记录及正确姿势)
@@ -275,6 +276,13 @@ sudo mkdir /var/lib/dpkg/info //再新建一个新的info文件夹
 $ sudo apt-get clean  
 $ sudo apt-get update --fix-missing 
 ```
+
+### GPG 错误
+
+使用 `add-apt-repository`相当于是在source.list中添加了相关的源，并且会自动添加相应的signing key。若是直接在`source.list`中添加，则需要手动添加signing key.
+
+`sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys THE_KEY`
+
 ## Ubuntu亮度问题（16.04）
 之前的brightness-controller在把py
 1.`sudo apt-get install laptop-mode-tools`  
@@ -799,3 +807,7 @@ E484: 无法打开文件 syntax/mustache.vim
 以及很罪恶的是，除了320还有别的,怪不得mega可以一直知道我下了多少，然后接着下，不像其他的要从头下。
 `rm -R 3*`
 舒服了～
+
+9-29上午，收到了mega support的邮件
+> It's stored in your browser's temporary storage.
+> You can simply clear your browser cache for https://mega.nz by navigating to chrome://settings/content/siteDetails?site=https%3A%2F%2Fmega.nz%2F and clicking "Clear data"
