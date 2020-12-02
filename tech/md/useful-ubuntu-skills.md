@@ -51,6 +51,8 @@
 	* [oracle官网安装](#oracle官网安装)
 	* [安装openjdk-8-jdk](#安装openjdk-8-jdk)
 	* [配置多版本](#配置多版本)
+* [vmware](#vmware)
+	* [无法reinstall vmware tools](#无法reinstall-vmware-tools)
 * [Virtual Box](#virtual-box)
 	* [多个vmdk合成一个](#多个vmdk合成一个)
 	* [vbox failed to import appliance](#vbox-failed-to-import-appliance)
@@ -662,6 +664,19 @@ export PATH=${JAVA_HOME}/bin:$PATH
 查看所有jdk安装版本`sudo update-java-alternatives -l`
 
 `sudo update-java-alternatives -s [java版本]`即可切换。
+
+## vmware
+
+### 无法reinstall vmware tools
+
+三种方法。
+
+1. CD/DVD设置成自动检测，如果没有，就创建。重启后CD/DVD connect,就可以看到vmware tools的相关工具
+
+2. `whereis vmware`找路径， `/usr/lib/vmware/isoimages`路径下有linux.iso, windows.iso(建议把这两个cp到其他dir)
+根据虚拟机操作系统，`setting>hardware>CD/DVD`使用对应的iso,重启。
+
+3. 如果第二个无效,binwalk解包对应的iso,解出来的vmware-install.pl放进虚拟机里面运行。(可以加上选项`--default`)
 
 ## Virtual Box
 
