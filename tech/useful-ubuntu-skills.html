@@ -180,6 +180,12 @@
 <li><a href="#chrome%E5%AE%89%E8%A3%85gnome-extension">chrome安装gnome extension</a></li>
 </ul>
 </li>
+<li><a href="#wine-qq">wine qq</a>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a></li>
+<li><a href="#wine-qq%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD%E8%B7%AF%E5%BE%84">wine-qq文件下载路径</a></li>
+</ul>
+</li>
 </ul>
 <!-- vim-markdown-toc -->
 <h2 id="ubuntu分区管理-ubuntu-partition">Ubuntu分区管理-Ubuntu Partition</h2>
@@ -802,10 +808,29 @@ You can simply clear your browser cache for <a href="https://mega.nz">https://me
 <p>Add chrome extension.<br>
 <a href="https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep">https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijbbhgpjhcjognlahblep</a></p>
 <p><code>sudo apt install chrome-gnome-shell</code></p>
+<h2 id="wine-qq">wine qq</h2>
+<h3 id="安装">安装</h3>
+<p>安装 wine</p>
+<pre><code>sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install wine-stable
+</code></pre>
+<p>安装wine应用<br>
+<code>sudo dpkg -i xxx.deb</code></p>
+<p>wine-qq下载地址<br>
+<a href="https://www.ubuntukylin.com/applications/23-cn.html">https://www.ubuntukylin.com/applications/23-cn.html</a></p>
+<p>deepin的qq（最新版本和老一个版本）我用不了，能出来扫码登录的页面但是不能登录成功，可以使用安装的文件夹中的uninstall.sh卸载，然后<code>dpkg -l | grep deepin</code>卸载其它的。</p>
+<p>原生的linux qq总是登录后就闪退，2020年12月以来，按照官方的闪退解决方法也无法解决闪退问题了。</p>
+<p>优麒麟wine-qq也挺慢的，而且很卡，经常操作两下就无响应了。</p>
+<p>总之，都不好用。</p>
+<h3 id="wine-qq文件下载路径">wine-qq文件下载路径</h3>
+<p>~/.wineqq/drive_c/users/你的用户/My Documents/Tencent Files/对应QQ号/FileRecv</p>
 </div>
 </div>
 
 
+
+    </div>
   </article>
 
   <hr>

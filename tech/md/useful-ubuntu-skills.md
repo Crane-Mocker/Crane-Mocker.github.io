@@ -67,6 +67,9 @@
 * [mega下载占盘太多](#mega下载占盘太多)
 * [Ubuntu gnome 美化](#ubuntu-gnome-美化)
 	* [chrome安装gnome extension](#chrome安装gnome-extension)
+* [wine qq](#wine-qq)
+	* [安装](#安装)
+	* [wine-qq文件下载路径](#wine-qq文件下载路径)
 
 <!-- vim-markdown-toc -->
 
@@ -864,4 +867,32 @@ https://chrome.google.com/webstore/detail/gnome-shell-integration/gphhapmejobijb
 
 `sudo apt install chrome-gnome-shell`
 
+## wine qq
 
+### 安装
+
+安装 wine
+
+```
+sudo dpkg --add-architecture i386
+sudo apt update
+sudo apt install wine-stable
+```
+
+安装wine应用
+`sudo dpkg -i xxx.deb`
+
+wine-qq下载地址
+https://www.ubuntukylin.com/applications/23-cn.html
+
+deepin的qq（最新版本和老一个版本）我用不了，能出来扫码登录的页面但是不能登录成功，可以使用安装的文件夹中的uninstall.sh卸载，然后`dpkg -l | grep deepin`卸载其它的。
+
+原生的linux qq总是登录后就闪退，2020年12月以来，按照官方的闪退解决方法也无法解决闪退问题了。
+
+优麒麟wine-qq也挺慢的，而且很卡，经常操作两下就无响应了。
+
+总之，都不好用。
+
+### wine-qq文件下载路径
+
+~/.wineqq/drive_c/users/你的用户/My Documents/Tencent Files/对应QQ号/FileRecv
