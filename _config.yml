@@ -1,0 +1,20 @@
+title: "c0conut's blog"
+description: "c0conut's blog"
+baseurl: "/"
+url: "https://Crane-Mocker.github.io"
+
+header_pages:
+  - index.md
+  - about.md
+  - contact.md
+
+style: light
+
+footer: 'follow me on <a href="https://github.com/Crane-Mocker">GitHub</a>'
+
+# Build settings
+markdown: kramdown
+remote_theme: b2a3e8/jekyll-theme-console
+
+plugins:
+  - jekyll-seo-tag
